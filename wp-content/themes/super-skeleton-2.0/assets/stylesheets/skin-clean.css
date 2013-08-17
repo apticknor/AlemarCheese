@@ -32,13 +32,18 @@ ul.tabs li a.active:after{
    
 /* FOOTER */
 #section-tophat{
-	border-bottom: 2px solid #ddd;
+	border-bottom: 1px solid #ddd;
 	background: #333;
 }
 
 #section-tophat:after, #section-footer:after{
 	content: "";
 	background: #333;
+}
+
+/* SECTION FOOTER */
+#section-footer {
+	border-top-width: 1px;
 }
 
 /* SUBFOOTER */
@@ -49,3 +54,24 @@ ul.tabs li a.active:after{
 #section-sub-footer:after {
 	content: "";
 	background: black;
+}
+
+.slider-shadow:before,
+.slider-shadow:after {
+	background: none;
+}
+
+.sf-menu > li {
+	border-left: none;
+	border-right: none;
+}
+
+.sf-menu > li:hover {
+	background: none; 
+  -webkit-box-shadow: none;
+	 -moz-box-shadow: none;
+	   -o-box-shadow: none;
+		  box-shadow: none;
+	border-left: none;
+	border-right: none;
+}
