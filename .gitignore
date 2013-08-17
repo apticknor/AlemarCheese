@@ -14,3 +14,4 @@ Thumbs.db
 # CMS Config Files #
 ####################
 .htaccess
+wp-config.php
