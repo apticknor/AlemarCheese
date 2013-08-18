@@ -21,7 +21,7 @@
 			<?php elseif ( is_category() ) :	?>			
 				<h1 class="title"><span><?php single_cat_title(); ?></span></h1>
 			<?php elseif ( is_archive() ) : ?>			
-				<h1 class="title"><span><?php single_month_title(); ?></span></h1>
+				<h1 class="title"><span><?php single_month_title(' '); ?></span></h1>
 			<?php elseif ( is_author() ) : ?>			
 				<h1 class="title"><span><?php the_author(); ?></span></h1>
 			<?php endif; ?>	
