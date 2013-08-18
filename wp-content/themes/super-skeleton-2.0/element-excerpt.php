@@ -1,13 +1,7 @@
 				<!-- THE POST EXCERPT -->	
 				<div class="the_content post type-post hentry excerpt clearfix" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>	
 					
-					<hr class="partial-bottom" />
-					
-					<div class="my-avatar">
-						<a href="<?php the_permalink(); ?>">
-							<?php echo get_avatar( get_the_author_meta('email'), '32' ); ?>
-						</a>
-					</div>		
+					<hr class="partial-bottom" />	
 					
 					<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 					
