@@ -61,9 +61,7 @@
 						}
 						
 						?>
-					<a href="<?php echo $lightbox_link; ?>" data-rel="prettyPhoto[<?php echo $post_slug; ?>]">
 						<img class="aligncenter" src="<?php echo $sencha; ?><?php echo $image[0]; ?>" alt="<?php the_title(); ?>" />
-					</a>
 							
 				<br class="clearfix" />					
 				<?php } else {} ?>	 
