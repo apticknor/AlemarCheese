@@ -61,7 +61,7 @@ hr{
 	
 hr.partial-bottom{margin-bottom: 15px;}
 hr.remove-top{margin-top: 0px;}
-.article_nav {margin-bottom: -30px;}
+.article_nav {margin-bottom: 30px;}
 
 .content li {
     list-style: disc inside;
@@ -1234,4 +1234,7 @@ span.grid_btn, span.list_btn, span.hybrid_btn {margin-right: 3px; margin-top: 0p
 		
 	}
 
-
+#section-thirds,
+#section-content {
+	margin-bottom: 40px;
+}
