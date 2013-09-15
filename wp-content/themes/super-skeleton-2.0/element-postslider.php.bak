@@ -9,11 +9,11 @@
 						
 			<div class="slider-shadow">
 				<div class="flexslider-container">
-					<div id="frontpage_slider" class="flexslider"> 
+					<div id="post_slider" class="flexslider"> 
 					  <ul class="slides">
 					    <?php
-						if ( function_exists( 'get_option_tree' ) ) {
-						  $slides = get_option_tree( 'homepage_slider', $option_tree, false, true, -1 );
+						if ( function_exists( 'ot_get_option' ) ) {
+						  $slides = get_custom_field( 'homepage_slider', $option_tree );
 						  foreach( $slides as $slide ) {
 						  							
 							$lightbox_link = ' data-rel="prettyPhoto[]" ';								
@@ -61,7 +61,7 @@
 							}	
 							
 							if($slide['description']) { 
-							$slidecaption = '<div class="slide-caption"><h4>'.$slide['title'].'</h4><div class="slide-caption-details">'.$slide['description'].'</div></div>'; 		
+							$slidecaption = '<div class="slide-caption"><h4>'.$slide['title'].'</h4>'.$slide['description'].'</div>'; 		
 							} else {
 							$slidecaption = ' ';
 							}
@@ -78,7 +78,7 @@
 					</div>
 				</div>			
 			</div>
-			
+						
 			
 		</div>		
 		<!-- /End Full Width Slider-->

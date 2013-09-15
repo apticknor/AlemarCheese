@@ -61,7 +61,7 @@
 							}	
 							
 							if($slide['description']) { 
-							$slidecaption = '<div class="slide-caption"><h4>'.$slide['title'].'</h4><div class="slide-caption-details">'.$slide['description'].'</div></div>'; 		
+							$slidecaption = '<div class="slide-caption"><h4>'.$slide['title'].'</h4>'.$slide['description'].'</div>'; 		
 							} else {
 							$slidecaption = ' ';
 							}

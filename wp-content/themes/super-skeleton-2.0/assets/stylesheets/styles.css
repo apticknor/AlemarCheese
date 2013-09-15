@@ -951,7 +951,7 @@ span.grid_btn, span.list_btn, span.hybrid_btn {margin-right: 3px; margin-top: 0p
 	position: absolute;
 	margin-top: -32px;
     height: 62px;  /* Same as your image height */  
-    width: 100%;  /* Same as your image width */  
+    width: 99%;  /* Same as your image width */  
 }
 
 .flexslider .slides li {overflow: hidden;}
@@ -960,6 +960,12 @@ span.grid_btn, span.list_btn, span.hybrid_btn {margin-right: 3px; margin-top: 0p
 /* Caption style 
 *********************************/ 
 .slides li{overflow: hidden;}
+
+/* hide the caption until the screen is larger */
+@media screen and (max-width: 767px) {
+	.slide-caption-details { display: none !important; }
+}
+
 .slide-caption {width: 96%; z-index: 98; padding: 22px; position: absolute; left: 0; bottom: 0; background: rgba(0,0,0,.3); color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,.3); font-size: 15px; line-height: 21px; margin-bottom: 0;}
 
 .slide-caption h4 {
