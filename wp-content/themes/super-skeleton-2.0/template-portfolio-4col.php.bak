@@ -151,6 +151,12 @@ endif;
 										<img src="<?php echo $image[url]; ?>" width="<?php echo $image[width]; ?>" height="<?php echo $image[height]; ?>" alt="<?php the_title(); ?>" />
 										<span></span>
 									</a>							
+									<div class="lightboxLink">
+										<a class="popLink boxLink" href="<?php echo $lightbox_link; ?>" data-rel="prettyPhoto[<?php the_title(); ?>]" title="<?php the_title(); ?>"></a>
+									</div>						    
+									<div class="thumbLink">
+										<a class="popLink" href="<?php the_permalink(); ?>" title="Full Post"></a>
+									</div>						    
 								</div>
 								<!-- End Module Image -->
 								

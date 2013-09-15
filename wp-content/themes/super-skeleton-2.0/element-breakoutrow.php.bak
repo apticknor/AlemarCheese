@@ -79,6 +79,12 @@
 										<img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>" />
 										<span></span>
 									</a>							
+									<div class="lightboxLink">
+										<a class="popLink boxLink" href="<?php echo $lightbox_link; ?>" data-rel="prettyPhoto[Lightbox]" title="Lightbox"></a>
+									</div>						    
+									<div class="thumbLink">
+										<a class="popLink" href="<?php the_permalink(); ?>" title="Full Post"></a>
+									</div>						    
 								</div>
 							
 							<?php } ?>
