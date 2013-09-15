@@ -804,7 +804,6 @@ and (max-width: 960) {
 
 
 /* Styling for centered overlay */
-/*
 .module-img img{
 	border: medium none;
     margin: 0;
@@ -821,11 +820,10 @@ and (max-width: 960) {
     height: 100%;
     left: 0;
     position: absolute;
-    top: -6px; 
+    top: -6px; /* Removes auto height of the HTML5 span element */
     width: 100%;
     z-index: 1;
 }
-*/
 
 
 

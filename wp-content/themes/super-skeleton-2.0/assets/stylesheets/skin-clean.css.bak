@@ -36,7 +36,7 @@ ul.tabs li a.active:after{
 	background: #333;
 }
 
-#section-tophat:after {
+#section-tophat:after, #section-footer:after{
 	content: "";
 	background: #333;
 }
@@ -44,23 +44,16 @@ ul.tabs li a.active:after{
 /* SECTION FOOTER */
 #section-footer {
 	border-top-width: 1px;
-	background: #efefef;
-}
-
-#section-footer:after {
-	content: '';
-	background: none;
 }
 
 /* SUBFOOTER */
 #section-sub-footer{
-	background: #313131;
-	border-top: 1px solid #222222;
+	background: black;
 }
 
 #section-sub-footer:after {
 	content: "";
-	background: #313131;
+	background: black;
 }
 
 .slider-shadow:before,
