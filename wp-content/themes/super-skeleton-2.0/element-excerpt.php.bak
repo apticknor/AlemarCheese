@@ -54,5 +54,14 @@
 						</div> 
 					<?php } ?>					
 					
+					
+					<!-- META AREA -->
+					<div class="meta-space">					
+						<div class="tags clearfix <?php echo get_option_tree('tags_color'); ?>">
+							<img src="<?php echo WP_THEME_URL; ?>/assets/images/theme/tag.png" class="tag_icon" />
+							<?php the_tags(' ',' '); ?>				
+						</div>				
+					</div> 
+					<!-- /META AREA -->
 				</div>
 				<!-- /THE POST EXCERPT -->
