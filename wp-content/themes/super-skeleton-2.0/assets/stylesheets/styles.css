@@ -386,6 +386,10 @@ ul.social li:hover{
      			    opacity:1.0 !important;
 }	
 
+ul.social li a:hover{
+	opacity:1;
+}
+
 .page .hentry{padding-bottom: 15px;} 
 
 
