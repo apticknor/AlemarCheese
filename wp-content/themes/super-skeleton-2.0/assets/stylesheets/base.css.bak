@@ -49,12 +49,6 @@
 		border-spacing: 0; }
 
 
-/* keep img canvas and video under control */
-img, video, canvas, iframe {
-    max-width: 100%;
-}
-
-
 /* #Basic Styles
 ================================================== */
 	body {
@@ -337,7 +331,7 @@ img, video, canvas, iframe {
 	.remove-top { margin-top: 0 !important; }
 	.half-top { margin-top: 10px !important; }
 	.add-top { margin-top: 20px !important; }
-
+	
 	.remove-bottom { margin-bottom: 0 !important; }
 	.half-bottom { margin-bottom: 10px !important; }
 	.add-bottom { margin-bottom: 20px !important; }
