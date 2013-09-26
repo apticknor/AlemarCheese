@@ -700,7 +700,7 @@ and (max-width: 960) {
   #responsive-nav, .chzn-container, .chzn-container div { display: inline-block !important; }
 } */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 479px) {
 
   .navigation ul.sf-menu { display: none;}
 
@@ -1233,4 +1233,9 @@ span.grid_btn, span.list_btn, span.hybrid_btn {margin-right: 3px; margin-top: 0p
 #section-thirds,
 #section-content {
 	margin-bottom: 40px;
+}
+
+.chzn-select {
+	width: 100%;
+	margin-bottom: 0;
 }
