@@ -343,3 +343,14 @@ img, video, canvas, iframe {
 	.add-bottom { margin-bottom: 20px !important; }
 
 
+@media screen and (min-width:989px) {
+	.content_2col {
+		-webkit-column-count: 2;
+		-webkit-column-gap: 60px;
+		-webkit-column-rule: 1px solid #ddd;
+		-moz-column-count: 2;
+		-moz-column-gap: 60px;
+		column-count: 2;
+		column-gap: 60px;
+	}
+}
