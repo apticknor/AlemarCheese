@@ -59,7 +59,7 @@ h3#comments{font-size: 24px; margin-bottom: 25px;}
 
 
 /* Small Text Classes */
-.tags a, #section-tophat, #section-footer span, #section-sub-footer, .date{
+.tags a, #section-tophat, #section-footer span, #section-sub-footer, .post-meta-date{
 	font-size: 13px
 }
 
