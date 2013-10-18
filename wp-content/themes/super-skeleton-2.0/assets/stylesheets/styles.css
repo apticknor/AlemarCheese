@@ -90,7 +90,7 @@ a.button{text-align: center;}
 
 
 /* Responsive Form Elements */
-input{ padding: 10px !important; font-size: 11px !important; }
+input{ padding: 10px; font-size: 11px; }
 input#s{ width: 90%; min-width: 195px; }
 
 #adminbarsearch-wrap input{padding: 2px !important;}
@@ -292,7 +292,7 @@ p img{margin-bottom: 0;}
 #section-sidebar-right{}
 #section-project-single{}
 #section-footer{  background: #222;	 background: rgba(0,0,0,0.8);	}
-#section-sub-footer{  background: #111;	 background: rgba(0,0,0,0.95);   }
+#section-sub-footer{}
 
 .grid-example .column,
 .grid-example .columns{
@@ -469,7 +469,6 @@ ul.social li a:hover{
 
 /* #SUBFOOTER */
 #section-sub-footer{
-	background: url("../images/theme/backgrounds/noise-black.jpg") repeat black;
 }
 
 #section-sub-footer:after {
@@ -485,7 +484,6 @@ ul.social li a:hover{
 }
 
 #section-sub-footer{
-	border-top: 2px solid #000;
 	}
 #section-sub-footer span{
 	padding: 20px 0;
@@ -1100,7 +1098,9 @@ span.grid_btn, span.list_btn, span.hybrid_btn {margin-right: 3px; margin-top: 0p
     background: transparent;
 }
 
-
+.sidebar .widget:last-child > hr.partial-bottom {
+    display: none;
+}
 
 
 /* ======================================================= */

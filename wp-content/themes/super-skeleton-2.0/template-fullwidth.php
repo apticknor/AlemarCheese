@@ -21,10 +21,9 @@ get_header();
 
 			<!-- 404 MESSAGE -->
 			<?php if ( ! have_posts() ) : ?>
-				<h1 class="title"><span>Ohhhh Snap! We can't find the page...</span></h1>
+				<h1 class="title"><span>Page Not Found</span></h1>
 				<div class="the_content">
-					<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'sidewinder' ); ?></p>
-					<?php get_template_part( 'element', 'search' ); ?>
+					<p><?php _e( 'Sorry but the page you requested could not be found!' ); ?></p>
 				</div>
 			<?php endif; ?>
 

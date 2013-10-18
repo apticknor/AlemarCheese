@@ -105,6 +105,9 @@ img, video, canvas, iframe {
 	a:hover, a:focus { color: #000; }
 	p a, p a:visited { line-height: inherit; }
 
+    a, a:visited, a:link { color: #ee7727; text-decoration: none; }
+    a:hover, a:focus { opacity: 0.8; }
+    .sidebar a, .sidebar a:visited, .sidebar a:link { color: #444444; }
 
 /* #Lists
 ================================================== */

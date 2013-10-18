@@ -4,11 +4,8 @@
 
 body{
 	font: 15px/22px Cambria,Georgia,"New Century Schoolbook","Century Schoolbook L","Times New Roman",serif;
-	color: #555;
 	}
 
-a, a:hover{color: #ee7727; text-decoration: none;}
-a:hover{opacity: 0.8;}
 .module a:hover{opacity: 1;}
 
 
@@ -40,7 +37,7 @@ h2.title, h1.title{
 h2.title span, h1.title span{  padding: 17px 22px 19px 0;  }
 
 .sidebar h3, .aside h3{
-	font-size: 11px;
+	font-size: 15px;
 	text-transform: uppercase;
 	line-height: 120%;
 }
@@ -180,8 +177,7 @@ label, legend {
 
 /* Tophat and Footer Text */
 #section-tophat, #section-tophat a,
-#section-footer, #section-footer a,
-#section-sub-footer{
+#section-footer, #section-footer a{
 	color: #aaa !important;
 	}
 

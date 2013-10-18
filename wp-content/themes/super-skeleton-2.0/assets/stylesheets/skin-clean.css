@@ -1,35 +1,35 @@
 
 
 /* MAIN BG*/
-body, 
+body,
 h2.title span, h1.title span,
-ul.tabs li a.active{ 
+ul.tabs li a.active{
 	background: #fdfdfd;
 	background: rgba(246,246,246,0.5) ;
 	background: white ;
 	position: relative;
 	z-index: 1;
-} 
+}
 
-body:after, 
+body:after,
 /* h2.title span:after, */
-ul.tabs li a.active:after{  
+ul.tabs li a.active:after{
 	content: "";
 	background: white;
-	position:absolute; 
-	z-index:99; 
-	left:0; 
-	bottom:0; 
+	position:absolute;
+	z-index:99;
+	left:0;
+	bottom:0;
 	right:0;
 	height: 100%;
 	width: 100%;
 	z-index: -1;
 	}
-	
+
 .wp-caption{
 	background: none;
    }
-   
+
 /* FOOTER */
 #section-tophat{
 	border-bottom: 1px solid #ddd;
@@ -53,14 +53,11 @@ ul.tabs li a.active:after{
 }
 
 /* SUBFOOTER */
-#section-sub-footer{
-	background: #313131;
-	border-top: 1px solid #222222;
+#section-sub-footer .container{
+border-top: 1px solid #dddddd;
 }
 
 #section-sub-footer:after {
-	content: "";
-	background: #313131;
 }
 
 .slider-shadow:before,
@@ -74,7 +71,7 @@ ul.tabs li a.active:after{
 }
 
 .sf-menu > li:hover {
-	background: none; 
+	background: none;
   -webkit-box-shadow: none;
 	 -moz-box-shadow: none;
 	   -o-box-shadow: none;
