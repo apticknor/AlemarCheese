@@ -27,11 +27,11 @@ if(!defined('WP_THEME_URL')) {
 
 
 
-/* START OPTION TREE */ 
+/* START OPTION TREE */
 add_filter( 'ot_show_pages', '__return_true' );
 add_filter( 'ot_show_new_layout', '__return_false' );
 add_filter( 'ot_theme_mode', '__return_false' );
-//add_filter( 'ot_show_pages', '__return_true' );  
+//add_filter( 'ot_show_pages', '__return_true' );
 //add_filter( 'ot_theme_mode', '__return_false' );
 include_once( 'option-tree/ot-loader.php' );
 include_once( 'functions/theme-options.php' );
@@ -55,12 +55,12 @@ include_once( 'functions/image_resize.php' );
  * Include the TGM_Plugin_Activation class.
  */
 require_once( get_template_directory() . '/functions/tgm-plugin-activation/class-tgm-plugin-activation.php' );
- 
+
 add_action( 'tgmpa_register', 'my_theme_register_required_plugins' );
 function my_theme_register_required_plugins() {
 
     $plugins = array(
- 
+
         // This is an example of how to include a plugin pre-packaged with a theme
         array(
             'name'                  => 'WP-Paginate', // The plugin name
@@ -72,13 +72,13 @@ function my_theme_register_required_plugins() {
             'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ),
- 
- 
+
+
     );
- 
+
     // Change this to your theme text domain, used for internationalising strings
     $theme_text_domain = 'skeleton';
- 
+
     /**
      * Array of configuration settings. Amend each line as needed.
      * If you want the default strings to be available under your own theme domain,
@@ -115,9 +115,9 @@ function my_theme_register_required_plugins() {
             'complete'                                  => __( 'All plugins installed and activated successfully. %s', $theme_text_domain ) // %1$s = dashboard link
         )
     );
- 
+
     tgmpa( $plugins, $config );
- 
+
 }
 
 
@@ -148,74 +148,74 @@ add_action('widgets_init', create_function('', 'return register_widget("SocialWi
 *  If outside the admin panel, register/enqueue our theme scripts, nav areas, and widget areas.
 */
 function init_mdnw() {
-	
-	/* LOCALIZATION STUFF - 
-	Defines the text domain 'skeleton' - 
-	Instructs where the language files are - 
+
+	/* LOCALIZATION STUFF -
+	Defines the text domain 'skeleton' -
+	Instructs where the language files are -
 	Then instructs the theme to load the language if it's in WP-CONFIG.php as WP_LANG */
 	load_theme_textdomain('skeleton', get_template_directory() . '/languages');
 	$locale = get_locale();
 	$locale_file = TEMPLATEPATH."/languages/$locale.php";
 	if ( is_readable($locale_file) )
 		require_once($locale_file);
-	
+
 
 
 	/* init_mdnw cont... ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
-	
-	
+
+
 	/* Register all scripts, Nav Areas, and Widget Areas */
-	if(!is_admin()){		
-		
-    	wp_enqueue_script( 'jquery' ); 
-				
+	if(!is_admin()){
+
+    	wp_enqueue_script( 'jquery' );
+
 		wp_register_script( 'FlexSlider', WP_THEME_URL . '/assets/javascripts/jquery.flexslider-min.js', false, null, true);
     	wp_enqueue_script( 'FlexSlider' );
-		
+
 		wp_register_script( 'Isotope', WP_THEME_URL . '/assets/javascripts/jquery.isotope.js', false, null, true);
     	wp_enqueue_script( 'Isotope' );
-		
+
     	wp_register_script( 'prettyPhoto', WP_THEME_URL . '/assets/javascripts/jquery.prettyPhoto.js', false, null, true);
-    	wp_enqueue_script( 'prettyPhoto' ); 
-		
+    	wp_enqueue_script( 'prettyPhoto' );
+
     	wp_register_script( 'HoverIntent', WP_THEME_URL . '/assets/javascripts/jquery.hoverIntent.js', false, null, true);
-    	wp_enqueue_script( 'HoverIntent' ); 
-    	
+    	wp_enqueue_script( 'HoverIntent' );
+
     	//wp_register_script( 'Tipsy', WP_THEME_URL . '/assets/javascripts/jquery.tipsy.js', false, null, false);
-    	//wp_enqueue_script( 'Tipsy' ); 
-    	    	
+    	//wp_enqueue_script( 'Tipsy' );
+
     	wp_register_script( 'Superfish', WP_THEME_URL . '/assets/javascripts/superfish.js', false, null, true);
     	wp_enqueue_script( 'Superfish' );
-	
+
 		wp_register_script( 'SuperSubs', WP_THEME_URL . '/assets/javascripts/supersubs.js', false, null, true);
     	wp_enqueue_script( 'SuperSubs' );
-    	
-		wp_enqueue_script( 'chosen', WP_THEME_URL . '/assets/javascripts/chosen/chosen.jquery.js', array('jquery'), '0.9', true );   
-		
+
+		wp_enqueue_script( 'chosen', WP_THEME_URL . '/assets/javascripts/chosen/chosen.jquery.js', array('jquery'), '0.9', true );
+
 		wp_register_script( 'SkeletonKey', WP_THEME_URL . '/assets/javascripts/skeleton-key.js', false, null, true);
-    	wp_enqueue_script( 'SkeletonKey' ); 
-    	
+    	wp_enqueue_script( 'SkeletonKey' );
+
     	wp_register_style ( 'Base', WP_THEME_URL . '/assets/stylesheets/base.css' );
     	wp_enqueue_style( 'Base' );
-    	
+
     	wp_register_style ( 'skeleton', WP_THEME_URL . '/assets/stylesheets/skeleton.css' );
     	wp_enqueue_style( 'skeleton' );
-    	
+
     	wp_register_style ( 'comments', WP_THEME_URL . '/assets/stylesheets/comments.css' );
     	wp_enqueue_style( 'comments' );
-    	
+
     	wp_register_style ( 'custom-buttons', WP_THEME_URL . '/assets/stylesheets/buttons.css' );
     	wp_enqueue_style( 'custom-buttons' );
-    	
+
     	wp_register_style ( 'superfish', WP_THEME_URL . '/assets/stylesheets/superfish.css' );
     	wp_enqueue_style( 'superfish' );
-    	
+
     	wp_register_style ( 'prettyphoto', WP_THEME_URL . '/assets/javascripts/prettyPhoto/css/prettyPhoto.css' );
     	wp_enqueue_style( 'prettyphoto' );
-    	
+
     	wp_register_style ( 'flexslider', WP_THEME_URL . '/assets/stylesheets/flexslider.css' );
     	wp_enqueue_style( 'flexslider' );
-    	
+
     	wp_register_style ( 'Styles', WP_THEME_URL . '/assets/stylesheets/styles.css' );
     	wp_enqueue_style( 'Styles' );
 
@@ -224,7 +224,7 @@ function init_mdnw() {
 
 	/* init_mdnw cont... ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
 
-	
+
     /* Register Navigation */
     register_nav_menus( array(
 		'topbar' => __( 'Top Bar Menu', 'skeleton' ),
@@ -234,7 +234,7 @@ function init_mdnw() {
 
 	/* init_mdnw cont... ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
 
-	
+
 	/* Register Sidebar (Right side, next to posts/pages) */
 	register_sidebar( array(
 		'name' => __( 'Default Post/Page Sidebar', 'skeleton' ),
@@ -245,7 +245,7 @@ function init_mdnw() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	/* Register Footer Widgets */
 	register_sidebar( array(
 		'name' => __( 'Footer Column 1', 'skeleton' ),
@@ -255,8 +255,8 @@ function init_mdnw() {
 		'after_widget' => '</div>',
 		'before_title' => '<h5 class="footer-widget-title">',
 		'after_title' => '</h5>',
-	) );	
-	
+	) );
+
 	/* Register Footer Widgets */
 	register_sidebar( array(
 		'name' => __( 'Footer Column 2', 'skeleton' ),
@@ -267,7 +267,7 @@ function init_mdnw() {
 		'before_title' => '<h5 class="footer-widget-title">',
 		'after_title' => '</h5>',
 	) );
-	
+
 	/* Register Footer Widgets */
 	register_sidebar( array(
 		'name' => __( 'Footer Column 3', 'skeleton' ),
@@ -278,7 +278,7 @@ function init_mdnw() {
 		'before_title' => '<h5 class="footer-widget-title">',
 		'after_title' => '</h5>',
 	) );
-	
+
 	/* Register Footer Widgets */
 	register_sidebar( array(
 		'name' => __( 'Footer Column 4', 'skeleton' ),
@@ -289,9 +289,9 @@ function init_mdnw() {
 		'before_title' => '<h5 class="footer-widget-title">',
 		'after_title' => '</h5>',
 	) );
-		
-		
-}    
+
+
+}
 
 add_action('init', 'init_mdnw'); /* Run the above function at the init() hook */
 /* end init_mdnw ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
@@ -310,7 +310,7 @@ add_image_size( 'single-post-thumbnail', 480, 9999 );
 
 /* Add filter to the gallery so that we can apply the prettyPhoto tag */
 add_filter( 'wp_get_attachment_link', 'sant_prettyadd');
- 
+
 function sant_prettyadd ($content) {
 	$content = preg_replace("/<a/","<a data-rel=\"prettyPhoto[slides]\"",$content,1);
 	return $content;
@@ -327,10 +327,10 @@ function improved_trim_excerpt($text) { // Fakes an excerpt if needed
   if ( '' == $text ) {
     $text = get_the_content('');
     $text = apply_filters('the_content', $text);
-    
+
 	$text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
 	$text = preg_replace('@<style[^>]*?>.*?</style>@si', '', $text);
-	$text = preg_replace('@<p class="wp-caption-text"[^>]*?>.*?</p>@si', '', $text);	
+	$text = preg_replace('@<p class="wp-caption-text"[^>]*?>.*?</p>@si', '', $text);
     $text = str_replace('\]\]\>', ']]&gt;', $text);
     $text = strip_tags($text, '<p>');
     $excerpt_length = 140;
@@ -345,7 +345,7 @@ return $text;
 }
 
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'improved_trim_excerpt'); 
+add_filter('get_the_excerpt', 'improved_trim_excerpt');
 
 /* Get cat slug from id script */
 function get_cat_slug($cat_id) {
@@ -356,12 +356,12 @@ function get_cat_slug($cat_id) {
 
 
 /* Optional Alternative Excerpt - Usage: */
-/* 
- * excerpt(40); // 40 chars 
+/*
+ * excerpt(40); // 40 chars
  * Note that this is just "EXCERPT", not the default "THE_EXCERPT"
- * 
-*/ 
- 
+ *
+*/
+
 function excerpt($limit) {
       $excerpt = explode(' ', get_the_excerpt(), $limit);
       if (count($excerpt)>=$limit) {
@@ -369,7 +369,7 @@ function excerpt($limit) {
         $excerpt = implode(" ",$excerpt).'...';
       } else {
         $excerpt = implode(" ",$excerpt);
-      } 
+      }
       $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
       return $excerpt;
     }
@@ -381,9 +381,9 @@ function excerpt($limit) {
         $content = implode(" ",$content).'...';
       } else {
         $content = implode(" ",$content);
-      } 
+      }
       $content = preg_replace('/\[.+\]/','', $content);
-      $content = apply_filters('the_content', $content); 
+      $content = apply_filters('the_content', $content);
       $content = str_replace(']]>', ']]&gt;', $content);
       return $content;
     }
@@ -488,10 +488,10 @@ endif; // ends check for twentyeleven_comment()
 /* ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- */
 
 
-/* Custom Navigation Menu 
- * 
+/* Custom Navigation Menu
+ *
  * Allows for us to use the Description field as the sub-text to the navigation.
- * 
+ *
 /* Credit to Christian Kriesi for the initial example of this walker class */
 class description_walker extends Walker_Nav_Menu
 {
@@ -534,5 +534,22 @@ class description_walker extends Walker_Nav_Menu
             }
 }
 
+/* Custom post type for cheese products! */
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+	register_post_type( 'ac_product',
+		array(
+			'labels' => array(
+				'name' => __( 'Products' ),
+				'singular_name' => __( 'Product' )
+			),
+		'public' => true,
+		'menu_position' => 5,
+		'has_archive' => true,
+        'rewrite' => array('slug' => 'products'),
+        'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+		)
+	);
+}
 
 ?>
