@@ -53,7 +53,7 @@ ul.tabs li a.active:after{
 }
 
 /* SUBFOOTER */
-#section-sub-footer .container{
+#section-sub-footer .container .columns {
 border-top: 1px solid #dddddd;
 }
 
