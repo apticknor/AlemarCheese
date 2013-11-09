@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         compile: ['sass'],
         lint: ['csslint', 'jshint'],
         build: ['cssmin', 'requirejs:build'],
-        copy: ['copy:js', 'copy:images', 'copy:fonts']
+        copy: ['copy:js', 'copy:fonts', 'imagemin:dynamic']
     }
 
     });
