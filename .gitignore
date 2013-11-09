@@ -10,6 +10,7 @@ Thumbs.db
 # Caches, Sized Files, etc #
 ############################
 .sass-cache/
+node_modules/
 
 # CMS Config Files #
 ####################
