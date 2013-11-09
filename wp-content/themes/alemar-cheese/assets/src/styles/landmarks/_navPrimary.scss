@@ -1,0 +1,31 @@
+/* ---------------------------------------------------------------------
+ Primary Navigation
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary navigation of the website
+------------------------------------------------------------------------ */
+.navPrimary > li a {
+    display: block;
+    color: $color-black;
+    text-decoration: none;
+}
+
+@media (min-width: 480px) {
+    .navPrimary {
+        padding: 16px 0;
+        margin-left: -24px; /* must equal margin left of children to keep centered */
+        font-size: 0; /* remove whitespace between inline-block items */
+    }
+
+    .navPrimary > li {
+        font-size: $font-size-default; /* return font-size to default size */
+        display: inline-block;
+    }
+
+    .navPrimary > li {
+        margin-left: 24px;
+    }
+}
+

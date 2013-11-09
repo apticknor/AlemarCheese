@@ -8,9 +8,9 @@
 ------------------------------------------------------------------------ */
 .footer {
     padding: 20px 0;
+    margin-top: 20px;
     border-top: 1px solid $color-lightgrey;
     font-size: $font-size-sm;
-    @include micro-clearfix();
     text-align: center;
 }
 
@@ -21,6 +21,7 @@
 @media (min-width: 480px) {
     .footer {
         text-align: left; /* reset centering of text on smaller screens */
+        @include micro-clearfix();
     }
 
     .footer-bd {

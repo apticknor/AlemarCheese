@@ -232,6 +232,48 @@ body {
 
  The primary masthead of the website
 ------------------------------------------------------------------------ */
+.masthead {
+  margin-bottom: 20px;
+}
+
+.masthead-nav {
+  border-top: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+/* ---------------------------------------------------------------------
+ Primary Navigation
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary navigation of the website
+------------------------------------------------------------------------ */
+.navPrimary > li a {
+  display: block;
+  color: #181818;
+  text-decoration: none;
+}
+
+@media (min-width: 480px) {
+  .navPrimary {
+    padding: 16px 0;
+    margin-left: -24px;
+    /* must equal margin left of children to keep centered */
+    font-size: 0;
+    /* remove whitespace between inline-block items */
+  }
+
+  .navPrimary > li {
+    font-size: 1rem;
+    /* return font-size to default size */
+    display: inline-block;
+  }
+
+  .navPrimary > li {
+    margin-left: 24px;
+  }
+}
 /* ---------------------------------------------------------------------
  Footer
 
@@ -242,16 +284,10 @@ body {
 ------------------------------------------------------------------------ */
 .footer {
   padding: 20px 0;
+  margin-top: 20px;
   border-top: 1px solid #bbbbbb;
   font-size: 0.875rem;
   text-align: center;
-}
-.footer:before, .footer:after {
-  content: " ";
-  display: table;
-}
-.footer:after {
-  clear: both;
 }
 
 .footer-bd {
@@ -262,6 +298,13 @@ body {
   .footer {
     text-align: left;
     /* reset centering of text on smaller screens */
+  }
+  .footer:before, .footer:after {
+    content: " ";
+    display: table;
+  }
+  .footer:after {
+    clear: both;
   }
 
   .footer-bd {

@@ -1,10 +1,12 @@
                 <div class="wrapper">
                     <div class="masthead" role="banner">
-                        <h1>
-                            <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a>
-                        </h1>
-                        <div role="navigation">
-                            <ul>
+                        <div class="masthead-logo">
+                            <a href="<?php echo home_url(); ?>">
+                                <?php bloginfo( 'name' ); ?>
+                            </a>
+                        </div>
+                        <div class="masthead-nav" role="navigation">
+                            <ul class="navPrimary">
                                 <li>
                                     <a href="<?php echo get_page_link(205); ?>">Products</a>
                                 </li>

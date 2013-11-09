@@ -6,3 +6,11 @@
 
  The primary masthead of the website
 ------------------------------------------------------------------------ */
+.masthead {
+    margin-bottom: 20px;
+}
+
+.masthead-nav {
+    border-top: 1px solid $color-lightgrey;
+    border-bottom: 1px solid $color-lightgrey;
+}
