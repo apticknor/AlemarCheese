@@ -1,0 +1,29 @@
+/* ---------------------------------------------------------------------
+ Site
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Separates the main site masthead / body from the footer to make the
+ footer a sticky footer
+------------------------------------------------------------------------ */
+html,
+body {
+    height: 100%;
+}
+
+.site {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.site-bd {
+    display: table-row;
+    height: auto;
+}
+
+.site-ft {
+    display: table-row;
+    height: 1px;
+}

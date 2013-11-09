@@ -1,0 +1,1 @@
+require.config({paths:{},shim:{}}),require([],function(){}),define("main",function(){});

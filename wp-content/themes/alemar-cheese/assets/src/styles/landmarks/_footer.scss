@@ -1,0 +1,38 @@
+/* ---------------------------------------------------------------------
+ Footer
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary footer of the website
+------------------------------------------------------------------------ */
+.footer {
+    padding: 20px 0;
+    border-top: 1px solid $color-lightgrey;
+    font-size: $font-size-sm;
+    @include micro-clearfix();
+    text-align: center;
+}
+
+.footer-bd {
+    margin-bottom: 16px;
+}
+
+@media (min-width: 480px) {
+    .footer {
+        text-align: left; /* reset centering of text on smaller screens */
+    }
+
+    .footer-bd {
+        float: right;
+        width: 30%;
+        margin-bottom: 0; /* reset margin bottom back to  0 */
+        text-align: right;
+    }
+
+    .footer-ft {
+        float: left;
+        width: 70%;
+        line-height: 28px; /* line-height matches height of social media icons to create vertical alignment */
+    }
+}

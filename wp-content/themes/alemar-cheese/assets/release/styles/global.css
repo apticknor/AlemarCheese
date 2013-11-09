@@ -1,0 +1,397 @@
+/* ---------------------------------------------------------------------
+Original Authors: Anthony Ticknor
+Contributors: N/A
+
+Target Browsers: IE9+, Chrome, Firefox, Safari, Opera
+Media Type: Screen, Projection
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Variables - Color
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Primary colors used throughout the site.
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Variables - Font Families
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Primary fonts used throughout the site.
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Variables - Font Sizes
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Primary font sizes used throughout the site.
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Vendor Prefix Mixins
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Mixins to insert vendor prefixes
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Micro Clearfix Mixin
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Used by other objects to provide a commong clearing mechanism
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Reset
+
+ Original Author: Eric Meyer
+ Contributors: Anthony Ticknor
+
+ Reset all element styles provided by the UA stylesheet.
+------------------------------------------------------------------------ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* ---------------------------------------------------------------------
+ HTML5 Block / Inline Block declarations
+------------------------------------------------------------------------ */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+audio, canvas, video {
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------------
+ Form Reset Styles
+------------------------------------------------------------------------ */
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------
+ Fonts
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Custom Fonts used throughout the site.
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Base
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Set default CSS on base level elements.
+------------------------------------------------------------------------ */
+body {
+  background-color: #fefefe;
+  color: #181818;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
+}
+
+img, video, canvas {
+  max-width: 100%;
+}
+
+/* ---------------------------------------------------------------------
+ Utility
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Single class utilities used throughout the site.
+------------------------------------------------------------------------ */
+.isHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* ---------------------------------------------------------------------
+ Site
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Separates the main site masthead / body from the footer to make the
+ footer a sticky footer
+------------------------------------------------------------------------ */
+html,
+body {
+  height: 100%;
+}
+
+.site {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.site-bd {
+  display: table-row;
+  height: auto;
+}
+
+.site-ft {
+  display: table-row;
+  height: 1px;
+}
+
+/* ---------------------------------------------------------------------
+ Masthead
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary masthead of the website
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
+ Footer
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary footer of the website
+------------------------------------------------------------------------ */
+.footer {
+  padding: 20px 0;
+  border-top: 1px solid #bbbbbb;
+  font-size: 0.875rem;
+  text-align: center;
+}
+.footer:before, .footer:after {
+  content: " ";
+  display: table;
+}
+.footer:after {
+  clear: both;
+}
+
+.footer-bd {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 480px) {
+  .footer {
+    text-align: left;
+    /* reset centering of text on smaller screens */
+  }
+
+  .footer-bd {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+    /* reset margin bottom back to  0 */
+    text-align: right;
+  }
+
+  .footer-ft {
+    float: left;
+    width: 70%;
+    line-height: 28px;
+    /* line-height matches height of social media icons to create vertical alignment */
+  }
+}
+/* ---------------------------------------------------------------------
+ Wrapper
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Constraints site to a maximum width
+------------------------------------------------------------------------ */
+.wrapper {
+  max-width: 940px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    padding: 0 20px;
+    /* increase padding for larger screens */
+  }
+}
+/* ---------------------------------------------------------------------
+ Horizontal List
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Put list items side by side / left to right in a horizontal fashion
+------------------------------------------------------------------------ */
+.hlist {
+  font-size: 0;
+  /* remove whitespace between inline-block items */
+}
+
+.hlist > li {
+  font-size: 1rem;
+  /* return font-size to default size */
+  display: inline-block;
+}
+
+.hlist_social > li + li {
+  margin-left: 8px;
+}
+
+.hlist_social a {
+  opacity: .8;
+  -webkit-transition: opacity 0.1s linear;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+
+.hlist_social a:hover,
+.hlist_social a:focus {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------
+ Social Media Icons
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Define social media icons for use throughout the site
+------------------------------------------------------------------------ */
+.icnSocial {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  vertical-align: middle;
+  background-image: url(../images/icon-social.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -ms-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+}
+
+.icnSocial_facebook {
+  background-position: 0 0;
+}
+
+.icnSocial_twitter {
+  background-position: 0 -32px;
+}
+
+.icnSocial_googlePlus {
+  background-position: 0 -64px;
+}
+
+.icnSocial_rss {
+  background-position: 0 -96px;
+}
+
+@media (min-width: 480px) {
+  .icnSocial {
+    height: 28px;
+    width: 28px;
+  }
+
+  .icnSocial_facebook {
+    background-position: 0 0;
+  }
+
+  .icnSocial_twitter {
+    background-position: 0 -28px;
+  }
+
+  .icnSocial_googlePlus {
+    background-position: 0 -56px;
+  }
+
+  .icnSocial_rss {
+    background-position: 0 -84px;
+  }
+}

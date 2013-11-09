@@ -1,0 +1,30 @@
+/* ---------------------------------------------------------------------
+ Horizontal List
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Put list items side by side / left to right in a horizontal fashion
+------------------------------------------------------------------------ */
+.hlist {
+    font-size: 0; /* remove whitespace between inline-block items */
+}
+
+.hlist > li {
+    font-size: $font-size-default; /* return font-size to default size */
+    display: inline-block;
+}
+
+.hlist_social > li + li {
+    margin-left: 8px;
+}
+
+.hlist_social a {
+    opacity: .8;
+    @include transition(opacity .1s linear);
+}
+
+.hlist_social a:hover,
+.hlist_social a:focus {
+    opacity: 1;
+}

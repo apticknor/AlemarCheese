@@ -1,0 +1,95 @@
+/* ---------------------------------------------------------------------
+ Vendor Prefix Mixins
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Mixins to insert vendor prefixes
+------------------------------------------------------------------------ */
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: #{$radius};
+    -moz-border-radius: #{$radius};
+    border-radius: #{$radius};
+}
+
+@mixin box-sizing($boxModel) {
+    -webkit-box-sizing: $boxModel;
+    -moz-box-sizing: $boxModel;
+    box-sizing: $boxModel;
+}
+
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform: $transform;
+    transform: $transform;
+}
+
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -ms-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
+}
+
+@mixin appearance($value) {
+    -webkit-appearance: $value;
+    -moz-appearance: $value;
+}
+
+@mixin text-size-adjust($value) {
+    -webkit-text-size-adjust: $value;
+    -ms-text-size-adjust: $value;
+}
+
+@mixin linear-gradient($direction, $stops...) {
+    $prefixed-direction: '';
+    $standard-direction: '';
+
+    @if $direction == 'to bottom' {
+        $prefixed-direction: top;
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to top' {
+        $prefixed-direction: bottom;
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to left' {
+        $prefixed-direction: 'right';
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to right' {
+        $prefixed-direction: 'left';
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to top right' {
+        $prefixed-direction: 'bottom left';
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to top left' {
+        $prefixed-direction: 'bottom right';
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to bottom left' {
+        $prefixed-direction: 'top right';
+        $standard-direction: unquote($direction);
+    } @else if $direction == 'to bottom right' {
+        $prefixed-direction: 'top left';
+        $standard-direction: unquote($direction);
+    }
+
+    background-image: -webkit-linear-gradient($prefixed-direction, $stops);
+    background-image: -moz-linear-gradient($prefixed-direction, $stops);
+    background-image: -o-linear-gradient($prefixed-direction, $stops);
+    background-image: linear-gradient($standard-direction, $stops);
+}

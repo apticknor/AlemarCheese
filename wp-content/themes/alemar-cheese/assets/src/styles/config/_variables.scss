@@ -1,0 +1,42 @@
+/* ---------------------------------------------------------------------
+ Variables - Color
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Primary colors used throughout the site.
+------------------------------------------------------------------------ */
+$color-white: #fefefe;
+$color-black: #181818;
+$color-darkgrey: #444444;
+$color-lightgrey: #bbbbbb;
+
+/* ---------------------------------------------------------------------
+ Variables - Font Families
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Primary fonts used throughout the site.
+------------------------------------------------------------------------ */
+$font-sans-serif: Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-serif: Cambria, Georgia, "Times New Roman", Times, sans-serif;
+
+/* ---------------------------------------------------------------------
+ Variables - Font Sizes
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Primary font sizes used throughout the site.
+------------------------------------------------------------------------ */
+$font-size-xxs: 0.625rem;   // 10px
+$font-size-xs: .75rem;      // 12px
+$font-size-sm: .875rem;     // 14px
+$font-size-md: 1rem;        // 16px
+$font-size-lg: 1.25rem;     // 20px
+$font-size-xl: 1.5rem;      // 24px
+$font-size-xxl: 2rem;       // 32px
+
+$font-size-default: $font-size-md;
+

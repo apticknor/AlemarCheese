@@ -1,0 +1,19 @@
+/* ---------------------------------------------------------------------
+ Wrapper
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Constraints site to a maximum width
+------------------------------------------------------------------------ */
+.wrapper {
+    max-width: 940px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+    .wrapper {
+        padding: 0 20px; /* increase padding for larger screens */
+    }
+}

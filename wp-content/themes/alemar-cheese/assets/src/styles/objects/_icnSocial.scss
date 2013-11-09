@@ -1,0 +1,34 @@
+/* ---------------------------------------------------------------------
+ Social Media Icons
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Define social media icons for use throughout the site
+------------------------------------------------------------------------ */
+.icnSocial {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    vertical-align: middle;
+    background-image: url(../images/icon-social.png);
+    background-repeat: no-repeat;
+    @include background-size(100%);
+}
+
+.icnSocial_facebook { background-position: 0 0; }
+.icnSocial_twitter { background-position: 0 -32px; }
+.icnSocial_googlePlus { background-position: 0 -64px; }
+.icnSocial_rss { background-position: 0 -96px; }
+
+@media (min-width: 480px) {
+    .icnSocial {
+        height: 28px;
+        width: 28px;
+    }
+
+    .icnSocial_facebook { background-position: 0 0; }
+    .icnSocial_twitter { background-position: 0 -28px; }
+    .icnSocial_googlePlus { background-position: 0 -56px; }
+    .icnSocial_rss { background-position: 0 -84px; }
+}
