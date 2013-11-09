@@ -1,5 +1,19 @@
+<?php
+/*
+Template Name: Page Default Template
+URL: http://alemarcheese.com/YYYY/MM/POST_NAME/
+*/
+?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
-<div role="main">
+
+                <div class="wrapper">
+                    <div role="main">
+
+
+
+
+
+
 
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -22,5 +36,13 @@
 <?php endwhile; ?>
 
 
-</div>
+
+
+
+
+
+
+                    </div>
+                </div> <!-- // END wrapper -->
+
 <?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>

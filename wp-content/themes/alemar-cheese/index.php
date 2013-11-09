@@ -1,5 +1,18 @@
+<?php
+/*
+Template Name: Index Template
+URL: http://alemarcheese.com/blog/
+*/
+?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
-<div role="main">
+
+                <div class="wrapper">
+                    <div role="main">
+
+
+
+
+
 
 
 <?php if ( have_posts() ): ?>
@@ -22,6 +35,13 @@
 
 
 
-    </div>
-</div>
-<?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer') ); ?>
+
+
+
+
+
+
+                    </div>
+                </div> <!-- // END wrapper -->
+
+<?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>

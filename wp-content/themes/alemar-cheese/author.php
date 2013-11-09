@@ -1,5 +1,23 @@
+<?php
+/*
+Template Name: Author Template
+URL: http://alemarcheese.com/author/USERNAME/
+*/
+?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
-<div role="main">
+
+                <div class="wrapper">
+                    <div role="main">
+
+
+
+
+
+
+
+
+
+
 
 
 <?php if ( have_posts() ): the_post(); ?>
@@ -29,5 +47,16 @@
 <?php endif; ?>
 
 
-</div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div> <!-- // END wrapper -->
+
 <?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>

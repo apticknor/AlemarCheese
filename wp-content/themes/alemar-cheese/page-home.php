@@ -1,6 +1,7 @@
 <?php
 /*
 Template Name: Home Page Template
+URL: http://alemarcheese.com/
 */
 ?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
