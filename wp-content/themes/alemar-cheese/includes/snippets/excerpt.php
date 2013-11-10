@@ -7,14 +7,20 @@
     </div>
 <?php } ?>
     <div class="teaser-bd">
-        <h4>
-            <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
-            </a>
-        </h4>
-        <p>Posted on <?php the_date(); ?></p>
-        <div>
-            <?php the_excerpt(); ?>
+        <div class="feature">
+            <div class="feature-hd">
+                <h4 class="hdg hdg_md">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </h4>
+            </div>
+            <div class="feature-meta">
+                <p>Posted on <?php the_date(); ?></p>
+            </div>
+            <div class="feature-bd">
+                <?php the_excerpt(); ?>
+            </div>
         </div>
     </div>
 </div> <!-- // END teaser -->

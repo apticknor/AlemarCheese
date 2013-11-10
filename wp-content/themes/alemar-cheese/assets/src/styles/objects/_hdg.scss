@@ -1,0 +1,21 @@
+/* ---------------------------------------------------------------------
+ Heading
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Style used for headings throughout the site
+------------------------------------------------------------------------ */
+.hdg {
+    font-family: $font-serif;
+    font-weight: bold;
+    color: $color-black;
+}
+
+.hdg_xxl { font-size: $font-size-xxl; }
+.hdg_xl { font-size: $font-size-xl; }
+.hdg_lg { font-size: $font-size-lg; }
+.hdg_md { font-size: $font-size-md; }
+.hdg_sm { font-size: $font-size-sm; }
+.hdg_xs { font-size: $font-size-xs; }
+.hdg_xxs { font-size: $font-size-xxs; }

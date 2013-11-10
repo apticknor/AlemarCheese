@@ -17,7 +17,7 @@
 
     .teaser-media {
         float: left;
-        width: 200px;
+        width: 180px;
         margin-right: 20px;
         margin-bottom: 0; /* reset margin-bottom from small screen */
     }
@@ -29,6 +29,6 @@
 
 @media (min-width: 960px) {
     .teaser-media {
-        width: 240px;
+        width: 220px;
     }
 }

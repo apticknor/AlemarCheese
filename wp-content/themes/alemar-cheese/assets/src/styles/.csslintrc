@@ -1,5 +1,6 @@
 {
     "universal-selector": false,
     "box-sizing": false,
-    "gradients": false
+    "gradients": false,
+    "font-sizes": false
 }

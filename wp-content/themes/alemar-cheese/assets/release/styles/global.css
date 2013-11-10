@@ -167,8 +167,13 @@ body {
   background-color: #fefefe;
   color: #181818;
   font-size: 0.875rem;
-  line-height: 1.3;
+  line-height: 1.43;
   font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
+}
+
+a {
+  color: #181818;
+  text-decoration: none;
 }
 
 img, video, canvas {
@@ -423,7 +428,7 @@ body {
 
   .teaser-media {
     float: left;
-    width: 200px;
+    width: 180px;
     margin-right: 20px;
     margin-bottom: 0;
     /* reset margin-bottom from small screen */
@@ -436,9 +441,22 @@ body {
 }
 @media (min-width: 960px) {
   .teaser-media {
-    width: 240px;
+    width: 220px;
   }
 }
+/* ---------------------------------------------------------------------
+ Feature
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Top to bottom feature layout
+------------------------------------------------------------------------ */
+.feature-meta {
+  margin-bottom: 8px;
+  color: #666666;
+}
+
 /* ---------------------------------------------------------------------
  Horizontal List
 
@@ -485,6 +503,48 @@ body {
 ------------------------------------------------------------------------ */
 .vlist > li {
   margin-bottom: 20px;
+}
+
+/* ---------------------------------------------------------------------
+ Heading
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Style used for headings throughout the site
+------------------------------------------------------------------------ */
+.hdg {
+  font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
+  font-weight: bold;
+  color: #181818;
+}
+
+.hdg_xxl {
+  font-size: 2rem;
+}
+
+.hdg_xl {
+  font-size: 1.5rem;
+}
+
+.hdg_lg {
+  font-size: 1.25rem;
+}
+
+.hdg_md {
+  font-size: 1rem;
+}
+
+.hdg_sm {
+  font-size: 0.875rem;
+}
+
+.hdg_xs {
+  font-size: 0.75rem;
+}
+
+.hdg_xxs {
+  font-size: 0.625rem;
 }
 
 /* ---------------------------------------------------------------------
