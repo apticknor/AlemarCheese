@@ -8,55 +8,29 @@ URL: http://alemarcheese.com/author/USERNAME/
 
                 <div class="wrapper">
                     <div class="main" role="main">
+                        <h1 class="isHidden">Recent Posts by <?php echo get_the_author() ; ?></h1>
+                        <div class="grid">
+                            <div class="grid-col grid-col_main">
 
-
-
-
-
-
-
-
-
-
-
-
-<?php if ( have_posts() ): the_post(); ?>
-
-<h2>Author Archives: <?php echo get_the_author() ; ?></h2>
-
-<?php if ( get_the_author_meta( 'description' ) ) : ?>
-<?php echo get_avatar( get_the_author_meta( 'user_email' ) ); ?>
-<h3>About <?php echo get_the_author() ; ?></h3>
-<?php the_author_meta( 'description' ); ?>
-<?php endif; ?>
-
-<ol>
-<?php rewind_posts(); while ( have_posts() ) : the_post(); ?>
-    <li>
-        <div>
-            <h2><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-            <span><?php the_date(); ?> <?php the_time(); ?></span> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
-            <?php the_content(); ?>
-        </div>
-    </li>
+<?php if (have_posts()) : ?>
+                                <ol class="vlist">
+<?php while (have_posts()) : the_post(); ?>
+                                    <li>
+<?php Utilities::get_template_parts(array('includes/snippets/excerpt')); ?>
+                                    </li>
 <?php endwhile; ?>
-</ol>
-
-<?php else: ?>
-<h2>No posts to display for <?php echo get_the_author() ; ?></h2>
+                                </ol>
 <?php endif; ?>
 
+                            </div> <!-- // END grid-col_main -->
+                            <div class="grid-col grid-col_sub">
 
+<?php Utilities::get_template_parts(array('includes/components/sidebar')); ?>
 
-
-
-
-
-
-
-
-
+                            </div> <!-- // END grid-col_sub -->
+                        </div> <!-- // END grid -->
                     </div> <!-- // END main -->
                 </div> <!-- // END wrapper -->
+
 
 <?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>

@@ -7,48 +7,36 @@ URL: UNKNOWN
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
 
                 <div class="wrapper">
-                    <div role="main">
+                    <div class="main" role="main">
+                        <h1 class="isHidden">
+<?php if (is_day())   : echo get_the_date( 'D M Y' );
+  elseif (is_month()) : echo get_the_date( 'M Y' );
+  elseif (is_year())  : echo get_the_date( 'Y' );
+  else                : echo 'Archive';
+  endif;
+?>
+                        </h1>
+                        <div class="grid">
+                            <div class="grid-col grid-col_main">
 
-
-
-
-
-<?php if ( have_posts() ): ?>
-
-<?php if ( is_day() ) : ?>
-<h2>Archive: <?php echo  get_the_date( 'D M Y' ); ?></h2>
-<?php elseif ( is_month() ) : ?>
-<h2>Archive: <?php echo  get_the_date( 'M Y' ); ?></h2>
-<?php elseif ( is_year() ) : ?>
-<h2>Archive: <?php echo  get_the_date( 'Y' ); ?></h2>
-<?php else : ?>
-<h2>Archive</h2>
-<?php endif; ?>
-
-<ol>
-<?php while ( have_posts() ) : the_post(); ?>
-    <li>
-        <div>
-            <h2><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-            <span><?php the_date(); ?> <?php the_time(); ?></span> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
-            <?php the_content(); ?>
-        </div>
-    </li>
+<?php if (have_posts()) : ?>
+                                <ol class="vlist">
+<?php while (have_posts()) : the_post(); ?>
+                                    <li>
+<?php Utilities::get_template_parts(array('includes/snippets/excerpt')); ?>
+                                    </li>
 <?php endwhile; ?>
-</ol>
-<?php else: ?>
-<h2>No posts to display</h2>
+                                </ol>
 <?php endif; ?>
 
+                            </div> <!-- // END grid-col_main -->
+                            <div class="grid-col grid-col_sub">
 
+<?php Utilities::get_template_parts(array('includes/components/sidebar')); ?>
 
-
-
-
-
-
-
-                    </div>
+                            </div> <!-- // END grid-col_sub -->
+                        </div> <!-- // END grid -->
+                    </div> <!-- // END main -->
                 </div> <!-- // END wrapper -->
 
 <?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>
