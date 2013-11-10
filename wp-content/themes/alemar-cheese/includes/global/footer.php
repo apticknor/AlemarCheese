@@ -5,25 +5,25 @@
                         <div class="footer-bd">
                             <ul class="hlist hlist_social">
                                 <li>
-                                    <a href="#">
+                                    <a href="https://www.facebook.com/pages/Alemar-Cheese/107491112608604">
                                         <i class="icnSocial icnSocial_facebook"></i>
                                         <span class="isHidden">Facebook</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="https://twitter.com/alemarcheese">
                                         <i class="icnSocial icnSocial_twitter"></i>
                                         <span class="isHidden">Twitter</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="https://plus.google.com/104761288041991533089/">
                                         <i class="icnSocial icnSocial_googlePlus"></i>
                                         <span class="isHidden">Google Plus</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="<?php bloginfo('rss_url'); ?>">
                                         <i class="icnSocial icnSocial_rss"></i>
                                         <span class="isHidden">RSS Feed</span>
                                     </a>
