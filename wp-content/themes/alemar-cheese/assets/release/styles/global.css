@@ -417,7 +417,7 @@ body {
   margin-bottom: 10px;
 }
 
-@media (min-width: 599px) {
+@media (min-width: 480px) {
   .teaser:before, .teaser:after {
     content: " ";
     display: table;
@@ -428,7 +428,7 @@ body {
 
   .teaser-media {
     float: left;
-    width: 180px;
+    width: 160px;
     margin-right: 20px;
     margin-bottom: 0;
     /* reset margin-bottom from small screen */
@@ -437,6 +437,11 @@ body {
   .teaser-bd {
     overflow: hidden;
     /* trigger BFC to prevent wrapping */
+  }
+}
+@media (min-width: 600px) {
+  .teaser-media {
+    width: 180px;
   }
 }
 @media (min-width: 960px) {

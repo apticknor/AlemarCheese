@@ -2,7 +2,7 @@
 <?php if (has_post_thumbnail($post->ID)) { ?>
     <div class="teaser-media">
         <a href="<?php the_permalink(); ?>">
-            <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID, 'thumbnail')); ?>" alt="" />
+            <?php the_post_thumbnail('medium'); ?>
         </a>
     </div>
 <?php } ?>
