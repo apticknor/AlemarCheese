@@ -4,26 +4,26 @@
                             <a href="<?php echo home_url(); ?>">
                                 <span class="isHidden"><?php bloginfo( 'name' ); ?></span>
                             </a>
-                        </div>
+                        </div> <!-- // END masthead-logo -->
                         <div class="masthead-nav" role="navigation">
-                            <ul class="navPrimary">
-                                <li>
-                                    <a href="<?php echo get_page_link(9); ?>">Products</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_page_link(11); ?>">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="<?php $category_id = get_cat_ID('Media'); echo get_category_link($category_id); ?>">Media</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_page_link(13); ?>">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_page_link(15); ?>">Contact Us</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
+                            <?php wp_nav_menu(array(
+                                'theme_location'  => 'primary',
+                                'menu'            => '',
+                                'container'       => false,
+                                'container_class' => '',
+                                'container_id'    => '',
+                                'menu_class'      => 'navPrimary',
+                                'menu_id'         => 'js-navPrimary',
+                                'echo'            => true,
+                                'fallback_cb'     => '',
+                                'before'          => '',
+                                'after'           => '',
+                                'link_before'     => '',
+                                'link_after'      => '',
+                                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                                'depth'           => 0,
+                                'walker'          => ''
+                            ));?>
+                        </div> <!-- // END masthead-nav -->
+                    </div> <!-- // END masthead -->
                 </div> <!-- // END wrapper -->

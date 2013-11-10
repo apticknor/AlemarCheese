@@ -28,7 +28,7 @@
                                         <span class="isHidden">RSS Feed</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> <!-- // END hlist_social -->
                         </div>
                         <div class="footer-ft">
                             <small>&copy;<?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</small>
