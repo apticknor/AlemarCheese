@@ -5,19 +5,19 @@
                         <div class="footer-bd">
                             <ul class="hlist hlist_social">
                                 <li>
-                                    <a href="https://www.facebook.com/pages/Alemar-Cheese/107491112608604">
+                                    <a href="<?php the_field('facebook_url', 'option'); ?>">
                                         <i class="icnSocial icnSocial_facebook"></i>
                                         <span class="isHidden">Facebook</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/alemarcheese">
+                                    <a href="<?php the_field('twitter_url', 'option'); ?>">
                                         <i class="icnSocial icnSocial_twitter"></i>
                                         <span class="isHidden">Twitter</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://plus.google.com/104761288041991533089/">
+                                    <a href="<?php the_field('googleplus_url', 'option'); ?>">
                                         <i class="icnSocial icnSocial_googlePlus"></i>
                                         <span class="isHidden">Google Plus</span>
                                     </a>
@@ -31,7 +31,7 @@
                             </ul>
                         </div>
                         <div class="footer-ft">
-                            <small>&copy;<?php echo date('Y'); ?> Alemar Cheese. All Rights Reserved.</small>
+                            <small>&copy;<?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</small>
                         </div>
                     </div> <!-- // END footer -->
                 </div> <!-- // END wrapper -->
