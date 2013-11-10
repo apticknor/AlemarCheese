@@ -6,4 +6,5 @@
     </li>
 <?php endwhile; ?>
 </ol>
+<?php Utilities::get_template_parts(array('includes/snippets/pagination')); ?>
 <?php endif; ?>
