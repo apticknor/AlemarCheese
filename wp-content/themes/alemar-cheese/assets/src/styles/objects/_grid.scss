@@ -1,0 +1,23 @@
+/* ---------------------------------------------------------------------
+ Grid
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary grid used to layout pages
+------------------------------------------------------------------------ */
+@media (min-width: 840px) {
+    .grid {
+        @include micro-clearfix();
+    }
+
+    .grid-col {
+        float: left;
+        @include box-sizing(border-box);
+    }
+
+    .grid-col + .grid-col { padding-left: 32px; }
+
+    .grid-col_main { width: 70%; }
+    .grid-col_sub { width: 30%; }
+}

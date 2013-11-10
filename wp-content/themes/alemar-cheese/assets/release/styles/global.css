@@ -166,7 +166,7 @@ textarea {
 body {
   background-color: #fefefe;
   color: #181818;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.3;
   font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
 }
@@ -241,6 +241,19 @@ body {
   border-bottom: 1px solid #bbbbbb;
 }
 
+.masthead-logo {
+  padding: 28px 0;
+  text-align: center;
+}
+
+.masthead-logo a {
+  display: inline-block;
+  width: 280px;
+  height: 60px;
+  background-image: url(../images/logo.png);
+  background-repeat: no-repeat;
+}
+
 /* ---------------------------------------------------------------------
  Primary Navigation
 
@@ -251,6 +264,7 @@ body {
 ------------------------------------------------------------------------ */
 .navPrimary > li a {
   display: block;
+  font-size: 1rem;
   color: #181818;
   text-decoration: none;
 }
@@ -262,16 +276,23 @@ body {
     /* must equal margin left of children to keep centered */
     font-size: 0;
     /* remove whitespace between inline-block items */
+    text-align: center;
   }
 
   .navPrimary > li {
-    font-size: 1rem;
+    font-size: 0.875rem;
     /* return font-size to default size */
     display: inline-block;
   }
 
   .navPrimary > li {
     margin-left: 24px;
+  }
+}
+@media (min-width: 840px) {
+  .navPrimary {
+    text-align: left;
+    /* reset text alignment from small screen setting */
   }
 }
 /* ---------------------------------------------------------------------
@@ -286,7 +307,7 @@ body {
   padding: 20px 0;
   margin-top: 20px;
   border-top: 1px solid #bbbbbb;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-align: center;
 }
 
@@ -332,6 +353,7 @@ body {
 ------------------------------------------------------------------------ */
 .wrapper {
   max-width: 940px;
+  min-width: 320px;
   padding: 0 10px;
   margin: 0 auto;
 }
@@ -340,6 +362,81 @@ body {
   .wrapper {
     padding: 0 20px;
     /* increase padding for larger screens */
+  }
+}
+/* ---------------------------------------------------------------------
+ Grid
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary grid used to layout pages
+------------------------------------------------------------------------ */
+@media (min-width: 840px) {
+  .grid:before, .grid:after {
+    content: " ";
+    display: table;
+  }
+  .grid:after {
+    clear: both;
+  }
+
+  .grid-col {
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .grid-col + .grid-col {
+    padding-left: 32px;
+  }
+
+  .grid-col_main {
+    width: 70%;
+  }
+
+  .grid-col_sub {
+    width: 30%;
+  }
+}
+/* ---------------------------------------------------------------------
+ Teaser
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The standard teaser excerpt used for posts
+------------------------------------------------------------------------ */
+.teaser-media {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 599px) {
+  .teaser:before, .teaser:after {
+    content: " ";
+    display: table;
+  }
+  .teaser:after {
+    clear: both;
+  }
+
+  .teaser-media {
+    float: left;
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 0;
+    /* reset margin-bottom from small screen */
+  }
+
+  .teaser-bd {
+    overflow: hidden;
+    /* trigger BFC to prevent wrapping */
+  }
+}
+@media (min-width: 960px) {
+  .teaser-media {
+    width: 240px;
   }
 }
 /* ---------------------------------------------------------------------
@@ -356,7 +453,7 @@ body {
 }
 
 .hlist > li {
-  font-size: 1rem;
+  font-size: 0.875rem;
   /* return font-size to default size */
   display: inline-block;
 }
@@ -376,6 +473,18 @@ body {
 .hlist_social a:hover,
 .hlist_social a:focus {
   opacity: 1;
+}
+
+/* ---------------------------------------------------------------------
+ Veritcal List
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ List items displayed vertically and spaced
+------------------------------------------------------------------------ */
+.vlist > li {
+  margin-bottom: 20px;
 }
 
 /* ---------------------------------------------------------------------

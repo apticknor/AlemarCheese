@@ -14,3 +14,16 @@
     border-top: 1px solid $color-lightgrey;
     border-bottom: 1px solid $color-lightgrey;
 }
+
+.masthead-logo {
+    padding: 28px 0;
+    text-align: center;
+}
+
+.masthead-logo a {
+    display: inline-block;
+    width: 280px;
+    height: 60px;
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+}

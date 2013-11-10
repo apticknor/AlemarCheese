@@ -1,0 +1,34 @@
+/* ---------------------------------------------------------------------
+ Teaser
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The standard teaser excerpt used for posts
+------------------------------------------------------------------------ */
+.teaser-media {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 599px) {
+    .teaser {
+        @include micro-clearfix();
+    }
+
+    .teaser-media {
+        float: left;
+        width: 200px;
+        margin-right: 20px;
+        margin-bottom: 0; /* reset margin-bottom from small screen */
+    }
+
+    .teaser-bd {
+        overflow: hidden; /* trigger BFC to prevent wrapping */
+    }
+}
+
+@media (min-width: 960px) {
+    .teaser-media {
+        width: 240px;
+    }
+}

@@ -7,7 +7,6 @@
 
     /* ==============================================================================================================
     Theme specific settings
-    Uncomment register_nav_menus to enable a single menu with the title of "Primary Navigation" in your theme
     =============================================================================================================== */
 
     add_theme_support('post-thumbnails');
@@ -18,6 +17,18 @@
 
     add_action( 'wp_enqueue_scripts', 'script_enqueuer' );
     add_filter( 'body_class', array( 'Utilities', 'add_slug_to_body_class' ) );
+
+    // remove append string from the excerpt
+    function new_excerpt_more( $more ) {
+        return '&hellip; <a href="'.get_permalink($post->ID).'">'.'Read More &raquo;'.'</a>';
+    }
+    add_filter('excerpt_more', 'new_excerpt_more');
+
+    // change the length of the excerpt
+    function custom_excerpt_length( $length ) {
+        return 60;
+    }
+    add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
     /* ==============================================================================================================
     Reset Defaults

@@ -2,7 +2,7 @@
                     <div class="masthead" role="banner">
                         <div class="masthead-logo">
                             <a href="<?php echo home_url(); ?>">
-                                <?php bloginfo( 'name' ); ?>
+                                <span class="isHidden"><?php bloginfo( 'name' ); ?></span>
                             </a>
                         </div>
                         <div class="masthead-nav" role="navigation">

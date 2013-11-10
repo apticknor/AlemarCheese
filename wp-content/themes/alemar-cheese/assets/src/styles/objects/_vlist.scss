@@ -1,11 +1,11 @@
 /* ---------------------------------------------------------------------
- Utility
+ Veritcal List
 
  Original Author: Anthony Ticknor
  Contributors: N/A
 
- Single class utilities used throughout the site.
+ List items displayed vertically and spaced
 ------------------------------------------------------------------------ */
-.isHidden {
-    @include isHidden();
+.vlist > li {
+    margin-bottom: 20px;
 }
