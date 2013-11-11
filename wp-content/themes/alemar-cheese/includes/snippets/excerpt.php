@@ -16,7 +16,7 @@
                 </h4>
             </div>
             <div class="feature-meta">
-                <p>Posted on <?php the_date(); ?></p>
+                <p>Posted on <?php the_time(get_option('date_format')); ?></p>
             </div>
             <div class="feature-bd">
                 <?php the_excerpt(); ?>
