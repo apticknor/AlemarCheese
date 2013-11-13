@@ -552,6 +552,10 @@ body {
   font-size: 0.625rem;
 }
 
+.mix-hdg_caps {
+  text-transform: uppercase;
+}
+
 /* ---------------------------------------------------------------------
  Pagination
 
