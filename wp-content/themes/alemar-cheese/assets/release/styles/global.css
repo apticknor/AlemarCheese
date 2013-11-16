@@ -155,6 +155,13 @@ textarea {
 
  Custom Fonts used throughout the site.
 ------------------------------------------------------------------------ */
+@font-face {
+  font-family: "Metallophile";
+  src: url("../fonts/metallophile/metallophile.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* ---------------------------------------------------------------------
  Base
 
@@ -165,15 +172,19 @@ textarea {
 ------------------------------------------------------------------------ */
 body {
   background-color: #fefefe;
-  color: #181818;
+  color: #222222;
   font-size: 0.875rem;
   line-height: 1.43;
   font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
 }
 
 a {
-  color: #181818;
+  color: #222222;
   text-decoration: none;
+}
+
+.main a {
+  text-decoration: underline;
 }
 
 img, video, canvas {
@@ -230,6 +241,32 @@ body {
 }
 
 /* ---------------------------------------------------------------------
+ MastheadWrapper
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The container for the masthead
+------------------------------------------------------------------------ */
+.mastheadWrapper {
+  background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+  position: relative;
+}
+
+.mastheadWrapper:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(20, 20, 20, 0.1));
+  background-image: -moz-linear-gradient(top, transparent, rgba(20, 20, 20, 0.1));
+  background-image: -o-linear-gradient(top, transparent, rgba(20, 20, 20, 0.1));
+  background-image: linear-gradient(to bottom, transparent, rgba(20, 20, 20, 0.1));
+}
+
+/* ---------------------------------------------------------------------
  Masthead
 
  Original Author: Anthony Ticknor
@@ -239,11 +276,7 @@ body {
 ------------------------------------------------------------------------ */
 .masthead {
   margin-bottom: 20px;
-}
-
-.masthead-nav {
-  border-top: 1px solid #bbbbbb;
-  border-bottom: 1px solid #bbbbbb;
+  position: relative;
 }
 
 .masthead-logo {
@@ -253,10 +286,7 @@ body {
 
 .masthead-logo a {
   display: inline-block;
-  width: 280px;
-  height: 60px;
-  background-image: url(../images/logo.png);
-  background-repeat: no-repeat;
+  font-family: Metallophile;
 }
 
 /* ---------------------------------------------------------------------
@@ -270,15 +300,24 @@ body {
 .navPrimary > li a {
   display: block;
   font-size: 1rem;
-  color: #181818;
+  color: #222222;
+  color: rgba(0, 0, 0, 0.7);
   text-decoration: none;
+  font-weight: bold;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  -o-transition: color 0.1s linear;
+  transition: color 0.1s linear;
+}
+
+.navPrimary > li a:hover,
+.navPrimary > li a:focus {
+  color: #222222;
 }
 
 @media (min-width: 480px) {
   .navPrimary {
     padding: 16px 0;
-    margin-left: -24px;
-    /* must equal margin left of children to keep centered */
     font-size: 0;
     /* remove whitespace between inline-block items */
     text-align: center;
@@ -290,14 +329,28 @@ body {
     display: inline-block;
   }
 
-  .navPrimary > li {
-    margin-left: 24px;
+  .navPrimary > li + li {
+    margin-left: 32px;
+  }
+}
+@media (min-width: 600px) {
+  .navPrimary > li + li {
+    margin-left: 44px;
+  }
+}
+@media (min-width: 740px) {
+  .navPrimary > li + li {
+    margin-left: 60px;
+  }
+
+  .navPrimary > li a {
+    font-size: 1.25rem;
   }
 }
 @media (min-width: 840px) {
   .navPrimary {
     text-align: left;
-    /* reset text alignment from small screen setting */
+    /* reset text align to left */
   }
 }
 /* ---------------------------------------------------------------------
@@ -358,7 +411,7 @@ body {
 ------------------------------------------------------------------------ */
 .wrapper {
   max-width: 940px;
-  min-width: 320px;
+  min-width: 300px;
   padding: 0 10px;
   margin: 0 auto;
 }
@@ -377,6 +430,12 @@ body {
 
  The primary grid used to layout pages
 ------------------------------------------------------------------------ */
+.grid-col_main {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #bbbbbb;
+  padding-bottom: 16px;
+}
+
 @media (min-width: 840px) {
   .grid:before, .grid:after {
     content: " ";
@@ -399,6 +458,12 @@ body {
 
   .grid-col_main {
     width: 70%;
+    margin-bottom: 0;
+    /* reset small scren */
+    border-bottom: none;
+    /* reset small scren */
+    padding-bottom: 0;
+    /* reset small scren */
   }
 
   .grid-col_sub {
@@ -463,6 +528,24 @@ body {
 }
 
 /* ---------------------------------------------------------------------
+ Widgets
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Standard widget on the site.
+------------------------------------------------------------------------ */
+.widget + .widget {
+  margin-top: 16px;
+  border-top: 1px solid #bbbbbb;
+  padding-top: 16px;
+}
+
+.widget-hd {
+  margin-bottom: 8px;
+}
+
+/* ---------------------------------------------------------------------
  Horizontal List
 
  Original Author: Anthony Ticknor
@@ -521,7 +604,7 @@ body {
 .hdg {
   font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
   font-weight: bold;
-  color: #181818;
+  color: #222222;
 }
 
 .hdg_xxl {
@@ -579,8 +662,7 @@ body {
 }
 
 .pagination-older a:before {
-  content: "\00AB";
-  margin-right: 4px;
+  content: "\00AB\0000a0";
 }
 
 .pagination-newer {
@@ -590,8 +672,7 @@ body {
 }
 
 .pagination-newer a:after {
-  content: "\00BB";
-  margin-left: 4px;
+  content: "\0000a0\00BB";
 }
 
 /* ---------------------------------------------------------------------

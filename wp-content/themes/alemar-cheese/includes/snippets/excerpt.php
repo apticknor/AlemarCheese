@@ -9,11 +9,11 @@
     <div class="teaser-bd">
         <div class="feature">
             <div class="feature-hd">
-                <h4 class="hdg hdg_md">
+                <h3 class="hdg hdg_md">
                     <a href="<?php the_permalink(); ?>">
                         <?php the_title(); ?>
                     </a>
-                </h4>
+                </h3>
             </div>
             <div class="feature-meta">
                 <p>Posted on <?php the_time(get_option('date_format')); ?></p>

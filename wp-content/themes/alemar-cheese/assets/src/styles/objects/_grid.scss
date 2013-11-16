@@ -6,6 +6,13 @@
 
  The primary grid used to layout pages
 ------------------------------------------------------------------------ */
+.grid-col_main {
+    margin-bottom: 16px;
+    border-bottom: 1px solid $color-lightgrey;
+    padding-bottom: 16px;
+}
+
+
 @media (min-width: 840px) {
     .grid {
         @include micro-clearfix();
@@ -18,6 +25,12 @@
 
     .grid-col + .grid-col { padding-left: 32px; }
 
-    .grid-col_main { width: 70%; }
+    .grid-col_main {
+        width: 70%;
+        margin-bottom: 0; /* reset small scren */
+        border-bottom: none; /* reset small scren */
+        padding-bottom: 0; /* reset small scren */
+    }
+
     .grid-col_sub { width: 30%; }
 }

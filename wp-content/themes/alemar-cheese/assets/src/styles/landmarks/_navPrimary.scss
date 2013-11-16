@@ -10,13 +10,20 @@
     display: block;
     font-size: $font-size-md;
     color: $color-black;
+    color: rgba(0,0,0,0.7);
     text-decoration: none;
+    font-weight: bold;
+    @include transition(color .1s linear);
+}
+
+.navPrimary > li a:hover,
+.navPrimary > li a:focus {
+    color: $color-black;
 }
 
 @media (min-width: 480px) {
     .navPrimary {
         padding: 16px 0;
-        margin-left: -24px; /* must equal margin left of children to keep centered */
         font-size: 0; /* remove whitespace between inline-block items */
         text-align: center;
     }
@@ -26,14 +33,28 @@
         display: inline-block;
     }
 
-    .navPrimary > li {
-        margin-left: 24px;
+    .navPrimary > li + li {
+        margin-left: 32px;
+    }
+}
+
+@media (min-width: 600px) {
+    .navPrimary > li + li {
+        margin-left: 44px;
+    }
+}
+
+@media (min-width: 740px) {
+    .navPrimary > li + li {
+        margin-left: 60px;
+    }
+
+    .navPrimary > li a {
+        font-size: $font-size-lg;
     }
 }
 
 @media (min-width: 840px) {
     .navPrimary {
-        text-align: left; /* reset text alignment from small screen setting */
-    }
-}
-
+        text-align: left; /* reset text align to left */
+    }}

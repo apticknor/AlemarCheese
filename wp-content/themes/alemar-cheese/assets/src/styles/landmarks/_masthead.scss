@@ -1,4 +1,27 @@
 /* ---------------------------------------------------------------------
+ MastheadWrapper
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The container for the masthead
+------------------------------------------------------------------------ */
+.mastheadWrapper {
+    background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+    position: relative;
+}
+
+.mastheadWrapper:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    @include linear-gradient("to bottom", transparent, rgba(20,20,20,.1));
+}
+
+/* ---------------------------------------------------------------------
  Masthead
 
  Original Author: Anthony Ticknor
@@ -8,11 +31,7 @@
 ------------------------------------------------------------------------ */
 .masthead {
     margin-bottom: 20px;
-}
-
-.masthead-nav {
-    border-top: 1px solid $color-lightgrey;
-    border-bottom: 1px solid $color-lightgrey;
+    position: relative;
 }
 
 .masthead-logo {
@@ -22,8 +41,5 @@
 
 .masthead-logo a {
     display: inline-block;
-    width: 280px;
-    height: 60px;
-    background-image: url(../images/logo.png);
-    background-repeat: no-repeat;
+    font-family: Metallophile;
 }

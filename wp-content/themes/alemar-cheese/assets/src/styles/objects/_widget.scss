@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------------------
+ Widgets
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Standard widget on the site.
+------------------------------------------------------------------------ */
+.widget + .widget {
+    margin-top: 16px;
+    border-top: 1px solid $color-lightgrey;
+    padding-top: 16px;
+}
+
+.widget-hd {
+    margin-bottom: 8px;
+}
