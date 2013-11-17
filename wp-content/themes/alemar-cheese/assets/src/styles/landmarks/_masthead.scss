@@ -41,5 +41,8 @@
 
 .masthead-logo a {
     display: inline-block;
-    font-family: Metallophile;
+    width: 280px;
+    height: 133px;
+    background: transparent url(../images/logo.png) no-repeat 0 0 scroll;
+    @include background-size(100%);
 }

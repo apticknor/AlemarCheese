@@ -7,9 +7,9 @@
 <?php wp_get_archives(array(
     'type'            => 'yearly',
     'limit'           => '',
-    'format'          => 'html',
-    'before'          => '',
-    'after'           => '',
+    'format'          => 'custom',
+    'before'          => '<li>',
+    'after'           => '</li>',
     'show_post_count' => true,
     'echo'            => 1,
     'order'           => 'DESC'
