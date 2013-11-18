@@ -9,6 +9,8 @@
 .mastheadWrapper {
     background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
     position: relative;
+    border-bottom: 1px solid transparent;
+    margin-bottom: 16px;
 }
 
 .mastheadWrapper:before {
@@ -30,19 +32,44 @@
  The primary masthead of the website
 ------------------------------------------------------------------------ */
 .masthead {
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     position: relative;
 }
 
+@media (min-width: 37.5em) {
+    .masthead {
+        margin-bottom: 12px;
+    }
+}
+
+@media (min-width: 46.25em) {
+    .masthead {
+        margin-bottom: 16px;
+    }
+}
+
 .masthead-logo {
-    padding: 28px 0;
+    padding: 16px 0;
     text-align: center;
+}
+
+@media (min-width: 37.5em) {
+    .masthead-logo {
+        padding: 28px 0;
+    }
 }
 
 .masthead-logo a {
     display: inline-block;
-    width: 280px;
-    height: 133px;
+    width: 240px;
+    height: 114px;
     background: transparent url(../images/logo.png) no-repeat 0 0 scroll;
     @include background-size(100%);
+}
+
+@media (min-width: 37.5em) {
+    .masthead-logo a {
+        width: 280px;
+        height: 133px;
+    }
 }

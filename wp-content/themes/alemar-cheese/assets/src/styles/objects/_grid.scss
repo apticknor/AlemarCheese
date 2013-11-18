@@ -13,7 +13,7 @@
 }
 
 
-@media (min-width: 840px) {
+@media (min-width: 52.5em) {
     .grid {
         @include micro-clearfix();
     }

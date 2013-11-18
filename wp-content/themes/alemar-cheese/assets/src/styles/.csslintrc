@@ -3,5 +3,6 @@
     "box-sizing": false,
     "gradients": false,
     "font-sizes": false,
-    "bulletproof-font-face": false
+    "bulletproof-font-face": false,
+    "fallback-colors": false
 }

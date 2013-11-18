@@ -251,6 +251,8 @@ body {
 .mastheadWrapper {
   background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
   position: relative;
+  border-bottom: 1px solid transparent;
+  margin-bottom: 16px;
 }
 
 .mastheadWrapper:before {
@@ -275,19 +277,34 @@ body {
  The primary masthead of the website
 ------------------------------------------------------------------------ */
 .masthead {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   position: relative;
 }
 
+@media (min-width: 37.5em) {
+  .masthead {
+    margin-bottom: 12px;
+  }
+}
+@media (min-width: 46.25em) {
+  .masthead {
+    margin-bottom: 16px;
+  }
+}
 .masthead-logo {
-  padding: 28px 0;
+  padding: 16px 0;
   text-align: center;
 }
 
+@media (min-width: 37.5em) {
+  .masthead-logo {
+    padding: 28px 0;
+  }
+}
 .masthead-logo a {
   display: inline-block;
-  width: 280px;
-  height: 133px;
+  width: 240px;
+  height: 114px;
   background: transparent url(../images/logo.png) no-repeat 0 0 scroll;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
@@ -296,6 +313,12 @@ body {
   background-size: 100%;
 }
 
+@media (min-width: 37.5em) {
+  .masthead-logo a {
+    width: 280px;
+    height: 133px;
+  }
+}
 /* ---------------------------------------------------------------------
  Primary Navigation
 
@@ -306,8 +329,7 @@ body {
 ------------------------------------------------------------------------ */
 .navPrimary > li a {
   display: block;
-  font-size: 1rem;
-  color: #222222;
+  font-size: 0.875rem;
   color: rgba(0, 0, 0, 0.7);
   text-decoration: none;
   font-weight: bold;
@@ -319,47 +341,63 @@ body {
 
 .navPrimary > li a:hover,
 .navPrimary > li a:focus {
-  color: #222222;
+  color: rgba(0, 0, 0, 0.8);
 }
 
-@media (min-width: 480px) {
-  .navPrimary {
-    padding: 16px 0;
-    font-size: 0;
-    /* remove whitespace between inline-block items */
-    text-align: center;
-  }
+.navPrimary {
+  font-size: 0;
+  /* remove whitespace between inline-block items */
+  text-align: center;
+}
 
-  .navPrimary > li {
-    font-size: 0.875rem;
-    /* return font-size to default size */
-    display: inline-block;
-  }
+.navPrimary > li {
+  font-size: 0.875rem;
+  /* return font-size to default size */
+  display: inline-block;
+}
 
+.navPrimary > li + li {
+  margin-left: 24px;
+}
+
+@media (min-width: 24em) {
+  .navPrimary > li a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 30em) {
+  /* hide the contact menu item from the main nav */
+  .navPrimary > li:nth-child(5) {
+    display: none;
+  }
+}
+@media (min-width: 30em) {
   .navPrimary > li + li {
     margin-left: 32px;
   }
 }
-@media (min-width: 600px) {
+@media (min-width: 37.5em) {
   .navPrimary > li + li {
     margin-left: 44px;
   }
 }
-@media (min-width: 740px) {
+@media (min-width: 46.25em) {
   .navPrimary > li + li {
     margin-left: 60px;
   }
 
   .navPrimary > li a {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 }
-@media (min-width: 840px) {
-  .navPrimary {
-    text-align: left;
-    /* reset text align to left */
-  }
-}
+/* ---------------------------------------------------------------------
+ Main
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Main Content Area
+------------------------------------------------------------------------ */
 /* ---------------------------------------------------------------------
  Footer
 
@@ -380,7 +418,7 @@ body {
   margin-bottom: 16px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 30em) {
   .footer {
     text-align: left;
     /* reset centering of text on smaller screens */
@@ -423,7 +461,7 @@ body {
   margin: 0 auto;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 37.5em) {
   .wrapper {
     padding: 0 20px;
     /* increase padding for larger screens */
@@ -443,7 +481,7 @@ body {
   padding-bottom: 16px;
 }
 
-@media (min-width: 840px) {
+@media (min-width: 52.5em) {
   .grid:before, .grid:after {
     content: " ";
     display: table;
@@ -489,7 +527,7 @@ body {
   margin-bottom: 10px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 30em) {
   .teaser:before, .teaser:after {
     content: " ";
     display: table;
@@ -511,12 +549,12 @@ body {
     /* trigger BFC to prevent wrapping */
   }
 }
-@media (min-width: 600px) {
+@media (min-width: 37.5em) {
   .teaser-media {
     width: 180px;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 60em) {
   .teaser-media {
     width: 220px;
   }
@@ -720,7 +758,7 @@ body {
   background-position: 0 -96px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 30em) {
   .icnSocial {
     height: 28px;
     width: 28px;
