@@ -30,6 +30,11 @@ Media Type: Screen, Projection
  Primary font sizes used throughout the site.
 ------------------------------------------------------------------------ */
 /* ---------------------------------------------------------------------
+ Font Defaults
+
+ Default font values for use throughout the site
+------------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------
  Vendor Prefix Mixins
 
  Original Author: Anthony Ticknor
@@ -171,7 +176,7 @@ textarea {
  Set default CSS on base level elements.
 ------------------------------------------------------------------------ */
 body {
-  background-color: #fefefe;
+  background-color: white;
   color: #222222;
   font-size: 0.875rem;
   line-height: 1.43;
@@ -261,11 +266,11 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10px;
-  background-image: -webkit-linear-gradient(top, transparent, rgba(20, 20, 20, 0.1));
-  background-image: -moz-linear-gradient(top, transparent, rgba(20, 20, 20, 0.1));
-  background-image: -o-linear-gradient(top, transparent, rgba(20, 20, 20, 0.1));
-  background-image: linear-gradient(to bottom, transparent, rgba(20, 20, 20, 0.1));
+  height: 20px;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(20, 20, 20, 0.06));
+  background-image: -moz-linear-gradient(top, transparent, rgba(20, 20, 20, 0.06));
+  background-image: -o-linear-gradient(top, transparent, rgba(20, 20, 20, 0.06));
+  background-image: linear-gradient(to bottom, transparent, rgba(20, 20, 20, 0.06));
 }
 
 /* ---------------------------------------------------------------------
@@ -399,6 +404,33 @@ body {
  Main Content Area
 ------------------------------------------------------------------------ */
 /* ---------------------------------------------------------------------
+ FooterWrapper
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The container for the footer
+------------------------------------------------------------------------ */
+.footerWrapper {
+  background-color: #f8f5eb;
+  position: relative;
+  margin-top: 24px;
+}
+
+.footerWrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-image: -webkit-linear-gradient(bottom, transparent, rgba(20, 20, 20, 0.1));
+  background-image: -moz-linear-gradient(bottom, transparent, rgba(20, 20, 20, 0.1));
+  background-image: -o-linear-gradient(bottom, transparent, rgba(20, 20, 20, 0.1));
+  background-image: linear-gradient(to top, transparent, rgba(20, 20, 20, 0.1));
+}
+
+/* ---------------------------------------------------------------------
  Footer
 
  Original Author: Anthony Ticknor
@@ -408,8 +440,6 @@ body {
 ------------------------------------------------------------------------ */
 .footer {
   padding: 20px 0;
-  margin-top: 20px;
-  border-top: 1px solid #bbbbbb;
   font-size: 0.75rem;
   text-align: center;
 }

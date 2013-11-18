@@ -6,7 +6,8 @@
 
  Primary colors used throughout the site.
 ------------------------------------------------------------------------ */
-$color-white: #fefefe;
+$color-white: #ffffff;
+$color-light: #f8f5eb;
 $color-black: #222222;
 $color-darkgrey: #444444;
 $color-midgrey: #666666;
@@ -43,5 +44,10 @@ $font-size-lg: 1.25rem;     // 20px
 $font-size-xl: 1.5rem;      // 24px
 $font-size-xxl: 2rem;       // 32px
 
+/* ---------------------------------------------------------------------
+ Font Defaults
+
+ Default font values for use throughout the site
+------------------------------------------------------------------------ */
 $font-size-default: $font-size-sm;
 
