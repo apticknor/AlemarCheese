@@ -23,6 +23,12 @@
     @include linear-gradient("to bottom", transparent, rgba(20,20,20,.06));
 }
 
+@media (min-width: 37.5em) {
+    .mastheadWrapper {
+        margin-bottom: 24px;
+    }
+}
+
 /* ---------------------------------------------------------------------
  Masthead
 
