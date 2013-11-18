@@ -9,38 +9,40 @@ URL: http://alemarcheese.com/YYYY/MM/POST_NAME/
                 <div class="wrapper">
                     <div class="main" role="main">
 
-
-
-
-
-
-
+                        <div class="grid">
+                            <div class="grid-col grid-col_main">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
-<div>
-
-    <h2><?php the_title(); ?></h2>
-    <span><?php the_date(); ?> <?php the_time(); ?></span> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
-    <?php the_content(); ?>
-
-    <?php if ( get_the_author_meta( 'description' ) ) : ?>
-    <?php echo get_avatar( get_the_author_meta( 'user_email' ) ); ?>
-    <h3>About <?php echo get_the_author() ; ?></h3>
-    <?php the_author_meta( 'description' ); ?>
-    <?php endif; ?>
-
-    <?php comments_template( '', true ); ?>
-
-</div>
+                                <div class="feature">
+                                    <div class="feature-hd">
+                                        <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
+                                    </div>
+                                    <div class="feature-meta">
+                                        <p>Posted on <?php the_time(get_option('date_format')); ?></p>
+                                    </div>
+<?php if (has_post_thumbnail($post->ID)) { ?>
+                                    <div class="feature-media">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail('large'); ?>
+                                        </a>
+                                    </div>
+<?php } ?>
+                                    <div class="feature-bd">
+                                        <div class="userContent">
+                                            <?php the_content(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+<?php // comments_template( '', true ); ?>
 <?php endwhile; ?>
 
+                            </div> <!-- // END grid-col_main -->
+                            <div class="grid-col grid-col_sub">
 
+<?php Utilities::get_template_parts(array('includes/components/sidebar')); ?>
 
-
-
-
-
+                            </div> <!-- // END grid-col_sub -->
+                        </div> <!-- // END grid -->
 
                     </div> <!-- // END main -->
                 </div> <!-- // END wrapper -->

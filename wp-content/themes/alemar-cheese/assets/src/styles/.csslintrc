@@ -4,5 +4,9 @@
     "gradients": false,
     "font-sizes": false,
     "bulletproof-font-face": false,
-    "fallback-colors": false
+    "fallback-colors": false,
+    "important": false,
+    "qualified-headings": false,
+    "unique-headings": false,
+    "empty-rules": false
 }
