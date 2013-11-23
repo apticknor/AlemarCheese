@@ -255,29 +255,8 @@ body {
 ------------------------------------------------------------------------ */
 .mastheadWrapper {
   background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
-  position: relative;
-  border-bottom: 1px solid transparent;
-  margin-bottom: 16px;
 }
 
-.mastheadWrapper:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background-image: -webkit-linear-gradient(top, transparent, rgba(20, 20, 20, 0.06));
-  background-image: -moz-linear-gradient(top, transparent, rgba(20, 20, 20, 0.06));
-  background-image: -o-linear-gradient(top, transparent, rgba(20, 20, 20, 0.06));
-  background-image: linear-gradient(to bottom, transparent, rgba(20, 20, 20, 0.06));
-}
-
-@media (min-width: 37.5em) {
-  .mastheadWrapper {
-    margin-bottom: 24px;
-  }
-}
 /* ---------------------------------------------------------------------
  Masthead
 
@@ -287,20 +266,9 @@ body {
  The primary masthead of the website
 ------------------------------------------------------------------------ */
 .masthead {
-  margin-bottom: 8px;
   position: relative;
 }
 
-@media (min-width: 37.5em) {
-  .masthead {
-    margin-bottom: 12px;
-  }
-}
-@media (min-width: 46.25em) {
-  .masthead {
-    margin-bottom: 16px;
-  }
-}
 .masthead-logo {
   padding: 16px 0;
   text-align: center;
@@ -330,6 +298,19 @@ body {
   }
 }
 /* ---------------------------------------------------------------------
+ Navigation Wra[[er
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The primary navigation wrapper
+------------------------------------------------------------------------ */
+.navWrapper {
+  background-color: #25433b;
+  padding: 12px 0;
+}
+
+/* ---------------------------------------------------------------------
  Primary Navigation
 
  Original Author: Anthony Ticknor
@@ -339,65 +320,73 @@ body {
 ------------------------------------------------------------------------ */
 .navPrimary > li a {
   display: block;
-  font-size: 0.875rem;
-  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 0;
+  font-size: 1rem;
+  color: white;
   text-decoration: none;
-  font-weight: bold;
+  text-transform: uppercase;
   -webkit-transition: color 0.1s linear;
   -moz-transition: color 0.1s linear;
   -o-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
 
+.navPrimary > li:first-child a {
+  padding-top: 0;
+}
+
+.navPrimary > li:last-child a {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 .navPrimary > li a:hover,
 .navPrimary > li a:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: #fcb033;
 }
 
-.navPrimary {
-  font-size: 0;
-  /* remove whitespace between inline-block items */
-  text-align: center;
-}
-
-.navPrimary > li {
-  font-size: 0.875rem;
-  /* return font-size to default size */
-  display: inline-block;
-}
-
-.navPrimary > li + li {
-  margin-left: 24px;
-}
-
-@media (min-width: 24em) {
-  .navPrimary > li a {
-    font-size: 1rem;
+@media (min-width: 36em) {
+  .navPrimary {
+    font-size: 0;
+    /* remove whitespace between inline-block items */
+    text-align: center;
   }
-}
-@media (max-width: 30em) {
-  /* hide the contact menu item from the main nav */
-  .navPrimary > li:nth-child(5) {
-    display: none;
+
+  .navPrimary > li {
+    font-size: 0.875rem;
+    /* return font-size to default size */
+    display: inline-block;
   }
-}
-@media (min-width: 30em) {
+
   .navPrimary > li + li {
-    margin-left: 32px;
+    margin-left: 24px;
+  }
+
+  .navPrimary > li a {
+    margin-bottom: 0;
+    /* reset margin from smaller screens */
+    border-bottom: none;
+    /* reset border from smaller screens */
+    padding: 0;
+    /* reset padding from smaller screens */
+    font-size: 0.875rem;
   }
 }
-@media (min-width: 37.5em) {
+@media (min-width: 42em) {
   .navPrimary > li + li {
     margin-left: 44px;
   }
 }
-@media (min-width: 46.25em) {
+@media (min-width: 49em) {
   .navPrimary > li + li {
     margin-left: 60px;
   }
 
   .navPrimary > li a {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 }
 /* ---------------------------------------------------------------------

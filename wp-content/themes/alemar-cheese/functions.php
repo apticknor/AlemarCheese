@@ -32,6 +32,16 @@
     }
     add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
+    // modify "posts" menu name
+    function edit_admin_menus() {
+        global $menu;
+        global $submenu;
+
+        $menu[5][0] = 'Blog Posts'; // Change Posts to Recipes
+    }
+    add_action( 'admin_menu', 'edit_admin_menus' );
+
+
     /* ==============================================================================================================
     Reset Defaults
     =============================================================================================================== */
@@ -118,6 +128,24 @@
             'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     		)
     	);
+    }
+
+    /* Custom post type for cheese locations! */
+    add_action( 'init', 'create_post_type2' );
+    function create_post_type2() {
+        register_post_type( 'ac_locations',
+            array(
+                'labels' => array(
+                    'name' => __( 'Locations' ),
+                    'singular_name' => __( 'Location' )
+                ),
+            'public' => true,
+            'menu_position' => 5,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'locations'),
+            'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+            )
+        );
     }
 
 

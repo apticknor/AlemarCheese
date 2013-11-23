@@ -8,25 +8,6 @@
 ------------------------------------------------------------------------ */
 .mastheadWrapper {
     background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
-    position: relative;
-    border-bottom: 1px solid transparent;
-    margin-bottom: 16px;
-}
-
-.mastheadWrapper:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    @include linear-gradient("to bottom", transparent, rgba(20,20,20,.06));
-}
-
-@media (min-width: 37.5em) {
-    .mastheadWrapper {
-        margin-bottom: 24px;
-    }
 }
 
 /* ---------------------------------------------------------------------
@@ -38,20 +19,7 @@
  The primary masthead of the website
 ------------------------------------------------------------------------ */
 .masthead {
-    margin-bottom: 8px;
     position: relative;
-}
-
-@media (min-width: 37.5em) {
-    .masthead {
-        margin-bottom: 12px;
-    }
-}
-
-@media (min-width: 46.25em) {
-    .masthead {
-        margin-bottom: 16px;
-    }
 }
 
 .masthead-logo {

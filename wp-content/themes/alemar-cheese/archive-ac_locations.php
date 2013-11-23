@@ -8,16 +8,16 @@ URL: http://alemarcheese.com/blog/
 
                 <div class="wrapper">
                     <div class="main" role="main">
-                        <h1 class="isHidden">Latest Blog Posts</h1>
+                        <h1 class="isHidden">Locations</h1>
                         <div class="grid">
                             <div class="grid-col grid-col_main">
 
-<?php Utilities::get_template_parts(array('includes/components/listing-product')); ?>
+Main Col Where to Find Alemar Cheese
 
                             </div> <!-- // END grid-col_main -->
                             <div class="grid-col grid-col_sub">
 
-<?php Utilities::get_template_parts(array('includes/components/sidebar-product')); ?>
+Sidebar Where to Find Alemar Cheese
 
                             </div> <!-- // END grid-col_sub -->
                         </div> <!-- // END grid -->
