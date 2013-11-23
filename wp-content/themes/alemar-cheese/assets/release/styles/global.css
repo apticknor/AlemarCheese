@@ -333,7 +333,7 @@ body {
 
 .navPrimary > li a:hover,
 .navPrimary > li a:focus {
-  color: #fcb033;
+  color: #f5af40;
 }
 
 @media (min-width: 36em) {
