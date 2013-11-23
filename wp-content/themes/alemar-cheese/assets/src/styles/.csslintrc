@@ -9,5 +9,6 @@
     "qualified-headings": false,
     "unique-headings": false,
     "empty-rules": false,
-    "duplicate-background-images": false
+    "duplicate-background-images": false,
+    "box-model": false
 }

@@ -1,34 +1,15 @@
 <?php if (have_posts()) : ?>
-<ol class="vlist">
+<ol class="blocks">
 <?php while (have_posts()) : the_post(); ?>
     <li>
-
-        <div class="teaser" id="post<?php the_ID(); ?>">
+        <a href="<?php the_permalink(); ?>">
         <?php if (has_post_thumbnail($post->ID)) { ?>
-            <div class="teaser-media">
-                <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail('medium'); ?>
-                </a>
-            </div>
+            <?php the_post_thumbnail('medium'); ?>
+        <?php } else { ?>
+
         <?php } ?>
-            <div class="teaser-bd">
-                <div class="feature">
-                    <div class="feature-hd">
-                        <h3 class="hdg hdg_md">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_title(); ?>
-                            </a>
-                        </h3>
-                    </div>
-                    <div class="feature-bd">
-                        <?php the_excerpt(); ?>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- // END product -->
-
-
-    </li>
+        </a>
+    </li> <!-- // END blocks -->
 <?php endwhile; ?>
 </ol>
 <?php Utilities::get_template_parts(array('includes/snippets/pagination')); ?>

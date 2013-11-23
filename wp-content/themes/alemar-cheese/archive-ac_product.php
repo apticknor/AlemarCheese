@@ -2,18 +2,13 @@
 
                 <div class="main" role="main">
                     <div class="wrapper">
-                        <h1 class="isHidden">Latest Blog Posts</h1>
+                        <h1 class="isHidden">Products</h1>
                         <div class="grid">
-                            <div class="grid-col grid-col_main">
+                            <div class="grid-col grid-col_full">
 
 <?php Utilities::get_template_parts(array('includes/components/listing-product')); ?>
 
-                            </div> <!-- // END grid-col_main -->
-                            <div class="grid-col grid-col_sub">
-
-<?php Utilities::get_template_parts(array('includes/components/sidebar-product')); ?>
-
-                            </div> <!-- // END grid-col_sub -->
+                            </div> <!-- // END grid-col -->
                         </div> <!-- // END grid -->
                     </div> <!-- // END wrapper -->
                 </div> <!-- // END main -->

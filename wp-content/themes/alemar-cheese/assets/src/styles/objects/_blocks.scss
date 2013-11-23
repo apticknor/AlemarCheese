@@ -1,0 +1,51 @@
+/* ---------------------------------------------------------------------
+ Blocks
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Grid of side by side items from a list
+
+ 1up on small views
+ 2up on medium views
+ 3up on large views
+------------------------------------------------------------------------ */
+.blocks > li {
+    padding-bottom: 10px;
+}
+
+.blocks > li img {
+    display: block;
+}
+
+@media (min-width: 30em) {
+    .blocks {
+        @include micro-clearfix();
+        position: relative;
+        margin-left: -10px;
+    }
+
+    .blocks > li {
+        float: left;
+        @include box-sizing(border-box);
+        width: 50%;
+        padding-left: 10px;
+    }
+}
+
+@media (min-width: 37.5em) {
+    .blocks {
+        margin-left: -20px;
+    }
+
+    .blocks > li {
+        padding-left: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media (min-width: 49em) {
+    .blocks > li {
+        width: 33.3333%;
+    }
+}
