@@ -407,7 +407,7 @@ body {
 ------------------------------------------------------------------------ */
 .footer {
   padding: 20px 0;
-  color: white;
+  color: #222222;
   font-size: 0.875rem;
   text-align: center;
 }
@@ -613,19 +613,6 @@ body {
 
 .hlist_social > li + li {
   margin-left: 8px;
-}
-
-.hlist_social a {
-  opacity: .8;
-  -webkit-transition: opacity 0.1s linear;
-  -moz-transition: opacity 0.1s linear;
-  -o-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
-}
-
-.hlist_social a:hover,
-.hlist_social a:focus {
-  opacity: 1;
 }
 
 /* ---------------------------------------------------------------------

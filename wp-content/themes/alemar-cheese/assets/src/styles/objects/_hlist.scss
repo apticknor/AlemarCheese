@@ -18,13 +18,3 @@
 .hlist_social > li + li {
     margin-left: 8px;
 }
-
-.hlist_social a {
-    opacity: .8;
-    @include transition(opacity .1s linear);
-}
-
-.hlist_social a:hover,
-.hlist_social a:focus {
-    opacity: 1;
-}
