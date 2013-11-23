@@ -1,29 +1,4 @@
 /* ---------------------------------------------------------------------
- FooterWrapper
-
- Original Author: Anthony Ticknor
- Contributors: N/A
-
- The container for the footer
------------------------------------------------------------------------- */
-.footerWrapper {
-    background-color: $color-light;
-    position: relative;
-    margin-top: 24px;
-}
-
-.footerWrapper:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    @include linear-gradient("to top", transparent, rgba(20,20,20,.1));
-}
-
-
-/* ---------------------------------------------------------------------
  Footer
 
  Original Author: Anthony Ticknor
@@ -33,7 +8,8 @@
 ------------------------------------------------------------------------ */
 .footer {
     padding: 20px 0;
-    font-size: $font-size-xs;
+    color: $color-white;
+    font-size: $font-size-sm;
     text-align: center;
 }
 

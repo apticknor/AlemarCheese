@@ -6,8 +6,8 @@ URL: http://alemarcheese.com/?s=SEARCHTERM
 ?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
 
-                <div class="wrapper">
-                    <div class="main" role="main">
+                <div class="main" role="main">
+                    <div class="wrapper">
 
 
 
@@ -43,7 +43,7 @@ URL: http://alemarcheese.com/?s=SEARCHTERM
 
 
 
-                    </div> <!-- // END main -->
-                </div> <!-- // END wrapper -->
+                    </div> <!-- // END wrapper -->
+                </div> <!-- // END main -->
 
 <?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>

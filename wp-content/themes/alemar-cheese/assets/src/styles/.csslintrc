@@ -8,5 +8,6 @@
     "important": false,
     "qualified-headings": false,
     "unique-headings": false,
-    "empty-rules": false
+    "empty-rules": false,
+    "duplicate-background-images": false
 }

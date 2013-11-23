@@ -6,3 +6,14 @@
 
  Main Content Area
 ------------------------------------------------------------------------ */
+.main {
+    background-color: $color-white;
+    min-height: 600px;
+    padding: 10px 0;
+}
+
+@media (min-width: 37.5em) {
+    .main {
+        padding: 20px 0; /* increase padding for larger screens */
+    }
+}

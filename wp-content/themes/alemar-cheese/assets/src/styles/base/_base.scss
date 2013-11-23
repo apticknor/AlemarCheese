@@ -7,7 +7,7 @@
  Set default CSS on base level elements.
 ------------------------------------------------------------------------ */
 body {
-    background-color: $color-white;
+    background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
     color: $color-black;
     font-size: $font-size-default;
     line-height: 1.43;

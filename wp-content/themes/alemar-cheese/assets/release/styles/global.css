@@ -176,7 +176,7 @@ textarea {
  Set default CSS on base level elements.
 ------------------------------------------------------------------------ */
 body {
-  background-color: white;
+  background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
   color: #222222;
   font-size: 0.875rem;
   line-height: 1.43;
@@ -243,18 +243,6 @@ body {
 .site-ft {
   display: table-row;
   height: 1px;
-}
-
-/* ---------------------------------------------------------------------
- MastheadWrapper
-
- Original Author: Anthony Ticknor
- Contributors: N/A
-
- The container for the masthead
------------------------------------------------------------------------- */
-.mastheadWrapper {
-  background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
 }
 
 /* ---------------------------------------------------------------------
@@ -397,33 +385,18 @@ body {
 
  Main Content Area
 ------------------------------------------------------------------------ */
-/* ---------------------------------------------------------------------
- FooterWrapper
-
- Original Author: Anthony Ticknor
- Contributors: N/A
-
- The container for the footer
------------------------------------------------------------------------- */
-.footerWrapper {
-  background-color: #f8f5eb;
-  position: relative;
-  margin-top: 24px;
+.main {
+  background-color: white;
+  min-height: 600px;
+  padding: 10px 0;
 }
 
-.footerWrapper:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  background-image: -webkit-linear-gradient(bottom, transparent, rgba(20, 20, 20, 0.1));
-  background-image: -moz-linear-gradient(bottom, transparent, rgba(20, 20, 20, 0.1));
-  background-image: -o-linear-gradient(bottom, transparent, rgba(20, 20, 20, 0.1));
-  background-image: linear-gradient(to top, transparent, rgba(20, 20, 20, 0.1));
+@media (min-width: 37.5em) {
+  .main {
+    padding: 20px 0;
+    /* increase padding for larger screens */
+  }
 }
-
 /* ---------------------------------------------------------------------
  Footer
 
@@ -434,7 +407,8 @@ body {
 ------------------------------------------------------------------------ */
 .footer {
   padding: 20px 0;
-  font-size: 0.75rem;
+  color: white;
+  font-size: 0.875rem;
   text-align: center;
 }
 
