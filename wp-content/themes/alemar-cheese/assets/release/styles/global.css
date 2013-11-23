@@ -551,22 +551,20 @@ body {
   .blocks {
     position: relative;
     margin-left: -10px;
-  }
-  .blocks:before, .blocks:after {
-    content: " ";
-    display: table;
-  }
-  .blocks:after {
-    clear: both;
+    font-size: 0;
+    /* remove whitespace between inline-block items */
   }
 
   .blocks > li {
-    float: left;
+    display: inline-block;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 50%;
     padding-left: 10px;
+    font-size: 0.875rem;
+    /* return font-size to default size */
+    vertical-align: top;
   }
 }
 @media (min-width: 37.5em) {
