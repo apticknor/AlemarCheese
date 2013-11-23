@@ -14,12 +14,19 @@
                                     </div>
 <?php } ?>
                                     <div class="flag-bd">
-                                        <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
-                                        <div class="userContent">
-                                            <?php the_content(); ?>
+                                        <div class="feature">
+                                            <div class="feature-hd feature-hd_push">
+                                                <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
+                                            </div>
+                                            <div class="feature-bd">
+                                                <?php the_content(); ?>
+                                            </div>
+                                            <div class="feature-ft">
+                                                <?php the_field('paypal_add_to_cart_id'); ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> <!-- // END flag -->
 <?php endwhile; ?>
 
                             </div> <!-- // END grid-col_main -->

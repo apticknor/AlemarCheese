@@ -6,6 +6,16 @@
 
  Top to bottom feature layout
 ------------------------------------------------------------------------ */
+.feature-hd_push {
+    margin-bottom: 4px;
+}
+
+@media (min-width: 37.5em) {
+    .feature-hd_push {
+        margin-bottom: 8px;
+    }
+}
+
 .feature-meta {
     margin-bottom: 8px;
     color: $color-midgrey;

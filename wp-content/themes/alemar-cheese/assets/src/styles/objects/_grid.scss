@@ -29,11 +29,11 @@
     .grid-col + .grid-col { padding-left: 32px; }
 
     .grid-col_main {
-        width: 70%;
+        width: 75%;
         margin-bottom: 0; /* reset small scren */
         border-bottom: none; /* reset small scren */
         padding-bottom: 0; /* reset small scren */
     }
 
-    .grid-col_sub { width: 30%; }
+    .grid-col_sub { width: 25%; }
 }
