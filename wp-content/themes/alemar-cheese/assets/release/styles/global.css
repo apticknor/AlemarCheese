@@ -365,12 +365,12 @@ body {
 }
 @media (min-width: 42em) {
   .navPrimary > li + li {
-    margin-left: 44px;
+    margin-left: 42px;
   }
 }
 @media (min-width: 49em) {
   .navPrimary > li + li {
-    margin-left: 60px;
+    margin-left: 56px;
   }
 
   .navPrimary > li a {
@@ -381,6 +381,10 @@ body {
   .navPrimary {
     text-align: left;
     /* reset text align center from smaller screens */
+  }
+
+  .navPrimary > li + li {
+    margin-left: 62px;
   }
 }
 /* ---------------------------------------------------------------------
