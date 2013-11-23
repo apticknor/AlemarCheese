@@ -1,9 +1,3 @@
-<?php
-/*
-Template Name: Archive
-URL: UNKNOWN
-*/
-?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
 
                 <div class="main" role="main">

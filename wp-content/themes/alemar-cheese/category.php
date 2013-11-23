@@ -1,9 +1,3 @@
-<?php
-/*
-Template Name: Author Template
-URL: http://alemarcheese.com/category/CATEGORY_NAME/
-*/
-?>
 <?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
 
                 <div class="main" role="main">
