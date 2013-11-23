@@ -84,3 +84,9 @@
         font-size: $font-size-md;
     }
 }
+
+@media (min-width: 61.25em) {
+    .navPrimary {
+        text-align: left; /* reset text align center from smaller screens */
+    }
+}
