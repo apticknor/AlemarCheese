@@ -5,6 +5,10 @@
                         <h1 class="isHidden">Products</h1>
                         <div class="grid">
                             <div class="grid-col grid-col_full">
+<?php
+/* Reverse the sort order of products showing oldest products first */
+query_posts($query_string . "&order=ASC");
+?>
 
 <?php Utilities::get_template_parts(array('includes/components/listing-product')); ?>
 
