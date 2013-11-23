@@ -8,7 +8,26 @@ URL: http://alemarcheese.com/PAGE_NAME/
 
                 <div class="main" role="main">
                     <div class="wrapper">
-                        Page Content
+
+
+<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+                        <div class="feature">
+<?php if (has_post_thumbnail($post->ID)) { ?>
+                            <div class="feature-media">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </a>
+                            </div>
+<?php } ?>
+                            <div class="feature-bd">
+                                <div class="userContent">
+                                    <?php the_content(); ?>
+                                </div>
+                            </div>
+                        </div>
+<?php endwhile; ?>
+
+
                     </div> <!-- // END wrapper -->
                 </div> <!-- // END main -->
 
