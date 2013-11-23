@@ -11,6 +11,7 @@ URL: http://alemarcheese.com/PAGE_NAME/
 
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+                        <h1 class="isHidden"><?php the_title(); ?></h1>
                         <div class="feature">
 <?php if (has_post_thumbnail($post->ID)) { ?>
                             <div class="feature-media">
