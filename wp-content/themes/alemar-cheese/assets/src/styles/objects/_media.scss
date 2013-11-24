@@ -6,7 +6,7 @@
 
  Standard media object with text non-wrapping
 ------------------------------------------------------------------------ */
-@media (min-width: 30em) {
+@media (min-width: 36em) {
 
     .media {
         @include micro-clearfix();

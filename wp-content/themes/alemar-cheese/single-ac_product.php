@@ -18,19 +18,22 @@
                                             <div class="feature-hd feature-hd_push">
                                                 <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
                                             </div>
-                                            <div class="feature-bd">
+                                            <div class="feature-bd feature-bd_push">
                                                 <?php the_content(); ?>
                                             </div>
                                             <div class="feature-ft">
 
-<?php Utilities::get_template_parts( array( 'includes/snippets/paypal-button' ) ); ?>
 <?php Utilities::get_template_parts( array( 'includes/snippets/special-ingredients' ) ); ?>
+
 <?php Utilities::get_template_parts( array( 'includes/snippets/awards' ) ); ?>
+
+
+<!-- <?php Utilities::get_template_parts( array( 'includes/snippets/paypal-button' ) ); ?> -->
 
                                             </div>
                                         </div>
                                     </div>
-                                </div> <!-- // END flag -->
+                                </div> <!-- // END media -->
 <?php endwhile; ?>
 
                             </div> <!-- // END grid-col -->

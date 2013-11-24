@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------------------
+ Split
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The secondary grid that split things in half
+------------------------------------------------------------------------ */
+.split {
+    @include micro-clearfix();
+}
+
+.split-col {
+    float: left;
+    width: 50%;
+    @include box-sizing(border-box);
+}
