@@ -22,7 +22,11 @@
                                                 <?php the_content(); ?>
                                             </div>
                                             <div class="feature-ft">
-                                                <?php the_field('paypal_add_to_cart_id'); ?>
+
+<?php Utilities::get_template_parts( array( 'includes/snippets/paypal-button' ) ); ?>
+<?php Utilities::get_template_parts( array( 'includes/snippets/special-ingredients' ) ); ?>
+<?php Utilities::get_template_parts( array( 'includes/snippets/awards' ) ); ?>
+
                                             </div>
                                         </div>
                                     </div>
