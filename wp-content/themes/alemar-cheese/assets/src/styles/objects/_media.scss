@@ -1,32 +1,36 @@
 /* ---------------------------------------------------------------------
- Flag
+ Media
 
  Original Author: Anthony Ticknor
  Contributors: N/A
 
- Standard flag object with text wrapping
+ Standard media object with text non-wrapping
 ------------------------------------------------------------------------ */
 @media (min-width: 30em) {
 
-    .flag {
+    .media {
         @include micro-clearfix();
     }
 
-    .flag-media {
+    .media-media {
         float: left;
         margin-right: 16px;
         margin-bottom: 4px;
         width: 30%;
     }
 
-    .flag-media img {
+    .media-media img {
         display: block;
+    }
+
+    .media-bd {
+        overflow: hidden; /* bfc */
     }
 
 }
 
 @media (min-width: 37.5em) {
-    .flag-media {
+    .media-media {
         margin-right: 20px;
     }
 

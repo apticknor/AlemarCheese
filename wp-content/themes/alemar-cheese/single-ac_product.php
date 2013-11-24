@@ -4,16 +4,16 @@
                     <div class="wrapper">
 
                         <div class="grid">
-                            <div class="grid-col grid-col_main">
+                            <div class="grid-col grid-col_full">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-                                <div class="flag">
+                                <div class="media">
 <?php if (has_post_thumbnail($post->ID)) { ?>
-                                    <div class="flag-media">
+                                    <div class="media-media">
                                         <?php the_post_thumbnail('medium'); ?>
                                     </div>
 <?php } ?>
-                                    <div class="flag-bd">
+                                    <div class="media-bd">
                                         <div class="feature">
                                             <div class="feature-hd feature-hd_push">
                                                 <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
@@ -29,12 +29,7 @@
                                 </div> <!-- // END flag -->
 <?php endwhile; ?>
 
-                            </div> <!-- // END grid-col_main -->
-                            <div class="grid-col grid-col_sub">
-
-<?php Utilities::get_template_parts(array('includes/components/sidebar')); ?>
-
-                            </div> <!-- // END grid-col_sub -->
+                            </div> <!-- // END grid-col -->
                         </div> <!-- // END grid -->
 
 
