@@ -176,7 +176,7 @@ textarea {
  Set default CSS on base level elements.
 ------------------------------------------------------------------------ */
 body {
-  background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+  background-color: white;
   color: #222222;
   font-size: 0.875rem;
   line-height: 1.43;
@@ -253,6 +253,10 @@ body {
 
  The primary masthead of the website
 ------------------------------------------------------------------------ */
+.mastheadWrapper {
+  background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+}
+
 .masthead {
   position: relative;
 }
@@ -396,8 +400,6 @@ body {
  Main Content Area
 ------------------------------------------------------------------------ */
 .main {
-  background-color: white;
-  min-height: 600px;
   padding: 10px 0;
 }
 
@@ -415,6 +417,10 @@ body {
 
  The primary footer of the website
 ------------------------------------------------------------------------ */
+.footerWrapper {
+  background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+}
+
 .footer {
   padding: 20px 0;
   color: #222222;

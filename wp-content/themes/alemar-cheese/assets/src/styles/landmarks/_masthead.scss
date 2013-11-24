@@ -6,6 +6,10 @@
 
  The primary masthead of the website
 ------------------------------------------------------------------------ */
+.mastheadWrapper {
+    background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+}
+
 .masthead {
     position: relative;
 }

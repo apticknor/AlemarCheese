@@ -6,6 +6,10 @@
 
  The primary footer of the website
 ------------------------------------------------------------------------ */
+.footerWrapper {
+    background: transparent url(../images/bg-wood.jpg) repeat center 0 fixed;
+}
+
 .footer {
     padding: 20px 0;
     color: $color-black;
