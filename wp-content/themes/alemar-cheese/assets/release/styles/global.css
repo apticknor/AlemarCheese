@@ -534,30 +534,6 @@ body {
   }
 }
 /* ---------------------------------------------------------------------
- Split
-
- Original Author: Anthony Ticknor
- Contributors: N/A
-
- The secondary grid that split things in half
------------------------------------------------------------------------- */
-.split:before, .split:after {
-  content: " ";
-  display: table;
-}
-.split:after {
-  clear: both;
-}
-
-.split-col {
-  float: left;
-  width: 50%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* ---------------------------------------------------------------------
  Blocks
 
  Original Author: Anthony Ticknor
@@ -725,39 +701,6 @@ body {
   }
 }
 /* ---------------------------------------------------------------------
- Flag
-
- Original Author: Anthony Ticknor
- Contributors: N/A
-
- Standard flag object with text wrapping
------------------------------------------------------------------------- */
-@media (min-width: 30em) {
-  .flag:before, .flag:after {
-    content: " ";
-    display: table;
-  }
-  .flag:after {
-    clear: both;
-  }
-
-  .flag-media {
-    float: left;
-    margin-right: 16px;
-    margin-bottom: 4px;
-    width: 30%;
-  }
-
-  .flag-media img {
-    display: block;
-  }
-}
-@media (min-width: 37.5em) {
-  .flag-media {
-    margin-right: 20px;
-  }
-}
-/* ---------------------------------------------------------------------
  Stamp
 
  Original Author: Anthony Ticknor
@@ -795,19 +738,6 @@ body {
 
 .widget-hd {
   margin-bottom: 8px;
-}
-
-/* ---------------------------------------------------------------------
- Box
-
- Original Author: Anthony Ticknor
- Contributors: N/A
-
- A Plain Old Box.
------------------------------------------------------------------------- */
-.box {
-  background-color: #bbbbbb;
-  padding: 10px;
 }
 
 /* ---------------------------------------------------------------------
