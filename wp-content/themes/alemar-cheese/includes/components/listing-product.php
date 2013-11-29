@@ -13,9 +13,6 @@
                     <h2 class="hdg hdg_md"><?php the_title(); ?></h2>
                 </a>
             </div>
-            <div class="feature-bd">
-                <p><?php the_field('quick_description'); ?></p>
-            </div>
         </div><!-- // END feature -->
     </li> <!-- // END blocks-item -->
 <?php endwhile; ?>
