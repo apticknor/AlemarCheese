@@ -2,7 +2,7 @@
 <?php if(get_field('special_ingredients')) { ?>
 <div class="feature">
     <div class="feature-hd feature-hd_push">
-        <h3 class="hdg hdg_md">Special Ingredients</h3>
+        <h3 class="hdg hdg_md">Ingredients You'll Love</h3>
     </div>
     <div class="feature-bd feature-bd_push">
         <ul class="hlist hlist_gapMd">
