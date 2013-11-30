@@ -13,7 +13,7 @@ URL: http://alemarcheese.com/contact-us
                             <div class="grid-col grid-col_half">
                                 <div class="widget">
                                     <div class="widget-bd">
-                                        <img src="http://maps.googleapis.com/maps/api/staticmap?center=622+North+Riverfront+Dr+Mankato+MN&zoom=14&scale=2&size=480x320&maptype=roadmap&markers=color:red%7C622+North+Riverfront+Dr+Mankato+MN&sensor=false" alt="" />
+                                        <img src="<?php the_field('google_map_image_link', 'options'); ?>" alt="" />
                                     </div>
                                 </div>
                                 
@@ -22,10 +22,10 @@ URL: http://alemarcheese.com/contact-us
                                         
                                         <div class="grid">
                                             <div class="grid-col grid-col_half">
-                                                622 North Riverfront Dr<br/>Mankato MN 56001
+                                                <?php the_field('address', 'options'); ?>
                                             </div>
                                             <div class="grid-col grid-col_half">
-                                                 Phone: 507.385.1004
+                                                 Phone: <?php the_field('phone_number', 'options'); ?>
                                             </div>
                                         </div>
                                         
