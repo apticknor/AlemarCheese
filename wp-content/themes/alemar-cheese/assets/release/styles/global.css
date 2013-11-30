@@ -732,6 +732,18 @@ body {
 
  The main buttons used throughout the site.
 ------------------------------------------------------------------------ */
+.btn, .fscf-button-submit {
+  padding: 10px;
+  margin: 0;
+  background-color: #25433b;
+  color: white;
+  border: none;
+  font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
 /* ---------------------------------------------------------------------
  Widgets
 
@@ -973,18 +985,6 @@ body {
 
 .fscf-div-submit {
   text-align: right;
-}
-
-.fscf-button-submit {
-  padding: 10px;
-  margin: 0;
-  background-color: #25433b;
-  color: white;
-  border: none;
-  font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------
