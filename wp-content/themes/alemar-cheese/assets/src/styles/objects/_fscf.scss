@@ -37,3 +37,19 @@
     color: #ff0000;
     margin-bottom: 4px;  
 }
+
+.fscf-div-submit {
+    text-align: right;
+}
+
+.fscf-button-submit {
+    padding: 10px;
+    margin: 0;
+    background-color: $color-brand-green;
+    color: $color-white;
+    border: none;
+    font-family: $font-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
