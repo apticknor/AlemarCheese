@@ -6,19 +6,19 @@
                             <div class="footer-bd">
                                 <ul class="hlist hlist_social">
                                     <li>
-                                        <a href="<?php the_field('facebook_url', 'option'); ?>">
+                                        <a href="<?php the_field('facebook_url', 'options'); ?>">
                                             <i class="icnSocial icnSocial_facebook"></i>
                                             <span class="isHidden">Facebook</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php the_field('twitter_url', 'option'); ?>">
+                                        <a href="<?php the_field('twitter_url', 'options'); ?>">
                                             <i class="icnSocial icnSocial_twitter"></i>
                                             <span class="isHidden">Twitter</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php the_field('googleplus_url', 'option'); ?>">
+                                        <a href="<?php the_field('googleplus_url', 'options'); ?>">
                                             <i class="icnSocial icnSocial_googlePlus"></i>
                                             <span class="isHidden">Google Plus</span>
                                         </a>
