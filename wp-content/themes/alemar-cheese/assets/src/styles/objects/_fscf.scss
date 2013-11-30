@@ -1,0 +1,39 @@
+/* ---------------------------------------------------------------------
+ FSCF - Fast Secure Contact Forms
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Overrides for the plugin CSS.
+------------------------------------------------------------------------ */
+.fscf-div-form {
+    margin-top: 16px;
+}
+
+.fscf-input-text,
+.fscf-input-textarea {
+    width: 97%;
+    padding: 1.5%;
+    border: 1px solid $color-lightgrey;
+}
+
+.fscf-input-textarea {
+    min-height: 140px;
+}
+
+.fscf-div-label {
+    margin-bottom: 4px;
+}
+
+.fscf-div-field {
+    margin-bottom: 12px;
+}
+
+#fscf_form_error1 {
+    display: none;
+}
+
+.fscf-div-error {
+    color: #ff0000;
+    margin-bottom: 4px;  
+}

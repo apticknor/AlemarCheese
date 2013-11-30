@@ -409,6 +409,12 @@ body {
     /* increase padding for larger screens */
   }
 }
+@media (min-width: 52.5em) {
+  .main {
+    padding: 32px 0;
+    /* increase padding for larger screens */
+  }
+}
 /* ---------------------------------------------------------------------
  Footer
 
@@ -489,10 +495,10 @@ body {
 
  The primary grid used to layout pages
 ------------------------------------------------------------------------ */
-.grid-col_main {
-  margin-bottom: 16px;
-  border-bottom: 1px solid #bbbbbb;
-  padding-bottom: 16px;
+.grid-col + .grid-col {
+  margin-top: 16px;
+  border-top: 1px solid #bbbbbb;
+  padding-top: 16px;
 }
 
 .grid-col_full {
@@ -517,20 +523,24 @@ body {
 
   .grid-col + .grid-col {
     padding-left: 32px;
+    margin-top: 0;
+    /* reset small scren */
+    border-top: none;
+    /* reset small scren */
+    padding-top: 0;
+    /* reset small scren */
   }
 
   .grid-col_main {
     width: 75%;
-    margin-bottom: 0;
-    /* reset small scren */
-    border-bottom: none;
-    /* reset small scren */
-    padding-bottom: 0;
-    /* reset small scren */
   }
 
   .grid-col_sub {
     width: 25%;
+  }
+
+  .grid-col_half {
+    width: 50%;
   }
 }
 /* ---------------------------------------------------------------------
@@ -921,6 +931,46 @@ body {
     background-position: 0 -84px;
   }
 }
+/* ---------------------------------------------------------------------
+ FSCF - Fast Secure Contact Forms
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Overrides for the plugin CSS.
+------------------------------------------------------------------------ */
+.fscf-div-form {
+  margin-top: 16px;
+}
+
+.fscf-input-text,
+.fscf-input-textarea {
+  width: 97%;
+  padding: 1.5%;
+  border: 1px solid #bbbbbb;
+}
+
+.fscf-input-textarea {
+  min-height: 140px;
+}
+
+.fscf-div-label {
+  margin-bottom: 4px;
+}
+
+.fscf-div-field {
+  margin-bottom: 12px;
+}
+
+#fscf_form_error1 {
+  display: none;
+}
+
+.fscf-div-error {
+  color: #ff0000;
+  margin-bottom: 4px;
+}
+
 /* ---------------------------------------------------------------------
  UserContent
 
