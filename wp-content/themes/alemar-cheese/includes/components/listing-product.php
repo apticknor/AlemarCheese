@@ -2,18 +2,14 @@
 <ol class="blocks">
 <?php while (have_posts()) : the_post(); ?>
     <li>
-        <div class="feature">
-            <div class="feature-media">
-                <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail('medium'); ?>
-                </a>
-            </div>
-            <div class="feature-hd">
-                <a href="<?php the_permalink(); ?>">
-                    <h2 class="hdg hdg_md"><?php the_title(); ?></h2>
-                </a>
-            </div>
-        </div><!-- // END feature -->
+        <a href="<?php the_permalink(); ?>" class="panel">
+            <span class="panel-media">
+                <?php the_post_thumbnail('medium'); ?>
+            </span>
+            <span class="panel-bd">
+                <?php the_title() ?>
+            </span>
+        </a>
     </li> <!-- // END blocks-item -->
 <?php endwhile; ?>
 </ol> <!-- // END blocks -->

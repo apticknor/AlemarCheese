@@ -1,0 +1,30 @@
+/* ---------------------------------------------------------------------
+ Panel
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The panel object. A background image with a decsriptive bar which is
+ mostly used for products.
+------------------------------------------------------------------------ */
+.panel {
+    display: block;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.panel-media {
+    display: block;
+}
+
+.panel-media img {
+    display: block;
+}
+
+.panel-bd {
+    display: block;
+    padding: 10px;
+    background-color: $color-brand-green;
+    color: $color-white;
+    font-size: $font-size-md;
+}

@@ -51,3 +51,10 @@
         width: 33.3333%;
     }
 }
+
+@media (min-width: 52.5em) {
+    .blocks > li {
+        padding-left: 32px;
+        padding-bottom: 32px;
+    }
+}

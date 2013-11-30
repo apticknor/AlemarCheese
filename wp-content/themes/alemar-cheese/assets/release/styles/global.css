@@ -598,6 +598,12 @@ body {
     width: 33.3333%;
   }
 }
+@media (min-width: 52.5em) {
+  .blocks > li {
+    padding-left: 32px;
+    padding-bottom: 32px;
+  }
+}
 /* ---------------------------------------------------------------------
  Teaser
 
@@ -711,6 +717,37 @@ body {
   }
 }
 /* ---------------------------------------------------------------------
+ Panel
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ The panel object. A background image with a decsriptive bar which is
+ mostly used for products.
+------------------------------------------------------------------------ */
+.panel {
+  display: block;
+  position: relative;
+  text-decoration: none !important;
+}
+
+.panel-media {
+  display: block;
+}
+
+.panel-media img {
+  display: block;
+}
+
+.panel-bd {
+  display: block;
+  padding: 10px;
+  background-color: #25433b;
+  color: white;
+  font-size: 1rem;
+}
+
+/* ---------------------------------------------------------------------
  Stamp
 
  Original Author: Anthony Ticknor
@@ -739,9 +776,15 @@ body {
   color: white;
   border: none;
   font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
+  text-decoration: none !important;
+}
+
+.btn:hover, .fscf-button-submit:hover {
+  color: #f5af40;
 }
 
 /* ---------------------------------------------------------------------

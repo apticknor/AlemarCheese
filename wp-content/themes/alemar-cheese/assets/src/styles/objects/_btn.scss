@@ -13,7 +13,13 @@
     color: $color-white;
     border: none;
     font-family: $font-serif;
+    font-size: $font-size-xs;
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
+    text-decoration: none !important; // a button should never have an undertline. ever.
+}
+
+.btn:hover {
+    color: $color-brand-yellow;
 }

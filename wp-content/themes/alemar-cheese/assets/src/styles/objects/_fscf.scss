@@ -43,5 +43,5 @@
 }
 
 .fscf-button-submit {
-    @extend .btn;
+    @extend .btn; // using extend to keep in sync with .btn - if you need more styles, add them to .btn NOT here
 }
