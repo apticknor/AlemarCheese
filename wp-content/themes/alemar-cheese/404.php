@@ -2,7 +2,7 @@
 
                 <div class="main" role="main">
                     <div class="wrapper">
-                        Page Not Found
+                        <h1 class="hdg hdg_lg">Page Not Found</h1>
                     </div> <!-- // END wrapper -->
                 </div> <!-- // END main -->
 
