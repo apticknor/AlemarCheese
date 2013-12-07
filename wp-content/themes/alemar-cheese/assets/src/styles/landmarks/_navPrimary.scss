@@ -24,7 +24,7 @@
     margin-bottom: 6px;
     border-bottom: 1px solid rgba(255,255,255,.1);
     padding: 6px 0;
-    font-size: $font-size-md;
+    font-size: $font-size-sm;
     color: $color-white;
     text-decoration: none;
     text-transform: uppercase;
@@ -79,7 +79,7 @@
 
 @media (min-width: 50em) {
     .navPrimary > li + li {
-        margin-left: 56px;
+        margin-left: 60px;
     }
 
     .navPrimary > li a {
@@ -88,11 +88,7 @@
 }
 
 @media (min-width: 61.25em) {
-    .navPrimary {
-        text-align: left; /* reset text align center from smaller screens */
-    }
-
     .navPrimary > li + li {
-        margin-left: 60px;
+        margin-left: 96px;
     }
 }

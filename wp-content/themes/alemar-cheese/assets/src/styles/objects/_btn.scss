@@ -9,7 +9,7 @@
 .btn {
     padding: 10px;
     margin: 0;
-    background-color: $color-brand-green;
+    background-color: $color-brand-lime;
     color: $color-white;
     border: none;
     font-family: $font-serif;
@@ -18,16 +18,10 @@
     letter-spacing: 1px;
     cursor: pointer;
     text-decoration: none !important; // a button should never have an undertline. ever.
+    @include transition(background-color .1s linear);
 }
 
 .btn:hover {
-    color: $color-brand-yellow;
-}
-
-.btn_buy {
-    background-color: $color-brand-lime;
-}
-
-.btn_buy:hover {
+    background-color: $color-brand-lime-dark;
     color: $color-white;
 }

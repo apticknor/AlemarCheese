@@ -1,10 +1,10 @@
 <?php // Special Ingredients ?>
 <?php if(get_field('special_ingredients')) { ?>
-<div class="feature">
-    <div class="feature-hd feature-hd_push">
-        <h3 class="hdg hdg_md">Ingredients You'll Love</h3>
+<div class="widget">
+    <div class="widget-hd">
+        <h3 class="hdg hdg_sm mix-hdg_caps">Ingredients You'll Love</h3>
     </div>
-    <div class="feature-bd feature-bd_push">
+    <div class="widget-bd">
         <ul class="hlist hlist_gapMd">
 <?php while(has_sub_field('special_ingredients')) { ?>
             <li>
@@ -14,7 +14,11 @@ $ingredientImage = wp_get_attachment_image_src($ingredientImageId, 'thumbnail', 
 $ingredientImage = $ingredientImage[0];
 ?>
                 <div class="stamp">
-                    <img src="<?php echo $ingredientImage; ?>" alt="<?php echo get_sub_field('special_ingredient_name'); ?>" />
+                    
+                    <a href="<?php echo get_sub_field('special_ingredient_link'); ?>">
+                        <img src="<?php echo $ingredientImage; ?>" alt="<?php echo get_sub_field('special_ingredient_name'); ?>" />
+                    </a>
+                
                 </div>
             </li>
 <?php } ?>

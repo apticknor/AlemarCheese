@@ -315,7 +315,7 @@ body {
   margin-bottom: 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 6px 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: white;
   text-decoration: none;
   text-transform: uppercase;
@@ -376,7 +376,7 @@ body {
 }
 @media (min-width: 50em) {
   .navPrimary > li + li {
-    margin-left: 56px;
+    margin-left: 60px;
   }
 
   .navPrimary > li a {
@@ -384,13 +384,8 @@ body {
   }
 }
 @media (min-width: 61.25em) {
-  .navPrimary {
-    text-align: left;
-    /* reset text align center from smaller screens */
-  }
-
   .navPrimary > li + li {
-    margin-left: 60px;
+    margin-left: 96px;
   }
 }
 /* ---------------------------------------------------------------------
@@ -440,7 +435,7 @@ body {
   margin-bottom: 16px;
 }
 
-@media (min-width: 30em) {
+@media (min-width: 32em) {
   .footer {
     text-align: left;
     /* reset centering of text on smaller screens */
@@ -601,6 +596,10 @@ body {
   }
 }
 @media (min-width: 52.5em) {
+  .blocks {
+    margin-left: -32px;
+  }
+
   .blocks > li {
     padding-left: 32px;
     padding-bottom: 32px;
@@ -723,6 +722,68 @@ body {
   }
 }
 /* ---------------------------------------------------------------------
+ Split
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ Mini Grid / large media object without the baggage
+------------------------------------------------------------------------ */
+.split-meta {
+  margin-top: 16px;
+  border-top: 1px solid #bbbbbb;
+  padding-top: 16px;
+}
+
+.split-md {
+  margin-bottom: 8px;
+}
+
+@media (min-width: 28em) {
+  .split:before, .split:after {
+    content: " ";
+    display: table;
+  }
+  .split:after {
+    clear: both;
+  }
+
+  .split-md {
+    float: left;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    width: 24%;
+    min-width: 132px;
+  }
+
+  .split-bd {
+    overflow: hidden;
+    /* bfc */
+  }
+
+  .split-meta {
+    clear: both;
+  }
+}
+@media (min-width: 37.5em) {
+  .split-md {
+    width: 35%;
+    margin-right: 20px;
+  }
+
+  .split-meta {
+    clear: none;
+    /* stop clearing */
+    overflow: hidden;
+    /* bfc */
+  }
+}
+@media (min-width: 50em) {
+  .split-md {
+    width: 40%;
+  }
+}
+/* ---------------------------------------------------------------------
  Panel
 
  Original Author: Anthony Ticknor
@@ -778,7 +839,7 @@ body {
 .btn, .fscf-button-submit {
   padding: 10px;
   margin: 0;
-  background-color: #25433b;
+  background-color: #4fbd63;
   color: white;
   border: none;
   font-family: Cambria, Georgia, "Times New Roman", Times, sans-serif;
@@ -787,17 +848,14 @@ body {
   letter-spacing: 1px;
   cursor: pointer;
   text-decoration: none !important;
+  -webkit-transition: background-color 0.1s linear;
+  -moz-transition: background-color 0.1s linear;
+  -o-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
 }
 
 .btn:hover, .fscf-button-submit:hover {
-  color: #f5af40;
-}
-
-.btn_buy {
-  background-color: #4fbd63;
-}
-
-.btn_buy:hover {
+  background-color: #30a245;
   color: white;
 }
 
@@ -817,6 +875,10 @@ body {
 
 .widget-hd {
   margin-bottom: 8px;
+}
+
+.widget-bd_inverse {
+  text-align: right;
 }
 
 /* ---------------------------------------------------------------------

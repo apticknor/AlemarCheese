@@ -53,6 +53,10 @@
 }
 
 @media (min-width: 52.5em) {
+    .blocks {
+        margin-left: -32px;
+    }
+    
     .blocks > li {
         padding-left: 32px;
         padding-bottom: 32px;

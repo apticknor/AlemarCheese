@@ -1,2 +1,3 @@
-<h2 class="isHidden">Related Content</h2>
-Interesting Product Sidebar Stuff
+<?php Utilities::get_template_parts( array( 'includes/widgets/special-ingredients' ) ); ?>
+<?php Utilities::get_template_parts( array( 'includes/widgets/awards' ) ); ?>
+<?php Utilities::get_template_parts( array( 'includes/widgets/buy-now' ) ); ?>

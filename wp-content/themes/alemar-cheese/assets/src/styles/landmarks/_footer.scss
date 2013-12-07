@@ -21,7 +21,7 @@
     margin-bottom: 16px;
 }
 
-@media (min-width: 30em) {
+@media (min-width: 32em) {
     .footer {
         text-align: left; /* reset centering of text on smaller screens */
         @include micro-clearfix();
