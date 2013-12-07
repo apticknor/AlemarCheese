@@ -336,7 +336,9 @@ body {
 }
 
 .navPrimary > li a:hover,
-.navPrimary > li a:focus {
+.navPrimary > li a:focus,
+.navPrimary > li.current-menu-item a,
+.single-post .navPrimary > li.current_page_parent a {
   color: #f5af40;
 }
 
@@ -678,6 +680,10 @@ body {
   margin-bottom: 16px;
 }
 
+.feature-ft {
+  text-align: right;
+}
+
 /* ---------------------------------------------------------------------
  Media
 
@@ -757,8 +763,8 @@ body {
 ------------------------------------------------------------------------ */
 .stamp {
   display: inline-block;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
 }
 
 /* ---------------------------------------------------------------------
@@ -785,6 +791,14 @@ body {
 
 .btn:hover, .fscf-button-submit:hover {
   color: #f5af40;
+}
+
+.btn_buy {
+  background-color: #4fbd63;
+}
+
+.btn_buy:hover {
+  color: white;
 }
 
 /* ---------------------------------------------------------------------

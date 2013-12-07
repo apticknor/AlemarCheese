@@ -11,5 +11,6 @@
     "empty-rules": false,
     "duplicate-background-images": false,
     "box-model": false,
-    "ids": false
+    "ids": false,
+    "overqualified-elements": false
 }

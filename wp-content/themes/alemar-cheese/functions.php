@@ -37,7 +37,7 @@
         global $menu;
         global $submenu;
 
-        $menu[5][0] = 'Blog Posts'; // Change Posts to Recipes
+        $menu[5][0] = 'Blog Posts'; // Change Posts to Blog Posts
     }
     add_action( 'admin_menu', 'edit_admin_menus' );
 
@@ -148,6 +148,15 @@
         );
     }
 
+    // make sure current-menu-item class is applied to navigation for custom post types
+    add_filter('nav_menu_css_class', 'current_type_nav_class', 10, 2);
+    function current_type_nav_class($css_class, $item) {
+        $post_type = get_query_var('post_type');
+        if ($item->attr_title != '' && $item->attr_title == $post_type) {       
+            array_push($css_class, 'current-menu-item');
+        };
+    return $css_class;
+}
 
     /* ==============================================================================================================
     Styles & Scripts

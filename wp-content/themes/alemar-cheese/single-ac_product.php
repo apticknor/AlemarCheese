@@ -4,39 +4,31 @@
                     <div class="wrapper">
 
                         <div class="grid">
-                            <div class="grid-col grid-col_full">
-
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-                                <div class="media">
-<?php if (has_post_thumbnail($post->ID)) { ?>
-                                    <div class="media-media">
-                                        <?php the_post_thumbnail('medium'); ?>
+
+                            <div class="grid-col grid-col_sub">
+                                <?php the_post_thumbnail('medium'); ?>
+                            </div> <!-- // END grid-col -->
+                            
+                            <div class="grid-col grid-col_half">
+                                <div class="feature">
+                                    <div class="feature-hd feature-hd_push">
+                                        <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
                                     </div>
-<?php } ?>
-                                    <div class="media-bd">
-                                        <div class="feature">
-                                            <div class="feature-hd feature-hd_push">
-                                                <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
-                                            </div>
-                                            <div class="feature-bd feature-bd_push">
-                                                <?php the_content(); ?>
-                                            </div>
-                                            <div class="feature-ft">
-
-<?php Utilities::get_template_parts( array( 'includes/snippets/special-ingredients' ) ); ?>
-
-<?php Utilities::get_template_parts( array( 'includes/snippets/awards' ) ); ?>
-
-
-<!-- <?php Utilities::get_template_parts( array( 'includes/snippets/paypal-button' ) ); ?> -->
-
-                                            </div>
+                                    <div class="feature-bd feature-bd_push">
+                                        <div class="userContent">
+                                            <?php the_content(); ?>
                                         </div>
                                     </div>
-                                </div> <!-- // END media -->
-<?php endwhile; ?>
-
+                                </div>
                             </div> <!-- // END grid-col -->
+                            <div class="grid-col grid-col_sub">
+<?php Utilities::get_template_parts( array( 'includes/snippets/paypal-button' ) ); ?>
+
+<?php Utilities::get_template_parts( array( 'includes/snippets/special-ingredients' ) ); ?>
+<?php Utilities::get_template_parts( array( 'includes/snippets/awards' ) ); ?>
+                            </div> <!-- // END grid-col -->
+<?php endwhile; ?>
                         </div> <!-- // END grid -->
 
 

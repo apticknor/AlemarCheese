@@ -42,7 +42,9 @@
 }
 
 .navPrimary > li a:hover,
-.navPrimary > li a:focus {
+.navPrimary > li a:focus,
+.navPrimary > li.current-menu-item a,
+.single-post .navPrimary > li.current_page_parent a  {
     color: $color-brand-yellow;
 }
 
