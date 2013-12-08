@@ -14,11 +14,10 @@ $values = $field["choices"];
                     <div class="wrapper">
                         <h1 class="isHidden">Locations</h1>
                         <div class="grid">
-                            <div class="grid-col grid-col_main">
+                            <div class="grid-col grid-col_full">
 
                                 <ol>
                                 <?php foreach($values as $value) { ?>
-                                    <li>
                                     <?php $posts_array = get_posts( array(
                                             'post_type' => 'ac_locations',
                                             'meta_query' => array(
@@ -28,8 +27,8 @@ $values = $field["choices"];
                                                 )
                                             )
                                     )); ?>
-                                    
                                     <? if ($posts_array) { ?>
+                                    <li>
                                         <h2 class="hdg hdg_md"><?php echo $value; ?></h2>
                                         
                                         <ul>
@@ -45,18 +44,12 @@ $values = $field["choices"];
                                             </li>
                                         <?php } ?>
                                         </ul>
-                                            
-                                    <?php } ?>
                                     </li>
+                                    <?php } ?>
                                 <?php } ?>
                                 </ol>
 
-                            </div> <!-- // END grid-col_main -->
-                            <div class="grid-col grid-col_sub">
-
-Sidebar Where to Find Alemar Cheese
-
-                            </div> <!-- // END grid-col_sub -->
+                            </div> <!-- // END grid-col -->
                         </div> <!-- // END grid -->
                     </div> <!-- // END wrapper -->
                 </div> <!-- // END main -->
