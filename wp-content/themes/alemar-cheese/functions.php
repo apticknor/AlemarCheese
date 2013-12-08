@@ -143,7 +143,7 @@
             'menu_position' => 5,
             'has_archive' => true,
             'rewrite' => array('slug' => 'locations'),
-            'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+            'supports' => array( 'title', 'revisions' ),
             )
         );
     }
