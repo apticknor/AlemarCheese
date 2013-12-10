@@ -17,16 +17,16 @@ URL: http://alemarcheese.com/
                                 <div class="feature">
 <?php if (has_post_thumbnail($post->ID)) { ?>
                                     <div class="feature-media">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php the_post_thumbnail('large'); ?>
-                                        </a>
-                                    </div>
-<?php } ?>
-                                    <div class="feature-bd">
-                                        <div class="userContent">
-                                            <?php the_content(); ?>
+                                        <div class="poster">
+                                            <div class="poster-img">
+                                                <?php the_post_thumbnail('large'); ?>
+                                            </div>
+                                            <div class="poster-caption">
+                                                <?php echo get_bloginfo('description'); ?>
+                                            </div>
                                         </div>
                                     </div>
+<?php } ?>
                                 </div>
 <?php endwhile; ?>
 

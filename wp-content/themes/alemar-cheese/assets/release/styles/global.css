@@ -828,6 +828,46 @@ body {
 }
 
 /* ---------------------------------------------------------------------
+ Poster
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+------------------------------------------------------------------------ */
+.poster {
+  display: block;
+  position: relative;
+  text-decoration: none !important;
+}
+
+.poster-img {
+  display: block;
+}
+
+.poster-img img {
+  display: block;
+}
+
+.poster-caption {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 37.5em) {
+  .poster-caption {
+    font-size: 1rem;
+  }
+}
+/* ---------------------------------------------------------------------
  Stamp
 
  Original Author: Anthony Ticknor

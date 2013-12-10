@@ -2,11 +2,11 @@
 <ol class="blocks">
 <?php while (have_posts()) : the_post(); ?>
     <li>
-        <a href="<?php the_permalink(); ?>" class="panel">
-            <span class="panel-media">
+        <a href="<?php the_permalink(); ?>" class="poster">
+            <span class="poster-img">
                 <?php the_post_thumbnail('medium'); ?>
             </span>
-            <span class="panel-bd">
+            <span class="poster-caption">
                 <?php the_title() ?>
             </span>
         </a>

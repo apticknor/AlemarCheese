@@ -1,0 +1,38 @@
+/* ---------------------------------------------------------------------
+ Poster
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+------------------------------------------------------------------------ */
+.poster {
+    display: block;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.poster-img {
+    display: block;
+}
+
+.poster-img img {
+    display: block;
+}
+
+.poster-caption {
+    display: block;
+    @include box-sizing(border-box);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0,0,0,.25);
+    color: $color-white;
+    font-size: $font-size-sm;
+}
+
+@media (min-width: 37.5em) {
+    .poster-caption {
+        font-size: $font-size-md;
+    }
+}
