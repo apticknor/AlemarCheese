@@ -556,6 +556,10 @@ body {
   padding-bottom: 10px;
 }
 
+.blocks_spaced > li {
+  padding-bottom: 20px;
+}
+
 .blocks > li img {
   display: block;
 }
@@ -578,6 +582,15 @@ body {
     font-size: 0.875rem;
     /* return font-size to default size */
     vertical-align: top;
+  }
+
+  .blocks_spaced {
+    margin-left: -20px;
+  }
+
+  .blocks_spaced > li {
+    padding-left: 20px;
+    padding-bottom: 20px;
   }
 }
 @media (min-width: 37.5em) {
@@ -921,6 +934,19 @@ body {
 }
 
 /* ---------------------------------------------------------------------
+ Piano List
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ A vertical list of items with a divider
+------------------------------------------------------------------------ */
+.pianoList > li + li {
+  border-top: 1px solid #bbbbbb;
+  padding-top: 20px;
+}
+
+/* ---------------------------------------------------------------------
  Heading
 
  Original Author: Anthony Ticknor
@@ -964,6 +990,10 @@ body {
 
 .mix-hdg_caps {
   text-transform: uppercase;
+}
+
+.mix-hdg_push {
+  margin-bottom: 10px;
 }
 
 /* ---------------------------------------------------------------------

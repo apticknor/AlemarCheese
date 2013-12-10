@@ -16,22 +16,24 @@ $values = $field["choices"];
                         <div class="grid">
                             <div class="grid-col grid-col_full">
 
-                                <ol>
+                                <ol class="pianoList">
                                 <?php foreach($values as $value) { ?>
                                     <?php $posts_array = get_posts( array(
-                                            'post_type' => 'ac_locations',
+                                            'post_type'  => 'ac_locations',
+                                            'orderby'    => 'title',
+                                            'order'      => 'ASC',
                                             'meta_query' => array(
                                                 array(
-                                                    'key' => 'location_state',
+                                                    'key'   => 'location_state',
                                                     'value' => $value,
                                                 )
                                             )
-                                    )); ?>
+                                    ));?>
                                     <? if ($posts_array) { ?>
                                     <li>
-                                        <h2 class="hdg hdg_md"><?php echo $value; ?></h2>
+                                        <h2 class="hdg hdg_md mix-hdg_push"><?php echo $value; ?></h2>
                                         
-                                        <ul>
+                                        <ul class="blocks blocks_spaced">
                                         <?php foreach($posts_array as $post) { ?>
                                             <li>
                                                 <a id="<?php echo $post->post_name ?>" href="<?php the_field('location_link') ?>"><?php the_title() ?></a><br/>

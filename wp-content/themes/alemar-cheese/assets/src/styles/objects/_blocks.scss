@@ -14,6 +14,10 @@
     padding-bottom: 10px;
 }
 
+.blocks_spaced > li {
+    padding-bottom: 20px;
+}
+
 .blocks > li img {
     display: block;
 }
@@ -32,6 +36,15 @@
         padding-left: 10px;
         font-size: $font-size-default; /* return font-size to default size */
         vertical-align: top;
+    }
+    
+    .blocks_spaced {
+        margin-left: -20px;
+    }
+    
+    .blocks_spaced > li {
+        padding-left: 20px;
+        padding-bottom: 20px;
     }
 }
 

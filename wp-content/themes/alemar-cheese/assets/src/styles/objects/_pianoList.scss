@@ -1,0 +1,14 @@
+/* ---------------------------------------------------------------------
+ Piano List
+
+ Original Author: Anthony Ticknor
+ Contributors: N/A
+
+ A vertical list of items with a divider
+------------------------------------------------------------------------ */
+.pianoList > li + li {
+    // removed as the piano list is dependant on it's content (like blocks) to push down the bottom
+    // margin-top: 20px; 
+    border-top: 1px solid $color-lightgrey;
+    padding-top: 20px;
+}
