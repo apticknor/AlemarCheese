@@ -147,6 +147,16 @@
         );
     }
 
+    // redirect all single page links for locations to an id on the archive page
+    add_action('post_type_link','yoursite_post_type_link',10,2);
+    function yoursite_post_type_link($link,$post) {
+        $post_type = 'ac_locations';
+        if ($post->post_type==$post_type) {
+            $link = get_post_type_archive_link($post_type) ."#{$post->post_name}";
+        }
+        return $link;
+    }
+
     // make sure current-menu-item class is applied to navigation for custom post types
     add_filter('nav_menu_css_class', 'current_type_nav_class', 10, 2);
     function current_type_nav_class($css_class, $item) {

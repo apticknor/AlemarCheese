@@ -1,24 +1,7 @@
-<?php Utilities::get_template_parts( array( 'includes/global/html-header', 'includes/global/header' ) ); ?>
+<?php
 
-                <div class="main" role="main">
-                    <div class="wrapper">
+$url = get_post_type_archive_link('ac_locations') . '#' . $post->post_name;
+wp_redirect( $url, 301 );
+exit;
 
-
-
-
-
-
-
-
-Location Detail Page Goes Here
-
-
-
-
-
-
-
-                    </div> <!-- // END wrapper -->
-                </div> <!-- // END main -->
-
-<?php Utilities::get_template_parts( array( 'includes/global/footer','includes/global/html-footer' ) ); ?>
+?>
