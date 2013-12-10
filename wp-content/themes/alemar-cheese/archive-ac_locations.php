@@ -34,7 +34,7 @@ $values = $field["choices"];
                                         <ul>
                                         <?php foreach($posts_array as $post) { ?>
                                             <li>
-                                                <a href="<?php the_field('location_link') ?>"><?php the_title() ?></a><br/>
+                                                <a id="<?php echo $post->post_name ?>" href="<?php the_field('location_link') ?>"><?php the_title() ?></a><br/>
                                                 <?php the_field('location_address_line_1') ?><br/>
                                                 <?php if(get_field('location_address_line_2')) { ?>
                                                     <?php the_field('location_address_line_2') ?><br/>
