@@ -8,7 +8,37 @@ URL: http://alemarcheese.com/
 
                 <div class="main" role="main">
                     <div class="wrapper">
-                        home page
+
+                        <div class="grid">
+                            <div class="grid-col grid-col_main">
+
+
+<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+                                <div class="feature">
+<?php if (has_post_thumbnail($post->ID)) { ?>
+                                    <div class="feature-media">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail('large'); ?>
+                                        </a>
+                                    </div>
+<?php } ?>
+                                    <div class="feature-bd">
+                                        <div class="userContent">
+                                            <?php the_content(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+<?php endwhile; ?>
+
+
+                            </div> <!-- // END grid-col_main -->
+                            <div class="grid-col grid-col_sub">
+
+<?php Utilities::get_template_parts(array('includes/components/sidebar-home')); ?>
+
+                            </div> <!-- // END grid-col_sub -->
+                        </div> <!-- // END grid -->
+
                     </div> <!-- // END wrapper -->
                 </div> <!-- // END main -->
 
