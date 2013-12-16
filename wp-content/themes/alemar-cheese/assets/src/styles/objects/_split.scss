@@ -6,17 +6,15 @@
 
  Mini Grid / large media object without the baggage
 ------------------------------------------------------------------------ */
-.split-meta {
-    margin-top: 16px;
-    border-top: 1px solid $color-lightgrey;
-    padding-top: 16px;
-}
-
 .split-md {
     margin-bottom: 8px;
 }
 
-@media (min-width: 28em) {
+.split-md > img {
+    display: block;
+}
+
+@media (min-width: 38em) {
 
     .split {
         @include micro-clearfix();
@@ -24,29 +22,12 @@
     
     .split-md {
         float: left;
-        margin-right: 16px;
+        width: 45%;
+        margin-right: 20px;
         margin-bottom: 16px;
-        width: 24%;
-        min-width: 132px;
     }
 
     .split-bd {
-        overflow: hidden; /* bfc */
-    }
-
-    .split-meta {
-        clear: both;
-    }
-}
-
-@media (min-width: 37.5em) {
-    .split-md {
-        width: 35%;
-        margin-right: 20px;
-    }
-    
-    .split-meta {
-        clear: none; /* stop clearing */
         overflow: hidden; /* bfc */
     }
 }

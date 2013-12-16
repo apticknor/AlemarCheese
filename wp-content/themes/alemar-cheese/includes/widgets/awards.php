@@ -1,10 +1,10 @@
 <?php // Awards ?>
 <?php if(get_field('awards')) { ?>
-<div class="widget">
-    <div class="widget-hd">
+<div class="box">
+    <div class="box-hd">
         <h3 class="hdg hdg_sm mix-hdg_caps">Awards &amp; Recognition</h3>
     </div>
-    <div class="widget-bd">
+    <div class="box-bd">
         <ul class="hlist hlist_gapMd">
 <?php while(has_sub_field('awards')) { ?>
             <li>

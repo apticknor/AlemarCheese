@@ -1,10 +1,10 @@
 <?php // Special Ingredients ?>
 <?php if(get_field('special_ingredients')) { ?>
-<div class="widget">
-    <div class="widget-hd">
+<div class="box">
+    <div class="box-hd">
         <h3 class="hdg hdg_sm mix-hdg_caps">Ingredients You'll Love</h3>
     </div>
-    <div class="widget-bd">
+    <div class="box-bd">
         <ul class="hlist hlist_gapMd">
 <?php while(has_sub_field('special_ingredients')) { ?>
             <li>

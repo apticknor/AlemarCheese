@@ -6,7 +6,8 @@
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
                         <div class="split">
                             <div class="split-md">
-                                <?php the_post_thumbnail('medium'); ?>
+                                <?php the_post_thumbnail('large'); ?>
+                                <?php Utilities::get_template_parts(array('includes/components/sidebar-product')); ?>
                             </div>
                             <div class="split-bd">
                                 
@@ -15,15 +16,13 @@
                                         <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
                                     </div>
                                     <div class="feature-bd">
-                                        <?php the_content(); ?>
+                                        <div class="userContent">
+                                            <?php the_content(); ?>
+                                            <?php Utilities::get_template_parts( array( 'includes/snippets/paypal-button' ) ); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 
-                            </div>
-                            <div class="split-meta">
-                            
-<?php Utilities::get_template_parts(array('includes/components/sidebar-product')); ?>
-
                             </div>
                         </div>
 
