@@ -41,6 +41,8 @@
     }
     add_action( 'admin_menu', 'edit_admin_menus' );
 
+    add_image_size( 'large-thumbnail', 400, 400, true ); // 400 pixels wide by 500 pixels tall, hard crop mode
+
     /* ==============================================================================================================
     Reset Defaults
     =============================================================================================================== */
@@ -157,6 +159,34 @@
         return $link;
     }
 
+        /* Custom post type for cheese press! */
+    add_action( 'init', 'create_post_type3' );
+    function create_post_type3() {
+        register_post_type( 'ac_press',
+            array(
+                'labels' => array(
+                    'name' => __( 'Press' ),
+                    'singular_name' => __( 'Press' )
+                ),
+            'public' => true,
+            'menu_position' => 5,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'press'),
+            'supports' => array( 'title', 'thumbnail', 'revisions' ),
+            )
+        );
+    }
+
+    // redirect all single page links for press to an id on the archive page
+    add_action('post_type_link','yoursite_post_type_link2',10,2);
+    function yoursite_post_type_link2($link,$post) {
+        $post_type = 'ac_press';
+        if ($post->post_type==$post_type) {
+            $link = get_post_type_archive_link($post_type) ."#{$post->post_name}";
+        }
+        return $link;
+    }
+    
     // make sure current-menu-item class is applied to navigation for custom post types
     add_filter('nav_menu_css_class', 'current_type_nav_class', 10, 2);
     function current_type_nav_class($css_class, $item) {
