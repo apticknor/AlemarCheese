@@ -5,23 +5,30 @@
                         <h1 class="isHidden">Press</h1>
                         <div class="grid">
                             <div class="grid-col grid-col_full">
+                                <ol class="pianoList">
+<?php foreach(press_by_year() as $year => $posts) : ?>
+                                    <li>
+                                        <h2 class="hdg hdg_md mix-hdg_push"><?php echo $year; ?></h2>
+                                        <ul class="blocks blocks_spaced">
+<?php foreach($posts as $post) : setup_postdata($post); ?>
+                                            <li>
+                                                <a id="<?php echo $post->post_name ?>" href="<?php the_field('press_link'); ?>">
+                                                    <?php // the_post_thumbnail('large-thumbnail'); ?>
 
-<ol class="blocks blocks_tight">
-<?php while (have_posts()) : the_post(); ?>
-    <li>
-        <a id="<?php echo $post->post_name ?>" href="<?php the_field('press_link'); ?>" class="poster">
-            <span class="poster-img">
-                <?php the_post_thumbnail('large-thumbnail'); ?>
-            </span>
-            <span class="poster-caption">
-                <?php the_title() ?>
-            </span>
-        </a>
-    </li> <!-- // END blocks-item -->
-<?php endwhile; ?>
-</ol> <!-- // END blocks -->
+                                                    <?php the_title(); ?>
+                                                </a>
+                                                    <?php if(get_field('press_source')) { ?>
+                                                    <br/>&ndash;<?php the_field('press_source'); ?>
+                                                    <?php } ?>
 
-<?php Utilities::get_template_parts(array('includes/snippets/pagination')); ?>
+                                            </li>
+<?php endforeach; ?>
+                                        </ul>
+                                    </li>
+<?php endforeach; ?>
+                                </ol>
+
+
 
                             </div> <!-- // END grid-col_sub -->
                         </div> <!-- // END grid -->

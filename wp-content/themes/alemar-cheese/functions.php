@@ -159,7 +159,7 @@
         return $link;
     }
 
-        /* Custom post type for cheese press! */
+    /* Custom post type for cheese press! */
     add_action( 'init', 'create_post_type3' );
     function create_post_type3() {
         register_post_type( 'ac_press',
@@ -186,12 +186,12 @@
         }
         return $link;
     }
-    
+
     // make sure current-menu-item class is applied to navigation for custom post types
     add_filter('nav_menu_css_class', 'current_type_nav_class', 10, 2);
     function current_type_nav_class($css_class, $item) {
         $post_type = get_query_var('post_type');
-        if ($item->attr_title != '' && $item->attr_title == $post_type) {       
+        if ($item->attr_title != '' && $item->attr_title == $post_type) {
             array_push($css_class, 'current-menu-item');
         };
     return $css_class;
@@ -254,4 +254,32 @@
                 <?php comment_text() ?>
             </article>
         <?php endif;
+    }
+
+    /* ==============================================================================================================
+    Shared Functions
+    =============================================================================================================== */
+
+    function press_by_year() {
+    // array to use for results
+        $years = array();
+
+        // get posts from WP
+        $posts = get_posts(array(
+        'numberposts' => -1,
+        'orderby' => 'post_date',
+        'order' => 'ASC',
+        'post_type' => 'ac_press',
+        'post_status' => 'publish'
+        ));
+
+        // loop through posts, populating $years arrays
+        foreach($posts as $post) {
+            $years[date('Y', strtotime($post->post_date))][] = $post;
+        }
+
+        // reverse sort by year
+        krsort($years);
+
+        return $years;
     }
