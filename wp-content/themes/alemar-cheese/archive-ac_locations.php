@@ -44,19 +44,8 @@ $values = $field["choices"];
                                                 <?php if(get_field('location_address_line_2')) { ?>
                                                     <?php the_field('location_address_line_2') ?><br/>
                                                 <?php } ?>
-                                                <?php if(get_field('location_city')) { ?>
-                                                    <?php the_field('location_city') ?>,
-                                                <?php } ?>
-                                                <?php if(get_field('location_state')) { ?>
-                                                    <?php the_field('location_state') ?>,
-                                                <?php } ?>
-                                                <?php if(get_field('location_zip_code')) { ?>
-                                                    <?php the_field('location_zip_code') ?>
-                                                <?php } ?>
-                                                <?php if(get_field('location_phone_number')) { ?>
-                                                    <br/>
-                                                    <?php the_field('location_phone_number') ?>
-                                                <?php } ?>
+                                                <?php if(get_field('location_city')) { ?><?php the_field('location_city') ?><?php } ?><?php if(get_field('location_state')) { ?>, <?php the_field('location_state') ?><?php } ?><?php if(get_field('location_zip_code')) { ?>, <?php the_field('location_zip_code') ?><?php } ?>
+                                                <?php if(get_field('location_phone_number')) { ?><br/><?php the_field('location_phone_number') ?><?php } ?>
                                             </li>
                                         <?php } ?>
                                         </ul>
