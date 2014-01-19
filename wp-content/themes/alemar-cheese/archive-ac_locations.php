@@ -19,6 +19,7 @@ $values = $field["choices"];
                                 <ol class="pianoList">
                                 <?php foreach($values as $value) { ?>
                                     <?php $posts_array = get_posts( array(
+                                            'posts_per_page' => '2000',
                                             'post_type'  => 'ac_locations',
                                             'orderby'    => 'title',
                                             'order'      => 'ASC',
@@ -32,17 +33,30 @@ $values = $field["choices"];
                                     <? if ($posts_array) { ?>
                                     <li>
                                         <h2 class="hdg hdg_md mix-hdg_push"><?php echo $value; ?></h2>
-                                        
+
                                         <ul class="blocks blocks_spaced">
                                         <?php foreach($posts_array as $post) { ?>
                                             <li>
                                                 <a id="<?php echo $post->post_name ?>" href="<?php the_field('location_link') ?>"><?php the_title() ?></a><br/>
-                                                <?php the_field('location_address_line_1') ?><br/>
+                                                <?php if(get_field('location_address_line_1')) { ?>
+                                                    <?php the_field('location_address_line_1') ?><br/>
+                                                <?php } ?>
                                                 <?php if(get_field('location_address_line_2')) { ?>
                                                     <?php the_field('location_address_line_2') ?><br/>
                                                 <?php } ?>
-                                                <?php the_field('location_city') ?>, <?php the_field('location_state') ?>, <?php the_field('location_zip_code') ?><br/>
-                                                <?php the_field('location_phone_number') ?>
+                                                <?php if(get_field('location_city')) { ?>
+                                                    <?php the_field('location_city') ?>,
+                                                <?php } ?>
+                                                <?php if(get_field('location_state')) { ?>
+                                                    <?php the_field('location_state') ?>,
+                                                <?php } ?>
+                                                <?php if(get_field('location_zip_code')) { ?>
+                                                    <?php the_field('location_zip_code') ?>
+                                                <?php } ?>
+                                                <?php if(get_field('location_phone_number')) { ?>
+                                                    <br/>
+                                                    <?php the_field('location_phone_number') ?>
+                                                <?php } ?>
                                             </li>
                                         <?php } ?>
                                         </ul>
