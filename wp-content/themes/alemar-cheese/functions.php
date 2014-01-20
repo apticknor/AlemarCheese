@@ -212,6 +212,9 @@
         wp_register_script('jquery2', '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js');
         wp_enqueue_script('jquery2');
 
+        wp_register_script('requirejs', get_template_directory_uri().'/assets/release/scripts/libs/require.js');
+        wp_enqueue_script('requirejs');
+
         wp_register_script('site', get_template_directory_uri().'/assets/release/scripts/main.js');
         wp_enqueue_script('site');
 
