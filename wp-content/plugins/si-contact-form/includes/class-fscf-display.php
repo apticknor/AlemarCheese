@@ -249,15 +249,29 @@ $('head').append(fscf_styles);
 
   static function get_honeypot_slugs($fields) {
   // filter a list of field names that are not currently used on the form
-		$decoy_fields = array( 'address','suite','company','phone','title','city','state','fax','newsletter','webites','zipcode','address2','firstname','lastname','birthday');
+	 $decoy_fields = array( 'address','suite','company','phone','title','city','state','fax','newsletter','webites','zipcode','address2','firstname','lastname','birthday');
 
-		if ($fields && is_array($fields)) {
-			foreach ($decoy_fields as $index => $decoy) {
-				if (isset($fields[$decoy])) {
+      // check for custom post types,
+      // none of the field slugs can be the same as a post type rewrite_slug
+      // or you will get "page not found" when posting the form with that field filled in
+
+      $pt_args = array('public' => true,'_builtin' => false);
+      $post_types = get_post_types( $pt_args, 'objects' );
+      $pt_slugs = array();
+      if ( $post_types ) {
+         foreach ( $post_types as $post_type ) {
+              $pt_slugs[] = ( isset( $post_type->rewrite_slug ) ) ? $post_type->rewrite_slug : $post_type->name;
+         }
+      }
+
+	  if ($fields && is_array($fields)) {
+		  foreach ($decoy_fields as $index => $decoy) {
+				if (isset($fields[$decoy]))  // decoy field matches a form field, remove the decoy from list
 					unset($decoy_fields[$index]);
-				}
-			}
-		}
+                if (!empty($pt_slugs) && in_array( $decoy, $pt_slugs ) )
+                    unset($decoy_fields[$index]); // decoy field matches a custom post type, remove the decoy from list
+		  }
+	  }
 
 		sort($decoy_fields);
 		return $decoy_fields;
@@ -357,6 +371,34 @@ $string .= '
 				//self::clean_temp_dir( FSCF_ATTACH_DIR, 3 );
 			}
 		}
+
+      // check for custom post types, returns the global static self::$post_types_slugs
+      // none of the field slugs can be the same as a post type rewrite_slug
+      // or you will get "page not found" when posting the form with that field filled in
+      $pt_args = array('public' => true,'_builtin' => false);
+      $post_types = get_post_types( $pt_args, 'objects' );
+      $slug_list = array();
+      $post_types_slugs = array('post','page','attachment','revision');
+      if ( $post_types ) {
+         foreach ( $post_types as $post_type ) {
+              $post_types_slugs[] = ( isset( $post_type->rewrite_slug ) ) ? $post_type->rewrite_slug : $post_type->name;
+         }
+        // print_r($post_types_slugs);
+
+        foreach ( self::$form_options['fields'] as $key => $field ) {
+          $slug_list[] = $field['slug'];
+        }
+        //print_r($slug_list);
+
+        foreach ($post_types_slugs as $key => $slug) {
+            if ( in_array( strtolower( $slug ), $slug_list ) ) {
+             	$string .= '
+		<div id="fscf_form_error_email' . self::$form_id_num . '" ' . self::get_this_css('error_style') . '>' .sprintf( __( 'Warning: one of your field tags conflicts with the post type redirect tag "%s". To automatically correct this, click the <b>Save Changes</b> button on the form edit page.', 'si-contact-form' ), $slug )
+         . "\n    </div>\n";
+            }
+
+        }
+      }
 
      	// print input error message
 		if ( self::$contact_error ) {
@@ -461,6 +503,14 @@ $string .= '
           'placeholder'	 => 'false',
          );
 
+		// Create a list of follow values for fields
+		$field_follow = array();
+		foreach ( self::$form_options['fields'] as $key => $field ) {
+			if ( 'true' != $field['disable'] ) 
+				$field_follow[] = $field['follow'];
+		}
+		
+		$fld_cnt = 0;
 		$fields_in_use = array();
 		foreach ( self::$form_options['fields'] as $key => $field ) {
 
@@ -487,14 +537,18 @@ $string .= '
 					$string .= "\n" . '<div id="fscf_div_clear' . self::$form_id_num.'_'.$key.'" '.self::get_this_css('clear_style').'>' . "\n" . '  ';
                     $string .= '<div id="fscf_div_field' . self::$form_id_num.'_'.$key.'" ';
                     // find out if this field preceeds a follow field or vcita enabled (narrow), else it needs to be (wide)
-                    if ( ( isset(self::$form_options['fields'][$key+1] ) && self::$form_options['fields'][$key+1]['follow'] == 'true' )
-                      || ( self::$form_options['vcita_scheduling_button'] == 'true' && self::is_vcita_activated() )
-                       )
-                      $string .= self::get_this_css('field_prefollow_style').'>'; // narrow
-                    else
-                      $string .= self::get_this_css('field_left_style').'>'; // wide
+//                    if ( ( isset(self::$form_options['fields'][$key+1] ) && self::$form_options['fields'][$key+1]['follow'] == 'true' )
+                    if ( ( isset($field_follow[$fld_cnt+1] ) && $field_follow[$fld_cnt+1] == 'true' )
+						// Added by Ken Carlson for displaying name parts inline
+						|| ( FSCF_NAME_FIELD == $field['standard'] && 'name' != self::$form_options['name_format'] && 'true' == $field['inline'] )
+                      || ( self::$form_options['vcita_scheduling_button'] == 'true' && self::is_vcita_activated() 
+                       ) )
+						  $string .= self::get_this_css('field_prefollow_style').'>'; // narrow
+					   else
+						  $string .= self::get_this_css('field_left_style').'>'; // wide
 				}
 			}
+			$fld_cnt++;
 
 			// Display code common to all/most field types
 			if ( ! in_array( $field['type'], array('fieldset', 'fieldset-close', 'hidden') ) ) {
@@ -558,6 +612,10 @@ $string .= '
 						$string .=  ' maxlength="'.$field['max_len'].'"';
 					if($field['attributes'] != '')
 					  $string .= ' '.$field['attributes'];
+                    if ( 'true' == $field['placeholder'] && $field['default'] != '') {
+                         $string .= ' placeholder="'.esc_attr($field['default']).'"';
+                         self::$placeholder = 1;
+                    }
 					$string .= " />\n    </div>\n";
 					break;
 				
@@ -643,16 +701,25 @@ $string .= '
 		<input type="submit" id="fscf_submit' . self::$form_id_num . '" ' . self::get_this_css('button_style') . ' value="';
 		$string .= (self::$form_options['title_submit'] != '') ? esc_attr( self::$form_options['title_submit'] ) : esc_attr( __( 'Submit', 'si-contact-form' ) );
 		$string .= '" ';
-        if( !empty(self::$form_options['submit_attributes']) )
+        $onclick = 0;
+        if( !empty(self::$form_options['submit_attributes']) ) {
                 $string .= self::$form_options['submit_attributes'].' ';
-		if ( self::$form_options['enable_areyousure'] == 'true' ) {
+             if ( preg_match( "/onclick/i", self::$form_options['submit_attributes'] ) )
+                $onclick = 1;
+        }
+		if ( self::$form_options['enable_areyousure'] == 'true' && !$onclick) {
 			$msg = (self::$form_options['title_areyousure'] != '') ? esc_html( addslashes( self::$form_options['title_areyousure'] ) ) : esc_html( addslashes( __( 'Are you sure?', 'si-contact-form' ) ) );
 			$string .= ' onclick="return confirm(\'' . $msg . '\')" ';
 
 		}
+        // only allow the submit button one click
+        if( self::$form_options['enable_submit_oneclick'] == 'true' && self::$form_options['enable_areyousure'] != 'true' && !$onclick) {
+          $msg = (self::$form_options['title_submitting'] != '') ? esc_html( addslashes( self::$form_options['title_submitting'] ) ) : esc_html( addslashes( __( 'Submitting...', 'si-contact-form' ) ) );
+          $string .= ' onclick="this.disabled=true; this.value=\''.$msg.'\'; this.form.submit();" ';
+        }
 		$string .= '/> ';
 		
-		if ( self::$form_options['enable_reset'] == 'true' ) {
+		if ( !self::$contact_error && self::$form_options['enable_reset'] == 'true' ) {
 			$string .= '<input type="reset" id="fscf_reset' . self::$form_id_num . '" ' . self::get_this_css('reset_style') . ' value="';
 			$string .= (self::$form_options['title_reset'] != '') ? esc_attr( self::$form_options['title_reset'] ) : esc_attr( __( 'Reset', 'si-contact-form' ) );
 			$msg = addslashes( __( 'Do you really want to reset the form?', 'si-contact-form' ) );
@@ -713,6 +780,9 @@ $string .= '
 ';
 }
 
+        if ( !empty( self::$form_options['after_form_note'] ) )
+           $string .= self::$form_options['after_form_note'];
+
 		$string .= "\n".'<!-- Fast Secure Contact Form plugin '.FSCF_VERSION.' - end - FastSecureContactForm.com -->'. "\n";
 
 		return($string);
@@ -725,6 +795,7 @@ $string .= '
 
 		// Find logged in user's WP name (auto form fill feature):
 		// http://codex.wordpress.org/Function_Reference/get_currentuserinfo
+        $auto_fill = 0;
 		if ( isset(self::$form_content[$field['slug']]) &&
         '' == self::$form_content[$field['slug']] &&
         $user_ID != '' &&
@@ -733,6 +804,7 @@ $string .= '
 
         self::$form_options['auto_fill_enable'] == 'true' ) {
 			// user logged in (and not admin rights) (and auto_fill_enable set in options)
+            $auto_fill = 1;
 			self::$form_content[$field['slug']] = $current_user->user_login;
 		}
 
@@ -836,6 +908,8 @@ $string .= '    </div>
 		$string .= ' type="text" id="fscf_name' . self::$form_id_num . '" name="full_name" value="' . esc_attr( self::$form_content[$field['slug']] ) . '" ' . self::$aria_required;
         if($field['attributes'] != '')
 			  $string .= ' '.$field['attributes'];
+        if($auto_fill) //auto form fill logged in name and email
+              $string .= ' readonly="readonly"';
 if ( 'true' == $field['placeholder'] && $field['default'] != '') {
    $string .= ' placeholder="'.esc_attr($field['default']).'"';
  self::$placeholder = 1;
@@ -846,10 +920,16 @@ if ( 'true' == $field['placeholder'] && $field['default'] != '') {
 				break;
 			case 'first_last':
 				$string .= $f_name_string;
+				// See if name parts are to be displayed inline
+				if ( 'true' == $field['inline'] )
+					$string .= '</div><div ' . self::get_this_css('field_follow_style').'>';
 				$string .= $l_name_string;
 				break;
 			case 'first_middle_i_last':
 				$string .= $f_name_string;
+                // See if name parts are to be displayed inline
+				if ( 'true' == $field['inline'] )
+					$string .= '</div><div ' . self::get_this_css('field_follow_style').'>';
 				$string .= '
     <div ' . self::get_this_css('title_style') . ">\n";
               if ( 'false' == $field['hide_label'] ) {
@@ -873,10 +953,16 @@ $string .= '    </div>
         $string .= ' />
     </div>
 ';
+				// See if name parts are to be displayed inline
+				if ( 'true' == $field['inline'] )
+					$string .= '</div><div ' . self::get_this_css('field_follow_style').'>';
 				$string .= $l_name_string;
 				break;
 			case 'first_middle_last':
 				$string .= $f_name_string;
+                // See if name parts are to be displayed inline
+				if ( 'true' == $field['inline'] )
+					$string .= '</div><div ' . self::get_this_css('field_follow_style').'>';
 				$string .= '
     <div ' . self::get_this_css('title_style') . ">\n";
               if ( 'false' == $field['hide_label'] ) {
@@ -899,6 +985,9 @@ $string .= '    </div>
  }
         $string .= ' />
     </div>';
+    				// See if name parts are to be displayed inline
+				if ( 'true' == $field['inline'] )
+					$string .= '</div><div ' . self::get_this_css('field_follow_style').'>';
 				$string .= $l_name_string;
 				break;
 		}
@@ -915,9 +1004,11 @@ $string .= '    </div>
 
 		// Find logged in user's WP email address (auto form fill feature):
 		// http://codex.wordpress.org/Function_Reference/get_currentuserinfo
+        $auto_fill = 0;
 		if ( '' == self::$form_content[$field['slug']] && $user_ID != '' && $current_user->user_login != 'admin' &&
 				!current_user_can( 'manage_options' ) && self::$form_options['auto_fill_enable'] == 'true' ) {
 			// user logged in (and not admin rights) (and auto_fill_enable set in options)
+            $auto_fill = 1;
 			self::$form_content[$field['slug']] = $current_user->user_email;
             if ( 'true' == self::$form_options['double_email'] )
 			    self::$form_content['email2'] = $current_user->user_email;
@@ -958,6 +1049,8 @@ $string .= '      <label ';
 		$string .= '" ' . self::$aria_required;
         if($field['attributes'] != '')
 				  $string .= ' '.$field['attributes'];
+        if($auto_fill) //auto form fill logged in name and email
+              $string .= ' readonly="readonly"';
          if ( 'true' == $field['placeholder'] && $email_default != '') {
             $string .= ' placeholder="'.esc_attr($email_default).'"';
             self::$placeholder = 1;
@@ -983,6 +1076,8 @@ $string .= '      <label ';
 		$string .= ' type="'.$email_input_type.'" id="fscf_email' . self::$form_id_num. '_2" name="email2" value="' . esc_attr( self::$form_content['email2'] ) . '" ' . self::$aria_required;
         if($field['attributes'] != '') // XXX same as email 1 though
 					  $string .= ' '.$field['attributes'];
+        if($auto_fill) //auto form fill logged in name and email
+              $string .= ' readonly="readonly"';
          if ( 'true' == $field['placeholder'] && $email2_default != '') {
               $string .= ' placeholder="'.esc_attr($email2_default).'"';
               self::$placeholder = 1;
@@ -1016,8 +1111,9 @@ $string .= '      <label ';
 $string .= "    </div>";
 		}
         $type = $field['type'];
-        if ( 'email' == $field['type'] || 'url' == $field['type']) // XXX fix this later? email or url type was breaking the 'already posted' javascript
-           $type = 'text';
+        //if ( 'email' == $field['type'] || 'url' == $field['type']) // XXX fix this later? email or url type was breaking the 'already posted' javascript
+        //   $type = 'text';
+        // Since then I have changed the 'already posted' javascript, so try email and url types again.
         $string .= "\n    <div " . self::get_this_css('field_div_style') . '>' . self::echo_if_error( $field['slug'] ) ."\n"
 		. '      <input ';
 		$string .= ($field['input_css'] != '') ? self::convert_css( $field['input_css'] ) : self::get_this_css('field_style');
@@ -1267,7 +1363,16 @@ $string .= "    </div>";
 			"\n      <input ";
 		$string .= ($field['input_css'] != '') ? self::convert_css( $field['input_css'] ) : self::get_this_css('field_style');
 		$string .= ' type="text" id="fscf_field' . self::$form_id_num . '_' . $key . '" name="' . $field['slug'] . '" value="';
-		$string .= ( isset( self::$form_content[$field['slug']] ) && self::$form_content[$field['slug']] != '') ? esc_attr( self::$form_content[$field['slug']] ) : $cal_date_array[self::$form_options['date_format']];
+		if ( isset( self::$form_content[$field['slug']] ) && self::$form_content[$field['slug']] != '') {
+        	      $string .=  esc_attr( self::$form_content[$field['slug']] );
+        } else {
+                if ($field['default'] == '[today]') {
+                    $date_formatting  = self::convert_date_for_php();
+                    $string .=  esc_attr( date($date_formatting) );
+                } else {
+             	    $string .= $cal_date_array[self::$form_options['date_format']];
+                }
+        }
 		$string .= '" ' . self::$aria_required . ' size="15" ';
 		if ( $field['attributes'] != '' )
 			$string .= ' ' . $field['attributes'];
@@ -1275,7 +1380,30 @@ $string .= "    </div>";
 
 		return($string);
 	}	// end function display_field_date
-	
+
+    static function convert_date_for_php() {
+
+       $date_format = self::$form_options['date_format'];
+
+    // find the delimiter of the date_format setting: slash, dash, or dot
+    if (strpos($date_format,'/')) {
+      $delim = '/'; $regexdelim = '\/';
+    } else if (strpos($date_format,'-')) {
+       $delim = '-'; $regexdelim = '-';
+    } else if (strpos($date_format,'.')) {
+      $delim = '.';  $regexdelim = '\.';
+    }
+
+    if ( $date_format == "mm${delim}dd${delim}yyyy" )
+        return "m${delim}d${delim}Y";
+	if ( $date_format == "dd${delim}mm${delim}yyyy" )
+        return "d${delim}m${delim}Y";
+	if ( $date_format == "yyyy${delim}mm${delim}dd" )
+       return "Y${delim}m${delim}d";
+
+       return "m${delim}d${delim}Y"; ;
+   }
+
 	static function display_field_attachment($key, $field) {
 		$string = '';
 		
@@ -2000,15 +2128,22 @@ newwin.document.close()
 }
         }
 		$ctf_thank_you .= '
-	</div>';
+	</div>
+';
 
+if (!empty(self::$form_options['success_page_html'])) {
+      $ctf_thank_you .= self::$form_options['success_page_html'] .'
+';
+
+}
 		if (self::$form_options['border_enable'] == 'true') {
-			$ctf_thank_you .= '
-	</fieldset>';
+			$ctf_thank_you .= '   </fieldset>';
 		}
 		$ctf_thank_you .= '
 </div>
-<!-- Fast Secure Contact Form plugin '.esc_html(FSCF_VERSION).' - end - FastSecureContactForm.com -->
+';
+
+		$ctf_thank_you .= '<!-- Fast Secure Contact Form plugin '.esc_html(FSCF_VERSION).' - end - FastSecureContactForm.com -->
 ';
 
      //filter hook for thank_you_message

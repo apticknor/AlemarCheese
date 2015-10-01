@@ -22,9 +22,10 @@ class FSCF_Process {
 	static $email_header = array();		// Fields for the email header
 	static $email_set_wp = array();   // used in mail send function
 	static $email_fields;  // this holds the fields to display in sending an email
+    static $av_tags_arr, $av_tags_subj_arr;		// list of avail field tags
 	static $text_type_fields = array(
 		'text', 
-		'textarea', 
+		'textarea',
 		'email', 
 		'password',
 		'url'
@@ -159,6 +160,9 @@ class FSCF_Process {
 
 		// Start the email message
         // XXX someone might want to change To: , could add a setting
+        self::$email_fields['name_to'] = str_replace('&#39;',"'",self::$email_fields['name_to']);
+        self::$email_fields['name_to'] = str_replace('&quot;','"',self::$email_fields['name_to']);
+        self::$email_fields['name_to'] = str_replace('&amp;','&',self::$email_fields['name_to']);
 		self::$email_msg = self::make_bold( __( 'To:', 'si-contact-form' ) ) . $inline_or_newline . self::$email_fields['name_to'] .self::$php_eol.self::$php_eol;
 	
 		// ********* Now process the fields set up in Options **********
@@ -188,7 +192,7 @@ class FSCF_Process {
 					self::$form_data[$field['slug']] = FSCF_Util::clean_input( $_POST[$field['slug']] );
 			}
 			// Set up values for unchecked checkboxes and unselected radio types
-			else if ( 'checkbox' == $field['type'] || 'radio' == $field['type'] ) 
+			else if ( 'checkbox' == $field['type'] || 'radio' == $field['type'] )
 				self::$form_data[$field['slug']] = '';
 			else if ( 'checkbox-multiple' == $field['type'] )
 				self::$form_data[$field['slug']] = array();
@@ -480,7 +484,7 @@ class FSCF_Process {
 						self::$email_msg .= self::make_bold( $key ) . $inline_or_newline . stripslashes( $value ) . self::$php_eol . self::$php_eol;
 						self::$email_fields[$key] = $value;
 					}
-				}				
+				}
 				}
 		}
 
@@ -493,12 +497,12 @@ class FSCF_Process {
         if (self::$form_options['print_form_enable'] == 'true') {
           self::$email_msg_print = self::$email_msg;
           //self::$email_msg_print .= self::make_bold( 'Time:' ) . $inline_or_newline;
-		  //self::$email_msg_print .= date_i18n(get_option('date_format').' '.get_option('time_format'), time() );
+		  //self::$email_msg_print .= date_i18n(get_option('date_format').' '.get_option('time_format'), current_time('timestamp') );
         }
 
-		self::$email_fields['date_time'] = date_i18n(get_option('date_format').' '.get_option('time_format'), time() );
+		self::$email_fields['date_time'] = date_i18n(get_option('date_format').' '.get_option('time_format'), current_time('timestamp') );
 
-        self::$email_fields['ip_address'] = (isset( $_SERVER['REMOTE_ADDR'] )) ? $_SERVER['REMOTE_ADDR'] : 'n/a'; 
+        self::$email_fields['ip_address'] = (isset( $_SERVER['REMOTE_ADDR'] )) ? $_SERVER['REMOTE_ADDR'] : 'n/a';
 
 		self::check_captcha();
 
@@ -786,7 +790,7 @@ class FSCF_Process {
 
 	static function validate_attach( $slug, $req, $label, $inline_or_newline ) {
 		// validates and saves uploaded file attchments for file attach field types.
-		// also sets errors if the file did not upload or was not accepted.	
+		// also sets errors if the file did not upload or was not accepted.
 		// Test if a file was selected for attach.
 		$field_file['name'] = '';
 		if ( isset( $_FILES[$slug] ) )
@@ -903,42 +907,51 @@ class FSCF_Process {
 				if ( $li['country_code'] == 'US' ) {
 					$geo_loc = $li['city_name'];
 					if ( $li['state_code'] != '' )
-						$geo_loc = $li['city_name'] . ', ' . strtoupper( $li['state_code'] );
+						$geo_loc = $li['city_name'] . ', ' . strtoupper( $li['state_code'] ) . self::$php_eol;
 				} else {	  // all non us countries
-					$geo_loc = $li['city_name'] . ', ' . strtoupper( $li['country_code'] );
+					$geo_loc = $li['city_name'] . ', ' . strtoupper( $li['country_code'] ) . self::$php_eol;
 				}
 			} else {
-				$geo_loc = '~ ' . $li['country_name'];
+				$geo_loc = '~ ' . $li['country_name'] . self::$php_eol;
 			}
+            $geo_loc .= 'http://maps.google.com/maps?q='. $li['latitude'] . ','. $li['longitude'];
 		}
 		// add some info about sender to the email message
 		$userdomain = '';
 		$userdomain = gethostbyaddr( $_SERVER['REMOTE_ADDR'] );
 		$user_info_string = '';
+        $user_info = array();
 		if ( self::$form_options['email_html'] == 'true' )
 			$user_info_string = '<div style="background:#eee;border:1px solid gray;color:gray;padding:1em;margin:1em 0;">';
 		if ( $user_ID != '' ) {
 			//user logged in
 			if ( $current_user->user_login != '' )
-				$user_info_string .= __( 'From a WordPress user', 'si-contact-form' ) . ': ' . $current_user->user_login . self::$php_eol;
+				$user_info['wp_user'] = __( 'From a WordPress user', 'si-contact-form' ) . ': ' . $current_user->user_login;
 			if ( $current_user->user_email != '' )
-				$user_info_string .= __( 'User email', 'si-contact-form' ) . ': ' . $current_user->user_email . self::$php_eol;
+			   	$user_info['wp_user_email'] = __( 'User email', 'si-contact-form' ) . ': ' . $current_user->user_email;
 			if ( $current_user->user_firstname != '' )
-				$user_info_string .= __( 'User first name', 'si-contact-form' ) . ': ' . $current_user->user_firstname . self::$php_eol;
+				$user_info['wp_user_first_name'] = __( 'User first name', 'si-contact-form' ) . ': ' . $current_user->user_firstname;
 			if ( $current_user->user_lastname != '' )
-				$user_info_string .= __( 'User last name', 'si-contact-form' ) . ': ' . $current_user->user_lastname . self::$php_eol;
+				$user_info['wp_user_last_name'] = __( 'User last name', 'si-contact-form' ) . ': ' . $current_user->user_lastname;
 			if ( $current_user->display_name != '' )
-				$user_info_string .= __( 'User display name', 'si-contact-form' ) . ': ' . $current_user->display_name . self::$php_eol;
+			    $user_info['wp_user_display_name'] = __( 'User display name', 'si-contact-form' ) . ': ' . $current_user->display_name;
 		}
-		$user_info_string .= __( 'Sent from (ip address)', 'si-contact-form' ) . ': ' . esc_attr( $_SERVER['REMOTE_ADDR'] ) . " ($userdomain)" . self::$php_eol;
+		$user_info['wp_user_ip'] = __( 'Sent from (ip address)', 'si-contact-form' ) . ': ' . esc_attr( $_SERVER['REMOTE_ADDR'] ) . " ($userdomain)";
 		if ( $geo_loc != '' ) {
-			$user_info_string .= __( 'Location', 'si-contact-form' ) . ': ' . $geo_loc . self::$php_eol;
+			$user_info['wp_user_location'] = __( 'Location', 'si-contact-form' ) . ': ' . $geo_loc;
 			self::$form_data['sender_location'] = __( 'Location', 'si-contact-form' ) . ': ' . $geo_loc;
 		}
-		$user_info_string .= __( 'Date/Time', 'si-contact-form' ) . ': ' . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), time() ) . self::$php_eol;
-		$user_info_string .= __( 'Coming from (referer)', 'si-contact-form' ) . ': ' . esc_url( self::$form_action_url ) . self::$php_eol;
-		$user_info_string .= __( 'Using (user agent)', 'si-contact-form' ) . ': ' . FSCF_Util::clean_input( $_SERVER['HTTP_USER_AGENT'] ) . self::$php_eol . self::$php_eol;
-		if ( self::$form_options['email_html'] == 'true' )
+	    $user_info['wp_user_date'] = __( 'Date/Time', 'si-contact-form' ) . ': ' . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), current_time('timestamp') );
+		$user_info['wp_user_referer'] = __( 'Coming from (referer)', 'si-contact-form' ) . ': ' . esc_url( self::$form_action_url );
+		$user_info['wp_user_agent'] = __( 'Using (user agent)', 'si-contact-form' ) . ': ' . FSCF_Util::clean_input( $_SERVER['HTTP_USER_AGENT'] ) . self::$php_eol;
+
+        // filter hook to allow modify $user_info array
+        $user_info = apply_filters('si_contact_user_info', $user_info, self::$form_id_num);
+
+        foreach ($user_info as $k => $v) {
+                $user_info_string .= $v . self::$php_eol;
+        }
+  		if ( self::$form_options['email_html'] == 'true' )
 			$user_info_string .= '</div>';
 
 		return($user_info_string);
@@ -1007,7 +1020,8 @@ class FSCF_Process {
 		$string = '';
 		// Check with Akismet, but only if Akismet is installed, activated, and has a KEY. (Recommended for spam control).
 		if ( self::$form_options['akismet_disable'] == 'false' ) { // per form disable feature
-			if ( function_exists( 'akismet_http_post' ) && get_option( 'wordpress_api_key' ) ) {
+             // check if akismet is activated, version 2.x or 3.x
+             if ( ( is_callable( array( 'Akismet', 'http_post' ) ) || function_exists( 'akismet_http_post' ) ) && get_option( 'wordpress_api_key' ) ) {
 				global $akismet_api_host, $akismet_api_port;
 				$c['user_ip'] = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
 				$c['user_agent'] = (isset( $_SERVER['HTTP_USER_AGENT'] )) ? $_SERVER['HTTP_USER_AGENT'] : '';
@@ -1038,7 +1052,13 @@ class FSCF_Process {
 						$query_string .= $key . '=' . urlencode( stripslashes( $data ) ) . '&';
 				}
 				//echo "test $akismet_api_host, $akismet_api_port, $query_string"; exit;
-				$response = akismet_http_post( $query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
+
+                if ( is_callable( array( 'Akismet', 'http_post' ) ) ) { // Akismet v3.0+
+	                $response = Akismet::http_post( $query_string, 'comment-check' );
+                } else {  // Akismet v2.xx
+	                $response = akismet_http_post( $query_string, $akismet_api_host, '/1.1/comment-check', $akismet_api_port );
+	            }
+
 				if ( 'true' == $response[1] ) {
 					if ( self::$form_options['akismet_send_anyway'] == 'false' ) {
 						self::$form_errors['akismet'] = (self::$form_options['error_input'] != '') ? self::$form_options['error_input'] : __( 'Invalid Input - Spam?', 'si-contact-form' );
@@ -1059,7 +1079,7 @@ class FSCF_Process {
 					$string .= __( 'Akismet Spam Check: passed', 'si-contact-form' ) . self::$php_eol;
 					self::$email_fields['akismet'] = __( 'passed', 'si-contact-form' );
 				}
-			} // end if(function_exists('akismet_http_post')){
+            }
 		}
 		return($string);
 
@@ -1414,6 +1434,11 @@ class FSCF_Process {
             // not sure if this is needed because the From: header is always set
 			//@ini_set( 'sendmail_from', self::$email_fields['from_email'] );
 
+          /*  print $header;
+             print '----';
+             print $header_php;
+            exit;*/
+
 			// Check for safe mode
 			$safe_mode = ((boolean) @ini_get( 'safe_mode' ) === false) ? 0 : 1;
 
@@ -1457,7 +1482,7 @@ class FSCF_Process {
 					@wp_mail( self::$email_fields['email_to'], self::$email_fields['subject'], self::$email_msg, $header, $attach_this_mail );
 				} else {
                     //echo 'header:'.$header.'<br>'.'to:'.self::$email_fields['email_to'].'<br>'.'subject:'.self::$email_fields['subject'].'<br>'.'message:'.self::$email_msg.'<br>';
-					@wp_mail( self::$email_fields['email_to'], self::$email_fields['subject'], self::$email_msg, $header );
+          		@wp_mail( self::$email_fields['email_to'], self::$email_fields['subject'], self::$email_msg, $header );
 				}
 			}
 		} // end if (!$email_off) {
@@ -1480,10 +1505,21 @@ class FSCF_Process {
 					$msg = str_replace( '[' . $key . ']', $data, $msg );
 				}
 			}
-            //XXX empty tags are not removed
-			// Remove field tags unmatched in posted data
 
 			$subj = str_replace( '[form_label]', $posted_form_name, $subj );
+
+			// Remove all empty field tags unmatched in posted data (for the fields not required)
+           	self::set_tags_array();
+            foreach ( self::$av_tags_arr as $i ) {
+              $msg = str_replace( '[' . $i . "]\r\n", '', $msg );
+			  $msg = str_replace( '[' . $i . ']', '', $msg );
+		    }
+
+            foreach ( self::$av_tags_subj_arr as $i ) {
+			  $subj = str_replace( '[' . $i . ']', '', $subj );
+		    }
+            // filter hook for modifying the autoresponder email subject(great for adding a ticket number)
+            $subj = apply_filters('si_contact_autoresp_email_subject', $subj, self::$form_id_num);
 
 			// wordwrap email message
 			$msg = wordwrap( $msg, 70, self::$php_eol );
@@ -1537,12 +1573,24 @@ class FSCF_Process {
 				@wp_mail( self::$email_fields['from_email'], $subj, $msg, $header );
 			}
 		}  // end if confirmation email (autoresponder)
-		
+
+       // added optional condition for silent send
+       $silent_ok = 1;
+       if ( !empty(self::$form_options['silent_conditional_field']) && !empty(self::$form_options['silent_conditional_value']) ) {
+           if ( isset(self::$email_fields[self::$form_options['silent_conditional_field']]) && self::$email_fields[self::$form_options['silent_conditional_field']] == self::$form_options['silent_conditional_value'] )
+             $silent_ok = 1;
+           else
+             $silent_ok = 0;
+       }
+
+         // filter hook for modifying the email_fields array
+        self::$email_fields = apply_filters('si_contact_email_fields_posted', self::$email_fields, self::$form_id_num);
+
 		// Silent sending?
-		if ( self::$form_options['silent_send'] == 'get' && !empty(self::$form_options['silent_url']) ) {
+		if ( self::$form_options['silent_send'] == 'get' && !empty(self::$form_options['silent_url']) && $silent_ok ) {
 			// build query string
 			$query_string = self::export_convert( self::$email_fields, self::$form_options['silent_rename'], self::$form_options['silent_ignore'], self::$form_options['silent_add'], 'query' );
-            echo $query_string;
+            //echo $query_string;
 			if ( !preg_match( "/\?/", self::$form_options['silent_url'] ) )
 				$silent_result = wp_remote_get( self::$form_options['silent_url'] . '?' . $query_string, array( 'timeout'	 => 20, 'sslverify'	 => false ) );
 			else
@@ -1550,21 +1598,18 @@ class FSCF_Process {
 			if ( !is_wp_error( $silent_result ) ) {
 				$silent_result = wp_remote_retrieve_body( $silent_result );
 			}
-			//echo $silent_result;
+		   //	print_r($silent_result);
 		}
 
-		if ( self::$form_options['silent_send'] == 'post' && !empty(self::$form_options['silent_url']) ) {
+		if ( self::$form_options['silent_send'] == 'post' && !empty(self::$form_options['silent_url']) && $silent_ok ) {
 			// build post_array
 			$post_array = self::export_convert( self::$email_fields, self::$form_options['silent_rename'], self::$form_options['silent_ignore'], self::$form_options['silent_add'], 'array' );
 			$silent_result = wp_remote_post( self::$form_options['silent_url'], array( 'body'		 => $post_array, 'timeout'	 => 20, 'sslverify'	 => false ) );
 			if ( !is_wp_error( $silent_result ) ) {
 				$silent_result = wp_remote_retrieve_body( $silent_result );
 			}
-			//echo $silent_result;
+		   //	print_r($silent_result);
 		}
-
-        // filter hook for modifying the email_fields array before export
-        self::$email_fields = apply_filters('si_contact_email_fields_posted', self::$email_fields, self::$form_id_num);
 
 		// Export option
 		// filter posted data based on admin settings
@@ -1635,20 +1680,21 @@ class FSCF_Process {
 				else
 					$ctf_redirect_url .= '&' . $query_string;
 			}
-
 			$ctf_redirect_timeout = absint(self::$form_options['redirect_seconds']); // time in seconds to wait before loading another Web page
-
+                   // echo $ctf_redirect_url; exit;
             if ($ctf_redirect_timeout == 0 ) {
                // use wp_redirect when timeout seconds is 0.
                // So now if you set the timeout to 0 seconds, then post the form, it gets instantly redirected to the redirect URL
                // and you are responsible to display the "your message has been sent, thank you" message there.
-               wp_redirect( $ctf_redirect_url );
+               //wp_redirect( $ctf_redirect_url );
+               header("Location: $ctf_redirect_url");
 		       exit;
            }
 
 			// meta refresh page timer feature
             // allows some seconds to to display the "your message has been sent, thank you" message.
-			self::$meta_string = "<meta http-equiv=\"refresh\" content=\"$ctf_redirect_timeout;URL=$ctf_redirect_url\">\n";
+            // note $ctf_redirect_url query_string is already url encoded
+			self::$meta_string = "<meta http-equiv=\"refresh\" content=\"$ctf_redirect_timeout;URL=".$ctf_redirect_url."\">\n";
 			if (is_admin())
 				add_action('admin_head', 'FSCF_Process::meta_refresh',1);
 			else
@@ -1762,6 +1808,82 @@ class FSCF_Process {
 		else
 			return $label;
 	}
+
+
+   	static function set_tags_array() {
+		// Set up the list of available tags for email
+
+		self::$av_tags_arr  = array();  // used to show available field tags this form
+		self::$av_tags_subj_arr  = array();  // used to show available field tags for this form subject
+
+		// Fields
+		foreach ( self::$form_options['fields'] as $key => $field ) {
+			switch ($field['standard']) {
+				case FSCF_NAME_FIELD :
+					if ($field['disable'] == 'false') {
+					   switch (self::$form_options['name_format']) {
+						  case 'name':
+							 self::$av_tags_arr[] = 'from_name';
+						  break;
+						  case 'first_last':
+							 self::$av_tags_arr[] = 'first_name';
+							 self::$av_tags_arr[] = 'last_name';
+						  break;
+						  case 'first_middle_i_last':
+							 self::$av_tags_arr[] = 'first_name';
+							 self::$av_tags_arr[] = 'middle_initial';
+							 self::$av_tags_arr[] = 'last_name';
+						  break;
+						  case 'first_middle_last':
+							 self::$av_tags_arr[] = 'first_name';
+							 self::$av_tags_arr[] = 'middle_name';
+							 self::$av_tags_arr[] = 'last_name';
+						  break;
+					   }
+					}
+					break;
+
+				case FSCF_EMAIL_FIELD :
+					// email
+					if ($field['disable'] == 'false')
+						self::$av_tags_arr[] = 'from_email';
+					break;
+
+				case FSCF_SUBJECT_FIELD :
+					break;
+
+				case FSCF_MESSAGE_FIELD :
+					$msg_key = $key;	// this is used below
+					break;
+
+				default :
+					// This is an added field
+
+					if ( $field['type'] != 'fieldset-close' && $field['standard'] < 1) {
+						if ( $field['type'] == 'fieldset' ) {
+						} else if ( $field['type'] == 'attachment' && self::$form_options['php_mailer_enable'] == 'wordpress') {
+							self::$av_tags_arr[] = $field['slug'];
+						} else { // text, textarea, date, password, email, url, hidden, time, select, select-multiple, radio, checkbox, checkbox-multiple
+							self::$av_tags_arr[] = $field['slug'];
+						}
+					}
+			}	// end switch
+		}	// end foreach
+
+		self::$av_tags_subj_arr = self::$av_tags_arr;
+		self::$av_tags_arr[] = 'subject';
+		if (self::$form_options['fields'][$msg_key]['disable'] == 'false')
+		   self::$av_tags_arr[] = 'message';
+
+		self::$av_tags_arr[] = 'full_message';
+		if ( function_exists('akismet_verify_key') && self::$form_options['akismet_disable'] == 'false' )
+		   self::$av_tags_arr[] = 'akismet';
+
+		self::$av_tags_arr[] = 'date_time';
+        self::$av_tags_arr[] = 'ip_address';
+		self::$av_tags_subj_arr[] = 'form_label';
+
+	}	// function set_tags_array()
 
 }  // end class FSCF_Process
 
