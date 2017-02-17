@@ -10,7 +10,7 @@
                                 <?php Utilities::get_template_parts(array('includes/components/sidebar-product')); ?>
                             </div>
                             <div class="split-bd">
-                                
+
                                 <div class="feature">
                                     <div class="feature-hd feature-hd_push">
                                         <h2 class="hdg hdg_lg"><?php the_title(); ?></h2>
@@ -22,7 +22,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
 
